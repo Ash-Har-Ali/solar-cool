@@ -1,37 +1,26 @@
-import { client } from '@/sanity/lib/client';
-import { Gallery } from '../types'; // Adjust path if needed
-import { galleryQuery } from '@/sanity/lib/queries';
-import Image from 'next/image'; // Import the Image component
+import { Gallery } from '../types';  
+import Image from 'next/image';
 
-export async function getStaticProps() {
-  const galleries: Gallery[] = await client.fetch(galleryQuery); // Explicitly type the fetched data
-
-  return {
-    props: {
-      galleries,
-    },
-  };
-}
 
 interface GalleryPageProps {
-  galleries: Gallery[]; // Add the type annotation here
+  galleries: Gallery[];  // Add the type annotation here
 }
 
 const GalleryPage = ({ galleries }: GalleryPageProps) => {
-    
   return (
-    <div className="py-10 mx-auto grid grid-cols-1">
-      <h1>Gallery</h1>
-      <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <div className="py-10 mx-auto max-w-screen-xl px-4">
+      <h1 className="text-4xl font-semibold text-center text-gray-800 mb-8">
+        Gallery
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {galleries.map((gallery) => (
-          <div key={gallery._id}>
+          <div key={gallery._id} className="flex justify-center">
             <Image
-              className="w-90 object-fill rounded-lg"
+              className="object-cover rounded-lg"
               width={600}
               height={600}
               src={gallery.mainImage.asset.url}
               alt={gallery.mainImage.alt}
-              priority // Optionally prioritize loading for above-the-fold images
             />
           </div>
         ))}

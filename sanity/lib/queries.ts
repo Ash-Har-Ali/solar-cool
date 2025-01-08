@@ -20,12 +20,10 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
     "params": { "slug": slug.current }
   }`;
 
-
-export const galleryQuery = groq`
+ export const galleryQuery = groq`
   *[_type == "gallery"] {
     _id,
     title,
-    slug,
     mainImage {
       asset -> {
         url
@@ -39,7 +37,7 @@ export const galleryBySlugQuery = groq`
   *[_type == "gallery" && slug.current == $slug][0] {
     _id,
     title,
-    slug,
+
     mainImage {
       asset -> {
         url
