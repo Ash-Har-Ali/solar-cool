@@ -15,7 +15,7 @@ const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
           <Link
             className="p-4 flex flex-row items-center justify-between hover:opacity-90"
             key={post._id}
-            href={post.slug.current}
+            href={`/blog/${post.slug.current}`}
           >
             <div>
               <h2 className="font-medium text-xl">{post.title}</h2>
