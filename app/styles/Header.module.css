@@ -1,73 +1,206 @@
-/* Header.module.css */
+/* Base Styles */
+.navbar {
+  width: 100%; /* Full width */
+  height: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;  /* Horizontally center the navbar */
+  align-items: center;
+  z-index: 10;
+}
 
-.page-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align to the top */
-    height: 25vh;
-    width: 100vw;
-    margin: 0;
-    padding-top: 30px; /* Add space from the top */
+.rectangle {
+  width: 85vw;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 50%;  /* Center it horizontally */
+  transform: translateX(-50%);  /* Adjust by 50% to center it */
+  background: #f2f2f2;
+  border-radius: 79px;
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.frame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 85vw;  /* This is the same as the rectangle width */
+  padding: 0 20px;
+}
+
+.logo {
+  width: 165px;
+  height: 54px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.navLinks {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  transition: transform 0.3s ease;
+}
+
+.navLink,
+.navLinkAbout {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navLink:hover,
+.navLinkAbout:hover {
+  color: #048c46;
+  transform: translateY(-2px);
+}
+
+.saveEnergyBtn {
+  padding: 12px 25px;
+  background-color: #048c46;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.saveEnergyBtn:hover {
+  background-color: #036d39;
+}
+
+.saveEnergyText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+
+/* Hamburger Menu Icon (for small screens) */
+.hamburgerMenu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburgerLine {
+  width: 30px;
+  height: 4px;
+  background-color: #048c46;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive Styles */
+
+/* For tablets and smaller devices (max-width 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 100%;
+    padding-top: 20px;
   }
-  
-  .header-container {
-    display: inline-flex;
+
+  .frame {
+    gap: 50px;
+  }
+
+  .navLinks {
+    gap: 15px;
+  }
+
+  .saveEnergyBtn {
+    padding: 12px 20px;
+  }
+
+  .saveEnergyText {
+    font-size: 0.9rem;
+  }
+}
+
+/* For mobile devices (max-width 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding-top: 15px;
+  }
+
+  .frame {
+    flex-direction: column;
+    gap: 30px;
     align-items: center;
-    gap: 108px;
-    position: relative;
   }
-  
-  .header-logo {
-    position: relative;
-  }
-  
-  .nav-links {
-    display: inline-flex;
-    align-items: center;
-    gap: 25px;
-    position: relative;
-  }
-  
-  .nav-link {
-    font-family: 'Montserrat-SemiBold', Helvetica;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0;
-    line-height: normal;
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-  }
-  
-  .nav-link-home {
-    color: black;
-  }
-  
-  .nav-link-about {
-    color: #0169b3;
-  }
-  
-  .nav-link-default {
-    color: black;
-  }
-  
-  .save-energy-btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+
+  .navLinks {
+    display: none;
+    flex-direction: column;
     gap: 10px;
-    padding: 15px 25px;
-    background-color: #048c46;
-    border-radius: 30px;
-    position: relative;
+    width: 100%;
   }
-  
-  .save-energy-text {
-    font-family: 'Montserrat-Bold', Helvetica;
-    font-weight: 700;
-    color: white;
-    font-size: 1rem;
-    letter-spacing: 0;
-    line-height: normal;
+
+  .navLinks.showMenu {
+    display: flex;
+    transform: translateY(0);
   }
-  
+
+  .hamburgerMenu {
+    display: flex;
+  }
+
+  .saveEnergyBtn {
+    padding: 12px 20px;
+  }
+
+  .saveEnergyText {
+    font-size: 0.9rem;
+  }
+}
+
+/* For smaller mobile devices (max-width 480px) */
+@media (max-width: 480px) {
+  .logo {
+    width: 50%;
+  }
+
+  .navLinks {
+    gap: 10px;
+  }
+
+  .saveEnergyBtn {
+    padding: 10px 15px;
+  }
+
+  .saveEnergyText {
+    font-size: 0.8rem;
+  }
+}

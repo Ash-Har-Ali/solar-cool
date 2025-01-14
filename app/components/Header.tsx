@@ -1,35 +1,74 @@
+"use client";  // Mark the component as a Client Component
+
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import the Link component from next/link
 import solarCoolLogo1 from "../images/solarcool-logo.png";
-import styles from "../styles/Header.module.css"; // Adjust the path as needed
+import styles from "../styles/Header.module.css"; // Import the styles
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Function to toggle the menu
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
   return (
-    <div className={styles["page-container"]}>
-      <div className={styles["header-container"]}>
+    <div className={styles.navbar}>
+      {/* Background Rectangle */}
+      <div className={styles.rectangle} />
+      
+      {/* Content Frame */}
+      <div className={styles.frame}>
+        {/* Logo */}
         <Image
-          className={styles["header-logo"]}
-          alt="Solar cool logo"
+          className={styles.logo}
+          alt="Solar Cool logo"
           src={solarCoolLogo1}
           width={165}
           height={54}
-          priority
         />
 
-        <div className={styles["nav-links"]}>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-home"]}`}>Home</div>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-about"]}`}>About</div>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-default"]}`}>Products</div>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-default"]}`}>Gallery</div>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-default"]}`}>Blogs</div>
-          <div className={`${styles["nav-link"]} ${styles["nav-link-default"]}`}>Contact us</div>
+        {/* Hamburger Menu Icon for small screens */}
+        <div 
+          className={styles.hamburgerMenu} 
+          onClick={toggleMenu} 
+          aria-label="Toggle navigation menu"
+        >
+          <div className={styles.hamburgerLine}></div>
+          <div className={styles.hamburgerLine}></div>
+          <div className={styles.hamburgerLine}></div>
         </div>
-
-        <div className={styles["save-energy-btn"]}>
-          <div className={styles["save-energy-text"]}>
-            Save Energy Now!
-          </div>
+        
+        {/* Navigation Links */}
+        <div className={`${styles.navLinks} ${isMenuOpen ? styles.showMenu : ""}`}>
+          <Link href="/" className={styles.navLink}>
+            Home
+          </Link>
+          <Link href="/aboutUs" className={styles.navLinkAbout}>
+            About
+          </Link>
+          <Link href="/products" className={styles.navLink}>
+            Products
+          </Link>
+          <Link href="/gallery" className={styles.navLink}>
+            Gallery
+          </Link>
+          <Link href="/blog" className={styles.navLink}>
+            Blogs
+          </Link>
+          <Link href="/contact" className={styles.navLink}>
+            Contact us
+          </Link>
+          
+          {/* Save Energy Button with Link */}
+          <Link href="/contact" className={styles.saveEnergyBtn}>
+            <div className={styles.saveEnergyText}>Save Energy Now!</div>
+          </Link>
         </div>
       </div>
+
+      {/* Backdrop when menu is open */}
+      {isMenuOpen && <div className={styles.backdrop} onClick={toggleMenu}></div>}
     </div>
   );
 };
