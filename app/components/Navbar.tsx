@@ -1,44 +1,84 @@
+"use client";
+import Link from "next/link";
 import Image from "next/image";
-import solarCoolLogo1 from "./solar-cool-logo-1.png";
+import React, { useState } from "react";
+import NavLink from "./NavLink";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import MenuOverlay from "./MenuOverlay";
+import Logo from '../../public/images/solarcool-logo.png';
 
-export const Frame = () => {
+const navLinks = [
+  { title: "Home", path: "/" },
+  { title: "About Us", path: "aboutUs" },
+  { title: "Products", path: "products" },
+  { title: "Services", path: "services" },
+  { title: "Gallery", path: "gallery" },
+  { title: "Blogs", path: "blog" },
+  { title: "Contact Us", path: "contact" },
+];
+
+const Navbar = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
-    <div className="gap-[108px] inline-flex items-center relative">
-      <Image
-        className="relative"
-        alt="Solar cool logo"
-        src={solarCoolLogo1}
-        width={165}
-        height={54}
-        priority
-      />
+    <nav className="fixed top-0 left-0 right-0 z-50 my-4 md:mx-24 mx-4 border border-white border-opacity-10 bg-[#f2f2f2] rounded-[3rem] px-4 py-2">
+      <div className="flex container items-center justify-between mx-auto px-4 py-2">
+        {/* Left Side: Logo */}
+        <Link href="/" className="text-2xl md:text-3xl text-black font-semibold">
+          <Image src={Logo} alt="WizzyMinds" className="h-10 w-auto"/>
+        </Link>
 
-      <div className="gap-[25px] flex-[0_0_auto] inline-flex items-center relative">
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-black text-base tracking-[0] leading-[normal]">
-          Home
+        {/* Center: Navigation Links (hidden on mobile) */}
+        <div className="hidden xl:flex space-x-8">
+          {navLinks.map((link, index) => (
+            <NavLink key={index} href={link.path} title={link.title} />
+          ))}
         </div>
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-[#0169b3] text-base tracking-[0] leading-[normal]">
-          About
-        </div>
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-black text-base tracking-[0] leading-[normal]">
-          Products
-        </div>
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-black text-base tracking-[0] leading-[normal]">
-          Gallery
-        </div>
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-black text-base tracking-[0] leading-[normal]">
-          Blogs
-        </div>
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-SemiBold',Helvetica] font-semibold text-black text-base tracking-[0] leading-[normal]">
-          Contact us
+        <div className="flex items-center">
+          {/* Right Side: CTA Button (hidden on mobile) */}
+          <div className="hidden lg:block">
+          <Link
+              href="/contact"
+              className="px-4 inline-block py-4 w-full sm:w-fit rounded-full mr-4 border border-white border-opacity-40 bg-[#036d39] text-white hover:bg-gray-800 transition text-sm sm:text-base"
+            >
+              Save Energy Now!
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="inline-block h-4 w-4 ml-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="xl:hidden">
+            <button
+              onClick={() => setNavbarOpen(!navbarOpen)}
+              className="text-white focus:outline-none"
+            >
+              {!navbarOpen ? (
+                <Bars3Icon className="h-6 w-6" />
+              ) : (
+                <XMarkIcon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="inline-flex items-center justify-center gap-2.5 px-[25px] py-[15px] relative flex-[0_0_auto] bg-[#048c46] rounded-[30px]">
-        <div className="relative w-fit mt-[-1.00px] [font-family:'Montserrat-Bold',Helvetica] font-bold text-white text-base tracking-[0] leading-[normal]">
-          Save Energy Now!
-        </div>
-      </div>
-    </div>
+      {/* Mobile Menu Overlay */}
+      {navbarOpen && <MenuOverlay links={navLinks} />}
+    </nav>
   );
 };
+
+export default Navbar;

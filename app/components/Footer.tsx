@@ -5,7 +5,7 @@
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import styles from "../styles/Footer.module.css";
 import Image from 'next/image'; // Correct import for Next.js
-import solarCoolLogo1 from "../images/solarcool-logo.png";
+import solarCoolLogo1 from "../../public/images/solarcool-logo.png";
 import CTAButton from '../components/CTAButton';
 
 const Footer: React.FC = () => {

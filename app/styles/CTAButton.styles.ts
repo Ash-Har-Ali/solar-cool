@@ -5,7 +5,7 @@ export const Button = styled.button<{ bgColor: string; textColor: string; width:
   color: ${(props) => props.textColor || '#000'};
   font-size: 1.2rem;
   padding: 10px 20px;
-  border: 1px solid #000; /* Black border */
+  border: 2px solid #000; /* Black border */
   border-radius: 25px;  /* Rounded border */
   display: inline-flex;
   justify-content: start;
