@@ -1,7 +1,12 @@
+// components/Footer.tsx
+
+'use client';
+
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import styles from "../styles/Footer.module.css";
 import Image from 'next/image'; // Correct import for Next.js
 import solarCoolLogo1 from "../images/solarcool-logo.png";
+import CTAButton from '../components/CTAButton';
 
 const Footer: React.FC = () => {
   return (
@@ -16,6 +21,14 @@ const Footer: React.FC = () => {
             width={255}
             height={87}
             priority
+          />
+          <CTAButton 
+            label="Contact Us" 
+            navigateTo="/contact"  // Page to navigate to
+            bgColor="#fff" 
+            textColor="#000" 
+            width="auto" 
+            // Set your icon URL here
           />
         </div>
 

@@ -12,7 +12,8 @@
   
   .logoRow {
     display: flex;
-    justify-content:flex-start;
+    justify-content: space-between; /* Align logo and CTA button to the left and right ends */
+    align-items: center; /* Vertically center the items */
     margin-bottom: 2rem; /* Add space below the logo */
   }
   
