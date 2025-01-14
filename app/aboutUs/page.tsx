@@ -1,105 +1,60 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
-import styles from "../styles/about.module.css";
+import Image from 'next/image';
+import styles from '../styles/about.module.css';
+import solarCoolLogo1 from "../../public/images/solarcool-logo.png";
+import banner from "../../public/images/banner1.png";
 
-const AboutPage: React.FC = () => {
+export default function AboutPage() {
   return (
-    <div className={styles.container}>
-      {/* Hero Section */}
-      <div className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>About Us</h1>
-        <p className={styles.heroDescription}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-
-      {/* Navbar */}
-      {/* <div className={styles.navbar}>
+    <div className={styles.aboutPage}>
+      <div className={styles.banner}>
         <Image
-          src="/images/solarcool-logo.png"
-          alt="Solar cool logo"
-          width={165}
-          height={54}
+          src={banner}
+          alt="Banner"
+          width={1440}
+          height={816}
+          className={styles.bannerImage}
         />
-        <div className={styles.navLinks}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/gallery">Gallery</Link>
-          <Link href="/blogs">Blogs</Link>
-          <Link href="/contact">Contact us</Link>
-        </div>
-        <button className={styles.saveEnergyButton}>Save Energy Now!</button>
-      </div> */}
-
-      {/* About Us Content */}
-      <div className={styles.aboutContent}>
-        <h2>Who we are?</h2>
-        <p>
-          “Solar cool“ is established to bring solar products to everyone’s
-          daily life with modern technology at an affordable cost. Our range of
-          products includes Solar Air Conditioners, Inverter Water Geysers, and
-          more.
-        </p>
-        <div className={styles.imageWrapper}>
-          <Image
-            src="/images/solarcool-logo.png"
-            alt="Solar cool logo"
-            width={345}
-            height={255}
-            className={styles.aboutImage}
-          />
+        <div className={styles.aboutUsTitle}>About Us</div>
+        <div className={styles.aboutUsDescription}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
         </div>
       </div>
 
-      {/* Vision and Mission */}
-      <div className={styles.visionMission}>
-        <div className={styles.card}>
-          <h3>Vision</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+      <div className={styles.content}>
+        <div className={styles.sectionTitle}>About Us</div>
+        <div className={styles.subTitle}>Who we are?</div>
+        <div className={styles.subTitle}>What Makes Us Different?</div>
+        <div className={styles.textContent}>
+          “Solar cool” is established to bring solar products to everyone’s daily life with modern technology at an
+          affordable cost and high efficiency with lower electricity bills. Now your selection of Eco-Friendly solar
+          products could help the planet and unlock a wide range of healthy advantages. We take a closer look at how
+          the latest Solar technology is transforming your home and office spaces, introducing our wide range of Solar
+          Air Conditioners, Inverter Water Geysers, Solar Refrigerators, Solar Deep Freezers, and Ceiling Fans. This
+          marks a new starting point for the next generation of air-conditioners with immense potential to disrupt
+          traditional air-conditioning methods.
         </div>
-        <div className={styles.card}>
-          <h3>Mission</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+        <div className={styles.rectangle85} />
+        <Image
+          src={solarCoolLogo1}
+          alt="Solar Cool Logo"
+          width={345}
+          height={255.25}
+          className={styles.logoImage}
+        />
+
+        <div className={styles.rectangle86} />
+        <div className={styles.vision}>Vision</div>
+        <div className={styles.rectangle87} />
+        <div className={styles.mission}>Mission</div>
+        <div className={styles.textBox}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
         </div>
       </div>
-
-      {/* Footer */}
-      {/* <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <Image
-            src="/images/solarcool-logo.png"
-            alt="Solar cool logo"
-            width={255}
-            height={87}
-          />
-          <address>
-            14/370A, Poyya, Kodungallur Rd<br />
-            Thrissur, Kerala Pin: 680733
-          </address>
-          <p>
-            Email: info@solarcool.co.in | enquiry@solarcool.co.in<br />
-            Phone: +91 82818 98700, +91 75108 08085
-          </p>
-        </div>
-        <div className={styles.socialIcons}>
-          <FaFacebookF />
-          <FaTwitter />
-          <FaInstagram />
-        </div>
-        <p>&copy; 2025 | Solarcool.co.in</p>
-      </footer> */}
     </div>
   );
-};
-
-export default AboutPage;
+}

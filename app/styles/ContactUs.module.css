@@ -1,0 +1,17 @@
+.contactUsPage {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #e7e7e7;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.pageTitle {
+  font-size: 71px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #006a33;
+  margin-bottom: 30px;
+}
