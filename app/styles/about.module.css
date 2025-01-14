@@ -1,0 +1,119 @@
+.container {
+    background: white;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  /* Hero Section */
+  .heroSection {
+    background: url("/images/rectangle-84.png") no-repeat center/cover;
+    text-align: left;
+    padding: 100px 50px;
+    color: white;
+  }
+  
+  .heroTitle {
+    font-size: 71px;
+    font-weight: bold;
+  }
+  
+  .heroDescription {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    padding: 20px 50px;
+    border-radius: 40px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .navLinks a {
+    margin-right: 25px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+  }
+  
+  .navLinks a:hover {
+    color: #0169b3;
+  }
+  
+  .saveEnergyButton {
+    background-color: #048c46;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .saveEnergyButton:hover {
+    background-color: #036c37;
+  }
+  
+  /* About Us Content */
+  .aboutContent {
+    padding: 50px 100px;
+    color: black;
+    text-align: left;
+  }
+  
+  .imageWrapper {
+    background-color: #006a331a;
+    border-radius: 142px 0 0 142px;
+    text-align: center;
+  }
+  
+  .aboutImage {
+    margin: 20px auto;
+  }
+  
+  /* Vision and Mission */
+  .visionMission {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+  }
+  
+  .card {
+    background-color: #048c46;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 45%;
+  }
+  
+  .card h3 {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+  
+  /* Footer */
+  .footer {
+    background: #eeeded;
+    padding: 50px 20px;
+    text-align: center;
+    color: black;
+  }
+  
+  .footerContent {
+    margin-bottom: 20px;
+  }
+  
+  .socialIcons svg {
+    margin: 0 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .socialIcons svg:hover {
+    color: #048c46;
+  }
+
+  
