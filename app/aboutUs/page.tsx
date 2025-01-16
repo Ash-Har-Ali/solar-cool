@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import styles from '../styles/about.module.css';
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { TbChecklist } from "react-icons/tb";
 import { FaRegHandshake } from "react-icons/fa6";
@@ -69,7 +68,7 @@ export default function AboutPage() {
         <Image
           src={banner}
           alt="Banner"
-          className={`${styles.bannerImage} w-full object-cover`}
+          className={` w-full object-cover`}
         />
         
         <div className="absolute left-8 md:left-16 top-[30%] md:top-[40%] text-white text-4xl md:text-6xl font-bold font-['Montserrat']">

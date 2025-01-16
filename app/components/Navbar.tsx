@@ -30,7 +30,7 @@ const Navbar = () => {
 
         {/* Center: Navigation Links (hidden on mobile) */}
         <div className="hidden xl:flex space-x-8 justify-center flex-grow">
-          {navLinks.map((link, index) => (
+        {navLinks.map((link, index) => (
             <NavLink key={index} href={link.path} title={link.title} />
           ))}
         </div>

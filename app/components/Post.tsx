@@ -13,14 +13,14 @@ const components = {
   types: {
     image: ({ value }: { value: any }) => {
       return (
-        <div className="my-4">
+        <div className="my-8">
           {value?.asset ? (
             <Image
-              src={builder.image(value).width(600).height(400).url()}
+              src={builder.image(value).width(900).height(600).url()}
               alt={value.alt || "Image"}
-              width={600}
-              height={400}
-              className="rounded-lg"
+              width={900}
+              height={600}
+              className="rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
             />
           ) : null}
         </div>
@@ -30,20 +30,49 @@ const components = {
 };
 
 const Post = ({ post }: { post: SanityDocument }) => {
+  const convertDate = (date: string) => {
+    return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  };
+
   return (
-    <main className="container mx-auto prose prose-xl px-4 py-16">
-      <h1>{post.title}</h1>
-      <p>{post.description}</p>
+    <main className="container mx-auto prose prose-xl px-6 py-16 bg-white rounded-xl shadow-lg">
+      {/* Main Image Section (First) */}
       {post?.mainImage ? (
-        <Image
-          src={builder.image(post.mainImage).width(300).height(300).url()}
-          alt={post?.mainImage?.alt || "Main image"}
-          width={300}
-          height={300}
-          className="rounded-lg"
-        />
+        <div className="mb-12">
+          <Image
+            src={builder.image(post.mainImage).width(900).height(600).url()}
+            alt={post?.mainImage?.alt || "Main image"}
+            width={900}
+            height={600}
+            className="rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+          />
+        </div>
       ) : null}
-      {post?.body ? <PortableText value={post.body} components={components} /> : null}
+
+      {/* Title Section (Second) */}
+      <header className="text-center mb-8">
+        <h1 className="text-5xl font-extrabold text-gray-900 tracking-wide leading-tight">{post.title}</h1>
+        <p className="mt-4 text-lg text-gray-600">{post.description}</p>
+      </header>
+
+      {/* Meta Data (Author, Category, Date) */}
+      <div className="flex justify-center space-x-6 text-sm text-black mb-12">
+        <p className="font-medium">{post.authorName}</p>
+        <p className="font-light">{post.category}</p>
+        
+      </div>
+
+      {/* Body Content Section (Rest of the Post) */}
+      {post?.body ? (
+        <div className="text-lg text-gray-700 leading-relaxed space-y-8">
+          <PortableText value={post.body} components={components} />
+        </div>
+      ) : null}
+
+      {/* Footer Section */}
+      <footer className="mt-16 text-center text-gray-500 text-sm">
+        <p>Thank you for reading this post.</p>
+      </footer>
     </main>
   );
 };
