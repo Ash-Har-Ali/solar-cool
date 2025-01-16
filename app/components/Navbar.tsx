@@ -21,11 +21,11 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 my-4 md:mx-24 mx-4 border border-white border-opacity-30 bg-[#f2f2f2] rounded-[3rem] px-4 py-2">
-      <div className="flex container items-center justify-between mx-auto px-4 py-2">
+    <nav className="fixed top-0 left-0 right-0 z-50 my-4 md:mx-24 mx-4 border border-white border-opacity-30 bg-[#f2f2f2] rounded-[3rem] px-4 py-2 sm:py-1">
+      <div className="flex container items-center justify-between mx-auto px-4 py-2 sm:py-0.5">
         {/* Left Side: Logo */}
         <Link href="/" className="text-2xl md:text-3xl text-black font-semibold">
-          <Image src={Logo} alt="Solar Cool" className="h-16 w-auto" />
+          <Image src={Logo} alt="Solar Cool" className="h-12 md:h-16 w-auto" />
         </Link>
 
         {/* Center: Navigation Links (hidden on mobile) */}
