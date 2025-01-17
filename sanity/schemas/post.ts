@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'post',
-  title: 'Post',
+  title: 'Blog',
   type: 'document',
   fields: [
     defineField({
@@ -27,8 +27,7 @@ export default defineType({
     defineField({
       name: 'author',
       title: 'Author',
-      type: 'reference',
-      to: { type: 'author' },
+      type: 'string',
     }),
     defineField({
       name: 'mainImage',
@@ -48,8 +47,7 @@ export default defineType({
     defineField({
       name: 'categories',
       title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
+      type: 'string',
     }),
     defineField({
       name: 'publishedAt',
@@ -83,12 +81,16 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      author: 'author', // Corrected field name to match schema definition
       media: 'mainImage',
     },
-    prepare(selection) {
-      const { author } = selection
-      return { ...selection, subtitle: author && `by ${author}` }
+    prepare({ title, author, media }) {
+      return {
+        title: title,
+        subtitle: author ? `By ${author}` : 'Author not set',
+        media: media,
+      };
     },
   },
+  
 })

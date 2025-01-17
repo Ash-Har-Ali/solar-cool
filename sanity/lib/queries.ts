@@ -7,14 +7,15 @@ export const postsQuery = groq`*[_type == "post"] {
   slug,
   mainImage,
   "imageURL": mainImage.asset->url,
-  "authorName": author->name,
+  "author": author,
 }`;
 
 // Get a single post by its slug
-export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{ 
+export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
   title, 
   description, 
-  mainImage, 
+  mainImage,
+  "imageURL": mainImage.asset->url,
   body
 }`;
 
@@ -22,6 +23,10 @@ export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
 export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][] {
   "params": { "slug": slug.current }
 }`;
+
+
+
+
 
 // Get all galleries
 export const galleryQuery = groq`
@@ -61,5 +66,48 @@ export const blockContentImagesQuery = groq`
         alt
       }
     }
+  }
+`;
+
+
+
+
+
+// Fetch All Product Categories
+export const productCategoriesQuery = groq`
+  *[_type == "product-category"] {
+    _id,
+    category,
+    "slug": slug.current,
+    mainimage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    }
+  }
+`;
+
+// Fetch a Single Product Category by slug
+export const productCategoryQuery = groq`
+  *[_type == "product-category" && slug.current == $slug][0] {
+    _id,
+    category,
+    "slug": slug.current,
+    mainimage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    }
+  }
+`;
+
+// Fetch All Slugs for Product Categories
+export const productCategorySlugsQuery = groq`
+  *[_type == "product-category" && defined(slug.current)] {
+    "slug": slug.current
   }
 `;

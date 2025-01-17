@@ -1,12 +1,15 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
 import blockContent from './schemas/blockContent';
-import category from './schemas/category';
+
 import post from './schemas/post';
-import author from './schemas/author';
 import gallery from './schemas/gallery';
 import user from './schemas/user';
+// import products from './schemas/products';
+import ac from './schemas/ac';
+import productCategory from './schemas/product-category';
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, category, blockContent, gallery, user],
+  types: [post, blockContent, gallery, user, productCategory, ac],
 };

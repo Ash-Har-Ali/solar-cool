@@ -1,13 +1,13 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'author',
-  title: 'Author',
+  name: 'product-category',
+  title: 'Product Categories',
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'category',
+      title: 'Category',
       type: 'string',
     }),
     defineField({
@@ -15,12 +15,12 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'name',
+        source: 'category', // Corrected to match the category field
         maxLength: 96,
       },
     }),
     defineField({
-      name: 'image',
+      name: 'mainimage',
       title: 'Image',
       type: 'image',
       options: {
@@ -31,27 +31,14 @@ export default defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-        }
-      ]
-    }),
-    defineField({
-      name: 'bio',
-      title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
         },
       ],
     }),
   ],
   preview: {
     select: {
-      title: 'name',
-      media: 'image',
+      title: 'category',
+      media: 'mainimage',
     },
   },
-})
+});

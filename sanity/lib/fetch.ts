@@ -31,7 +31,7 @@ export async function sanityFetch<QueryResponse>({
   // Explicit pagination with defaults for skip and limit
   const paginationParams = {
     skip: params.skip || 0,
-    limit: params.limit || 500,  // You can adjust the limit if needed
+    limit: params.limit || 700,  // You can adjust the limit if needed
     ...params,
   };
 
