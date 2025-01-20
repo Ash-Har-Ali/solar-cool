@@ -6,7 +6,19 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Electronics', value: 'electronics' },
+          { title: 'Clothing', value: 'clothing' },
+          { title: 'Books', value: 'books' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'productName',
       title: 'Product Name',
       type: 'string',
     }),
@@ -15,7 +27,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'productName',
         maxLength: 96,
       },
     }),
@@ -45,13 +57,6 @@ export default defineType({
       type: 'number',
     }),
     defineField({
-      name: 'categories',
-      title: 'Category',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'product-category' } }],
-    }),
-    // Checkbox Field for BLDC
-    defineField({
       name: 'bldc',
       title: 'BLDC',
       type: 'boolean',
@@ -60,15 +65,15 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'productName',
+      media: 'imagesGallery.0',
       price: 'Price',
-      media: 'imagesGallery.0', // Use the first image from imagesGallery
-      bldc: 'bldc',
+      category: 'category',
     },
-    prepare({ title, price, media, bldc }) {
+    prepare({ title, media, price, category }) {
       return {
-        title: title || 'No title',
-        subtitle: `${price ? `${price}/-` : 'Price not set'} | ${bldc ? 'BLDC Type' : 'Non-BLDC Type'}`,
+        title: title,
+        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'}`,
         media: media,
       };
     },

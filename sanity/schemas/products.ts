@@ -60,21 +60,15 @@ export default defineType({
   preview: {
     select: {
       title: 'productName',
-      media: 'imagesGallery.0',
+      media: 'imagesGallery.0',    // Select the first image in the gallery
       price: 'Price',
-      category: 'category',
+      category: 'category.title', // Reference the category title
     },
-    prepare({ title, media, price, category }: { 
-      title: string; 
-      media: any; 
-      price: number; 
-      category: { category: string } | undefined 
-    }) {
-      const categoryTitle = category ? category.category : 'No category'; // Safe check for undefined
+    prepare(selection) {
+      const { price, category } = selection;
       return {
-        title: title,
-        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${categoryTitle}`,
-        media: media,
+        ...selection,
+        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'}`, // Format the subtitle with price and category
       };
     },
   },

@@ -67,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="mt-4">
           <a
             href={`https://wa.me/7012169029?text=I%20want%20to%20know%20more%20about%20this%20product%20${name}`}
-            // target="_blank"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200"
           >

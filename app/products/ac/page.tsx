@@ -24,16 +24,31 @@ interface Product {
 
 const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch products using the productsQuery
     const fetchProducts = async () => {
-      const fetchedProducts = await client.fetch(productsQuery);
-      setProducts(fetchedProducts);
+      try {
+        const fetchedProducts = await client.fetch(productsQuery);
+        setProducts(fetchedProducts);
+      } catch (error) {
+        setError('Failed to load products.');
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchProducts();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
@@ -43,7 +58,7 @@ const HomePage: React.FC = () => {
           src={banner}
           alt="Air Conditioner Banner"
           className="w-full h-auto object-cover"
-          priority // Mark the image with priority for faster loading
+          priority // Added the priority prop to the banner image
         />
         <div className="absolute inset-0 flex items-center justify-center text-[#048c46] text-center text-4xl md:text-6xl font-bold font-['Montserrat']">
           Air Conditioner
@@ -57,13 +72,10 @@ const HomePage: React.FC = () => {
           {products.map((product) => (
             <ProductCard
               key={product._id}
-              images={product.imagesGallery.map(image => ({
-                url: image.asset.url,
-                alt: image.alt
-              }))} // Passing images as an array of objects with alt text
+              images={product.imagesGallery.map(image => ({ url: image.asset.url, alt: image.alt }))}
               name={product.productName}
               price={product.Price}
-              categories={product.categories ? product.categories.map((cat) => cat.title) : []} // Ensure categories are an array
+              categories={product.categories ? product.categories.map((cat) => cat.title) : []}
               isBLDC={product.bldc}
             />
           ))}

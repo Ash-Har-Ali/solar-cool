@@ -167,3 +167,49 @@ export const productPathsQuery = groq`
     "params": { "slug": slug.current }
   }
 `;
+
+
+
+
+
+export const acProductsQuery = groq`
+  *[_type == "ac"] {
+    _id,
+    productName,
+    "slug": slug.current,
+    imagesGallery[] {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    Price,
+    bldc,
+    category
+  }
+`;
+
+export const acProductQuery = groq`
+  *[_type == "ac" && slug.current == $slug][0] {
+    _id,
+    productName,
+    "slug": slug.current,
+    imagesGallery[] {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    Price,
+    bldc,
+    category
+  }
+`;
+
+export const acProductPathsQuery = groq`
+  *[_type == "ac" && defined(slug.current)][] {
+    "params": { "slug": slug.current }
+  }
+`;
