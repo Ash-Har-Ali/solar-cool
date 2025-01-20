@@ -80,19 +80,19 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-bold text-gray-700">Products</h3>
             <ul className="mt-4 space-y-2 text-sm text-gray-600">
               <li>
-                <Link href="#" className="hover:underline">Solar AC</Link>
+                <Link href="/products/ac" className="hover:underline">Solar AC</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Television</Link>
+                <Link href="/products/tv" className="hover:underline">Television</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Washing Machines</Link>
+                <Link href="/products/washingMachine" className="hover:underline">Washing Machines</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Air Cooler</Link>
+                <Link href="/products/cooler" className="hover:underline">Air Cooler</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Smart Watch</Link>
+                <Link href="/products/smartWatch" className="hover:underline">Smart Watch</Link>
               </li>
             </ul>
           </div>
@@ -102,19 +102,19 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-bold text-gray-700">Additional Links</h3>
             <ul className="mt-4 space-y-2 text-sm text-gray-600">
               <li>
-                <Link href="#" className="hover:underline">About Us</Link>
+                <Link href="/aboutUs" className="hover:underline">About Us</Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:underline">Contact Us</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Blog</Link>
+                <Link href="/blog" className="hover:underline">Blog</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Gallery</Link>
+                <Link href="/gallery" className="hover:underline">Gallery</Link>
               </li>
               <li>
-                <Link href="#" className="hover:underline">Products</Link>
+                <Link href="/products" className="hover:underline">Products</Link>
               </li>
             </ul>
           </div>

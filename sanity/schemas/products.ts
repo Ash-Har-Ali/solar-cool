@@ -8,6 +8,12 @@ export default defineType({
     defineField({
       name: 'category',
       title: 'Category',
+      type: 'reference',
+      to: { type: 'product-category' },
+    }),
+    defineField({
+      name: 'productName',
+      title: 'Product Name',
       type: 'string',
     }),
     defineField({
@@ -18,26 +24,6 @@ export default defineType({
         source: 'productName',
         maxLength: 96,
       },
-    }),
-    defineField({
-      name: 'mainimage',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-        },
-      ],
-    }),
-    defineField({
-      name: 'productName',
-      title: 'Product Name',
-      type: 'string',
     }),
     defineField({
       name: 'imagesGallery',
@@ -64,7 +50,6 @@ export default defineType({
       name: 'Price',
       type: 'number',
     }),
-   
     defineField({
       name: 'bldc',
       title: 'BLDC',
@@ -75,14 +60,20 @@ export default defineType({
   preview: {
     select: {
       title: 'productName',
-      media: 'mainimage',
+      media: 'imagesGallery.0',
       price: 'Price',
       category: 'category',
     },
-    prepare({ title, media, price, category }) {
+    prepare({ title, media, price, category }: { 
+      title: string; 
+      media: any; 
+      price: number; 
+      category: { category: string } | undefined 
+    }) {
+      const categoryTitle = category ? category.category : 'No category'; // Safe check for undefined
       return {
         title: title,
-        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category assigned'}`,
+        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${categoryTitle}`,
         media: media,
       };
     },

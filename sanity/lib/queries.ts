@@ -111,3 +111,59 @@ export const productCategorySlugsQuery = groq`
     "slug": slug.current
   }
 `;
+
+
+
+
+
+// Fetch all products
+export const productsQuery = groq`
+  *[_type == "products"] {
+    _id,
+    productName,
+    "slug": slug.current,
+    imagesGallery[] {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    Price,
+    bldc,
+    categories[]->{
+      _id,
+      title
+    }
+  }
+`;
+
+
+// Fetch a single product by its slug
+export const productQuery = groq`
+  *[_type == "products" && slug.current == $slug][0] {
+    _id,
+    productName,
+    "slug": slug.current,
+    imagesGallery[] {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    Price,
+    bldc,
+    categories[]->{
+      _id,
+      title
+    }
+  }
+`;
+
+// Fetch all product slugs
+export const productPathsQuery = groq`
+  *[_type == "products" && defined(slug.current)][] {
+    "params": { "slug": slug.current }
+  }
+`;
