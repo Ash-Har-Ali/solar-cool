@@ -131,13 +131,9 @@ export const productsQuery = groq`
     },
     Price,
     bldc,
-    categories[]->{
-      _id,
-      title
-    }
+    category
   }
 `;
-
 
 // Fetch a single product by its slug
 export const productQuery = groq`
@@ -154,10 +150,7 @@ export const productQuery = groq`
     },
     Price,
     bldc,
-    categories[]->{
-      _id,
-      title
-    }
+    category
   }
 `;
 
@@ -167,6 +160,7 @@ export const productPathsQuery = groq`
     "params": { "slug": slug.current }
   }
 `;
+
 
 
 

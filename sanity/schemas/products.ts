@@ -8,8 +8,18 @@ export default defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'reference',
-      to: { type: 'product-category' },
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Air Conditioner', value: 'airconditioner' },
+          { title: 'Cooler', value: 'cooler' },
+          { title: 'Television', value: 'television' },
+          { title: 'Smart Watch', value: 'smartwatch' },
+          { title: 'Washing Machine', value: 'washingmachine' },
+          { title: 'Digital Signage', value: 'digitalsignage' },
+          { title: 'Speaker', value: 'speaker' },
+        ],
+      },
     }),
     defineField({
       name: 'productName',
@@ -60,15 +70,15 @@ export default defineType({
   preview: {
     select: {
       title: 'productName',
-      media: 'imagesGallery.0',    // Select the first image in the gallery
+      media: 'imagesGallery.0',
       price: 'Price',
-      category: 'category.title', // Reference the category title
+      category: 'category',
     },
-    prepare(selection) {
-      const { price, category } = selection;
+    prepare({ title, media, price, category }) {
       return {
-        ...selection,
-        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'}`, // Format the subtitle with price and category
+        title: title,
+        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'}`,
+        media: media,
       };
     },
   },

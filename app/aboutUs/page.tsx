@@ -106,6 +106,7 @@ export default function AboutPage() {
                 src={solarCoolLogo1}
                 alt="Solar Cool Logo"
                 className="object-contain p-9"
+                priority
               />
             </div>
           </div>
