@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { productsQuery } from "../../sanity/lib/queries";
+import { productsQuery } from "../../../sanity/lib/queries";
 import ProductCard from "../components/ProductCard";
-import { client } from "../../sanity/lib/client";
+import { client } from "../../../sanity/lib/client";
 
 interface Category {
   _id: string;
@@ -35,6 +35,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState({ sortOrder: "price-asc", filterBLDC: null as boolean | null });
 
   const fetchProducts = useCallback(async () => {
     setLoading(true);
@@ -52,32 +53,53 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
     fetchProducts();
   }, [fetchProducts]);
 
-  const filterProductsByCategory = useCallback(
-    (products: Product[]): Product[] => {
+  const filterProductsByCategory = useMemo(
+    () => (products: Product[]) => {
       return products.filter((product) => {
-        const { category: productCategory } = product;
+        const productCategory = product.category;
+        const categoryValue = category.toLowerCase();
 
         if (Array.isArray(productCategory)) {
-          return productCategory.some((cat) => cat.value.toLowerCase() === category.toLowerCase());
+          return productCategory.some((cat) => cat.value.toLowerCase() === categoryValue);
         }
 
         if (productCategory && typeof productCategory === "object" && "value" in productCategory) {
-          return productCategory.value.toLowerCase() === category.toLowerCase();
+          return productCategory.value.toLowerCase() === categoryValue;
         }
 
-        if (typeof productCategory === "string") {
-          return productCategory.toLowerCase() === category.toLowerCase();
-        }
-
-        return false;
+        return typeof productCategory === "string" && productCategory.toLowerCase() === categoryValue;
       });
     },
     [category]
   );
 
-  const filteredProducts = filterProductsByCategory(products);
+  const filteredProducts = useMemo(() => filterProductsByCategory(products), [products, filterProductsByCategory]);
 
-  if (loading)
+  const handleSortChange = (order: string) => {
+    setFilters((prev) => ({ ...prev, sortOrder: order }));
+  };
+
+  const handleBLDCFilter = (value: boolean | null) => {
+    setFilters((prev) => ({ ...prev, filterBLDC: value }));
+  };
+
+  const filteredAndSortedProducts = useMemo(() => {
+    return filteredProducts
+      .filter((product) => {
+        if (filters.filterBLDC === null) return true;
+        return product.bldc === filters.filterBLDC;
+      })
+      .sort((a, b) => {
+        if (filters.sortOrder === "price-asc") {
+          return a.Price - b.Price;
+        } else if (filters.sortOrder === "price-desc") {
+          return b.Price - a.Price;
+        }
+        return 0;
+      });
+  }, [filteredProducts, filters]);
+
+  if (loading) {
     return (
       <div className="container mx-auto px-4 sm:px-12 py-8">
         <div className="flex items-center justify-center mb-6">
@@ -90,6 +112,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
         </div>
       </div>
     );
+  }
 
   if (error) return <div>{error}</div>;
 
@@ -108,16 +131,46 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
         </div>
       </div>
 
-      {/* Products Section */}
+      {/* Title Section */}
+      <div className="flex items-center justify-center mb-6">
+        <h2 className="text-2xl font-semibold text-gray-900 text-center">
+          Our {category.charAt(0).toUpperCase() + category.slice(1)} Products
+        </h2>
+      </div>
+
+      {/* Sorting Buttons */}
       <div className="container mx-auto px-4 sm:px-12 py-8">
-        <div className="flex items-center justify-center">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-            Our {category.charAt(0).toUpperCase() + category.slice(1)} Products
-          </h2>
+        <div className="flex flex-wrap justify-center space-x-4 mb-6 gap-4">
+          <button
+            onClick={() => handleSortChange("price-asc")}
+            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+          >
+            Lowest Price
+          </button>
+          <button
+            onClick={() => handleSortChange("price-desc")}
+            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+          >
+            Highest Price
+          </button>
+          <button
+            onClick={() => handleBLDCFilter(true)}
+            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+          >
+            BLDC Only
+          </button>
+          <button
+            onClick={() => handleBLDCFilter(null)}
+            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+          >
+            All Products
+          </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+
+        {/* Product Cards */}
+        <div className="flex flex-wrap justify-center items-center gap-6">
+          {filteredAndSortedProducts.length > 0 ? (
+            filteredAndSortedProducts.map((product) => (
               <ProductCard
                 key={product._id}
                 images={product.imagesGallery.map((image) => ({
@@ -132,8 +185,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
                     : product.category &&
                       typeof product.category !== "string" &&
                       "title" in product.category
-                      ? [product.category.title]
-                      : []
+                    ? [product.category.title]
+                    : []
                 }
                 isBLDC={product.bldc}
               />

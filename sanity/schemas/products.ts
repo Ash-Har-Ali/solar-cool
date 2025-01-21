@@ -66,6 +66,13 @@ export default defineType({
       type: 'boolean',
       description: 'Check this box if the product is a BLDC type',
     }),
+    defineField({
+      name: 'publishedDate',
+      title: 'Published Date',
+      type: 'datetime',
+      readOnly: true, // This will make the field read-only
+      initialValue: () => new Date().toISOString(), // Automatically sets the current date and time
+    }),
   ],
   preview: {
     select: {
@@ -73,11 +80,12 @@ export default defineType({
       media: 'imagesGallery.0',
       price: 'Price',
       category: 'category',
+      publishedDate: 'publishedDate',
     },
-    prepare({ title, media, price, category }) {
+    prepare({ title, media, price, category, publishedDate }) {
       return {
         title: title,
-        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'}`,
+        subtitle: `${price ? `₹${price}` : 'Price not set'} | ${category || 'No category'} | Published: ${publishedDate}`,
         media: media,
       };
     },

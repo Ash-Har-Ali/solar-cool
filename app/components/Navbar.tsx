@@ -9,12 +9,12 @@ import Logo from '../../public/images/solarcool-logo.png';
 
 const navLinks = [
   { title: "Home", path: "/" },
-  { title: "About Us", path: "aboutUs" },
-  { title: "Products", path: "products" },
-  { title: "Services", path: "services" },
-  { title: "Gallery", path: "gallery" },
-  { title: "Blogs", path: "blog" },
-  { title: "Contact Us", path: "contact" },
+  { title: "About Us", path: "/aboutUs" },
+  { title: "Products", path: "/products" },
+  { title: "Services", path: "/services" },
+  { title: "Gallery", path: "/gallery" },
+  { title: "Blogs", path: "/blog" },
+  { title: "Contact Us", path: "/contact" },
 ];
 
 const Navbar = () => {
