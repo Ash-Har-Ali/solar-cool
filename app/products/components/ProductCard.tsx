@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Image from 'next/image'; // Import Image from next/image
+import React, { useState } from "react";
+import Image from "next/image"; // Import Image from next/image
 
 interface ProductCardProps {
   images: { url: string; alt: string }[]; // Array of images
@@ -14,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   name,
   price,
   categories,
-  isBLDC,
+  isBLDC
 }) => {
   // State to track the image displayed
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <a href="#" className="block">
           <h5 className="text-xl font-semibold text-gray-900">{name}</h5>
         </a>
-        
+
         {/* Image with hover effect */}
         <div className="relative w-full h-auto mt-4">
           <Image
@@ -46,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             layout="intrinsic"
           />
         </div>
-        
+
         {/* BLDC Tag */}
         {isBLDC && (
           <div className="mt-3">
@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* Price */}
         <div className="flex items-center justify-between mt-3">
           <span className="text-2xl font-bold text-gray-900">
-            {price ? `₹${price}` : 'Price not set'}
+            {price ? `₹${price}` : "Price not set"}
           </span>
         </div>
 

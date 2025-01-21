@@ -30,13 +30,14 @@ const Navbar = () => {
 
         {/* Center: Navigation Links (hidden on mobile) */}
         <div className="hidden xl:flex space-x-8 justify-center flex-grow">
-        {navLinks.map((link, index) => (
+          {navLinks.map((link, index) => (
             <NavLink key={index} href={link.path} title={link.title} />
           ))}
         </div>
 
+        {/* Right Side: CTA Button and Mobile Menu Button */}
         <div className="flex items-center">
-          {/* Right Side: CTA Button (hidden on mobile) */}
+          {/* CTA Button (hidden on mobile) */}
           <div className="hidden lg:block">
             <Link
               href="/contact"
@@ -61,18 +62,16 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="xl:hidden">
-            <button
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              className="text-white focus:outline-none"
-            >
-              {!navbarOpen ? (
-                <Bars3Icon className="h-6 w-6 text-[#036d39]" />
-              ) : (
-                <XMarkIcon className="h-6 w-6 text-[#036d39]" />
-              )}
-            </button>
-          </div>
+          <button
+            onClick={() => setNavbarOpen(!navbarOpen)}
+            className="xl:hidden text-[#036d39] focus:outline-none"
+          >
+            {navbarOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
 

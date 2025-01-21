@@ -1,45 +1,30 @@
 import Image from "next/image";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { TbChecklist } from "react-icons/tb";
-import { FaRegHandshake } from "react-icons/fa6";
+import { FaRegHandshake } from "react-icons/fa";
 import solarCoolLogo1 from "../../public/images/solarcool-logo.png";
 import banner from "../../public/images/banner1.png";
 
-// Define types for reusable components
-interface SectionTitleProps {
-  title: string;
-  subtitle: string;
-}
+// Reusable Components
+const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({
+  title,
+  subtitle
+}) => (
+  <div>
+    <div className="text-sm md:text-base font-normal font-['Montserrat'] text-black">
+      {title}
+    </div>
+    <div className="text-2xl md:text-4xl font-semibold font-['Montserrat'] mt-2 text-black">
+      {subtitle}
+    </div>
+  </div>
+);
 
-interface VisionMissionCardProps {
+const VisionMissionCard: React.FC<{
   title: string;
   content: string;
   bgColor: string;
-}
-
-interface DifferenceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  content: string;
-}
-
-// SectionTitle Component
-const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) =>
-  <div>
-    <div className="text-black text-sm md:text-base font-normal font-['Montserrat']">
-      {title}
-    </div>
-    <div className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mt-2">
-      {subtitle}
-    </div>
-  </div>;
-
-// VisionMissionCard Component
-const VisionMissionCard: React.FC<VisionMissionCardProps> = ({
-  title,
-  content,
-  bgColor
-}) =>
+}> = ({ title, content, bgColor }) => (
   <div className={`w-full md:w-[45%] ${bgColor} rounded-lg p-6`}>
     <h3 className="text-white text-2xl font-semibold font-['Montserrat']">
       {title}
@@ -47,33 +32,36 @@ const VisionMissionCard: React.FC<VisionMissionCardProps> = ({
     <p className="text-white text-base font-normal font-['Montserrat'] leading-normal mt-4">
       {content}
     </p>
-  </div>;
+  </div>
+);
 
-// DifferenceCard Component
-const DifferenceCard: React.FC<DifferenceCardProps> = ({
-  icon,
-  title,
-  content
-}) =>
+const DifferenceCard: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+}> = ({ icon, title, content }) => (
   <div className="flex flex-col items-center bg-[#e6f1eb] rounded-lg p-6 max-w-xs">
-    <div className="text-6xl text-[#048c46]">
-      {icon}
-    </div>
+    <div className="text-6xl text-[#048c46]">{icon}</div>
     <h4 className="text-black text-xl font-semibold font-['Montserrat'] mt-4">
       {title}
     </h4>
     <p className="text-black text-sm font-normal font-['Montserrat'] text-center mt-4">
       {content}
     </p>
-  </div>;
+  </div>
+);
 
 export default function AboutPage() {
   return (
     <div>
       {/* Banner Section */}
       <div className="relative mb-12">
-        <Image src={banner} alt="Banner" className={` w-full object-cover`} />
-
+        <Image
+          src={banner}
+          alt="Banner"
+          className="w-full h-auto object-cover"
+          priority
+        />
         <div className="absolute left-8 md:left-16 top-[30%] md:top-[40%] text-white text-4xl md:text-6xl font-bold font-['Montserrat']">
           About Us
         </div>
@@ -97,7 +85,7 @@ export default function AboutPage() {
               We take a closer look at how the latest Solar technology is
               transforming your home and office spaces and introducing a wide
               range of Solar Air Conditioners, Inverter Water Geysers, Solar
-              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.
+              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.{" "}
             </p>
           </div>
           <div className="flex justify-center items-center">
@@ -126,7 +114,6 @@ export default function AboutPage() {
           />
         </div>
 
-        {/* What Makes Us Different Section */}
         {/* What Makes Us Different Section */}
         <div className="container mx-auto px-4 sm:px-12 py-8">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">

@@ -28,14 +28,17 @@ interface ProductPageProps {
 }
 
 const SkeletonCard: React.FC = () => (
-  <div className="animate-pulse bg-gray-300 rounded-md h-64 w-full"></div>
+  <div className="animate-pulse bg-gray-300 rounded-md h-64 w-full" />
 );
 
 const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filters, setFilters] = useState({ sortOrder: "price-asc", filterBLDC: null as boolean | null });
+  const [filters, setFilters] = useState({
+    sortOrder: "price-asc",
+    filterBLDC: null as boolean | null
+  });
 
   const fetchProducts = useCallback(async () => {
     setLoading(true);
@@ -60,20 +63,32 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
         const categoryValue = category.toLowerCase();
 
         if (Array.isArray(productCategory)) {
-          return productCategory.some((cat) => cat.value.toLowerCase() === categoryValue);
+          return productCategory.some(
+            (cat) => cat.value.toLowerCase() === categoryValue
+          );
         }
 
-        if (productCategory && typeof productCategory === "object" && "value" in productCategory) {
+        if (
+          productCategory &&
+          typeof productCategory === "object" &&
+          "value" in productCategory
+        ) {
           return productCategory.value.toLowerCase() === categoryValue;
         }
 
-        return typeof productCategory === "string" && productCategory.toLowerCase() === categoryValue;
+        return (
+          typeof productCategory === "string" &&
+          productCategory.toLowerCase() === categoryValue
+        );
       });
     },
     [category]
   );
 
-  const filteredProducts = useMemo(() => filterProductsByCategory(products), [products, filterProductsByCategory]);
+  const filteredProducts = useMemo(
+    () => filterProductsByCategory(products),
+    [products, filterProductsByCategory]
+  );
 
   const handleSortChange = (order: string) => {
     setFilters((prev) => ({ ...prev, sortOrder: order }));
@@ -103,7 +118,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
     return (
       <div className="container mx-auto px-4 sm:px-12 py-8">
         <div className="flex items-center justify-center mb-6">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-900"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-900" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, idx) => (
@@ -175,7 +190,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
                 key={product._id}
                 images={product.imagesGallery.map((image) => ({
                   url: image.asset.url,
-                  alt: image.alt,
+                  alt: image.alt
                 }))}
                 name={product.productName}
                 price={product.Price}
@@ -183,16 +198,19 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
                   Array.isArray(product.category)
                     ? product.category.map((cat) => cat.title)
                     : product.category &&
-                      typeof product.category !== "string" &&
-                      "title" in product.category
-                    ? [product.category.title]
-                    : []
+                        typeof product.category !== "string" &&
+                        "title" in product.category
+                      ? [product.category.title]
+                      : []
                 }
                 isBLDC={product.bldc}
               />
             ))
           ) : (
-            <div>No {category.charAt(0).toUpperCase() + category.slice(1)} products available.</div>
+            <div>
+              No {category.charAt(0).toUpperCase() + category.slice(1)} products
+              available.
+            </div>
           )}
         </div>
       </div>

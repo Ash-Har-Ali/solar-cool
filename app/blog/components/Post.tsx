@@ -25,13 +25,17 @@ const components = {
           ) : null}
         </div>
       );
-    },
-  },
+    }
+  }
 };
 
 const Post = ({ post }: { post: SanityDocument }) => {
   const convertDate = (date: string) => {
-    return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    });
   };
 
   return (
@@ -51,7 +55,9 @@ const Post = ({ post }: { post: SanityDocument }) => {
 
       {/* Title Section (Second) */}
       <header className="text-center mb-8">
-        <h1 className="text-5xl font-extrabold text-gray-900 tracking-wide leading-tight">{post.title}</h1>
+        <h1 className="text-5xl font-extrabold text-gray-900 tracking-wide leading-tight">
+          {post.title}
+        </h1>
         <p className="mt-4 text-lg text-gray-600">{post.description}</p>
       </header>
 
@@ -59,7 +65,6 @@ const Post = ({ post }: { post: SanityDocument }) => {
       <div className="flex justify-center space-x-6 text-sm text-black mb-12">
         <p className="font-medium">{post.authorName}</p>
         <p className="font-light">{post.category}</p>
-        
       </div>
 
       {/* Body Content Section (Rest of the Post) */}

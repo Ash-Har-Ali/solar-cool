@@ -2,7 +2,7 @@ import { SanityDocument } from "@sanity/client";
 import { postPathsQuery, postQuery } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { client } from "@/sanity/lib/client";
-import Post from "../../components/Post";
+import Post from "../components/Post";
 
 export const revalidate = 60;
 
