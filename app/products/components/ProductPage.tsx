@@ -43,11 +43,18 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
   const fetchProducts = useCallback(async () => {
     setLoading(true);
     try {
-      const fetchedProducts = await client.fetch(productsQuery);
-      setProducts(fetchedProducts);
+      const cachedProducts = localStorage.getItem("products");
+      if (cachedProducts) {
+        setProducts(JSON.parse(cachedProducts));
+        setLoading(false);
+      } else {
+        const fetchedProducts = await client.fetch(productsQuery);
+        setProducts(fetchedProducts);
+        localStorage.setItem("products", JSON.stringify(fetchedProducts));
+        setLoading(false);
+      }
     } catch (err) {
       setError("Failed to load products.");
-    } finally {
       setLoading(false);
     }
   }, []);
@@ -58,21 +65,15 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
 
   const filterProductsByCategory = useMemo(
     () => (products: Product[]) => {
+      const categoryValue = category.toLowerCase();
       return products.filter((product) => {
         const productCategory = product.category;
-        const categoryValue = category.toLowerCase();
 
         if (Array.isArray(productCategory)) {
-          return productCategory.some(
-            (cat) => cat.value.toLowerCase() === categoryValue
-          );
+          return productCategory.some((cat) => cat.value.toLowerCase() === categoryValue);
         }
 
-        if (
-          productCategory &&
-          typeof productCategory === "object" &&
-          "value" in productCategory
-        ) {
+        if (productCategory && typeof productCategory === "object" && "value" in productCategory) {
           return productCategory.value.toLowerCase() === categoryValue;
         }
 
@@ -85,10 +86,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
     [category]
   );
 
-  const filteredProducts = useMemo(
-    () => filterProductsByCategory(products),
-    [products, filterProductsByCategory]
-  );
+  const filteredProducts = useMemo(() => filterProductsByCategory(products), [products, filterProductsByCategory]);
 
   const handleSortChange = (order: string) => {
     setFilters((prev) => ({ ...prev, sortOrder: order }));
@@ -190,7 +188,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
                 key={product._id}
                 images={product.imagesGallery.map((image) => ({
                   url: image.asset.url,
-                  alt: image.alt
+                  alt: image.alt,
                 }))}
                 name={product.productName}
                 price={product.Price}
@@ -198,8 +196,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
                   Array.isArray(product.category)
                     ? product.category.map((cat) => cat.title)
                     : product.category &&
-                        typeof product.category !== "string" &&
-                        "title" in product.category
+                      typeof product.category !== "string" &&
+                      "title" in product.category
                       ? [product.category.title]
                       : []
                 }

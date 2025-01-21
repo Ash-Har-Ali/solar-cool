@@ -12,7 +12,6 @@ const navLinks = [
   { title: "About Us", path: "/aboutUs" },
   { title: "Products", path: "/products" },
   { title: "Services", path: "/services" },
-  { title: "Gallery", path: "/gallery" },
   { title: "Blogs", path: "/blog" },
   { title: "Contact Us", path: "/contact" },
 ];
@@ -29,7 +28,7 @@ const Navbar = () => {
         </Link>
 
         {/* Center: Navigation Links (hidden on mobile) */}
-        <div className="hidden xl:flex space-x-8 justify-center flex-grow">
+        <div className="hidden xl:flex space-x-10 justify-center flex-grow">
           {navLinks.map((link, index) => (
             <NavLink key={index} href={link.path} title={link.title} />
           ))}

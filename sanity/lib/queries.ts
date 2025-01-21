@@ -8,15 +8,21 @@ export const postsQuery = groq`*[_type == "post"] {
   mainImage,
   "imageURL": mainImage.asset->url,
   "author": author,
+  description,
+  categories,
+  publishedAt,
 }`;
 
 // Get a single post by its slug
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{
-  title, 
-  description, 
+  title,
+  description,
   mainImage,
   "imageURL": mainImage.asset->url,
-  body
+  body,
+  categories,
+  publishedAt,
+  "author": author
 }`;
 
 // Get all post slugs
@@ -24,91 +30,16 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
   "params": { "slug": slug.current }
 }`;
 
-
-
-
-
-// Get all galleries
-export const galleryQuery = groq`
-  *[_type == "gallery"] {
-    _id,
-    title,
-    mainImage {
-      asset -> {
-        url
-      },
-      alt
-    }
-  }
-`;
-
-// Get a gallery by its slug
-export const galleryBySlugQuery = groq`
-  *[_type == "gallery" && slug.current == $slug][0] {
-    _id,
-    title,
-    mainImage {
-      asset -> {
-        url
-      },
-      alt
-    }
-  }
-`;
-
 // Get images from block content in a post by its slug
 export const blockContentImagesQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     title,
-    body[]{
+    body[] {
       _type == "image" => {
         "imageUrl": asset->url,
         alt
       }
     }
-  }
-`;
-
-
-
-
-
-// Fetch All Product Categories
-export const productCategoriesQuery = groq`
-  *[_type == "product-category"] {
-    _id,
-    category,
-    "slug": slug.current,
-    mainimage {
-      asset-> {
-        _id,
-        url
-      },
-      alt
-    }
-  }
-`;
-
-// Fetch a Single Product Category by slug
-export const productCategoryQuery = groq`
-  *[_type == "product-category" && slug.current == $slug][0] {
-    _id,
-    category,
-    "slug": slug.current,
-    mainimage {
-      asset-> {
-        _id,
-        url
-      },
-      alt
-    }
-  }
-`;
-
-// Fetch All Slugs for Product Categories
-export const productCategorySlugsQuery = groq`
-  *[_type == "product-category" && defined(slug.current)] {
-    "slug": slug.current
   }
 `;
 
@@ -157,53 +88,6 @@ export const productQuery = groq`
 // Fetch all product slugs
 export const productPathsQuery = groq`
   *[_type == "products" && defined(slug.current)][] {
-    "params": { "slug": slug.current }
-  }
-`;
-
-
-
-
-
-
-export const acProductsQuery = groq`
-  *[_type == "ac"] {
-    _id,
-    productName,
-    "slug": slug.current,
-    imagesGallery[] {
-      asset-> {
-        _id,
-        url
-      },
-      alt
-    },
-    Price,
-    bldc,
-    category
-  }
-`;
-
-export const acProductQuery = groq`
-  *[_type == "ac" && slug.current == $slug][0] {
-    _id,
-    productName,
-    "slug": slug.current,
-    imagesGallery[] {
-      asset-> {
-        _id,
-        url
-      },
-      alt
-    },
-    Price,
-    bldc,
-    category
-  }
-`;
-
-export const acProductPathsQuery = groq`
-  *[_type == "ac" && defined(slug.current)][] {
     "params": { "slug": slug.current }
   }
 `;
