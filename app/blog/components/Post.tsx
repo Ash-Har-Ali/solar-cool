@@ -27,8 +27,8 @@ const components = {
           ) : null}
         </div>
       );
-    },
-  },
+    }
+  }
 };
 
 interface PostProps {
@@ -41,7 +41,7 @@ interface PostProps {
     };
     body?: any;
     author?: string;
-    categories?: string;  // Ensure this matches the field name from the schema (plural 'categories')
+    categories?: string; // Ensure this matches the field name from the schema (plural 'categories')
     publishedAt?: string;
     slug?: {
       current?: string;
@@ -54,7 +54,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     return new Date(date).toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
-      year: "numeric",
+      year: "numeric"
     });
   };
 
@@ -65,7 +65,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     : "/default-og-image.jpg";
 
   const author = post.author || "Unknown Author";
-  const category = post.categories || "Uncategorized";  // Use `categories` directly (plural form)
+  const category = post.categories || "Uncategorized"; // Use `categories` directly (plural form)
 
   return (
     <>
@@ -79,7 +79,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <meta property="og:image" content={pageImage} />
         <meta property="og:type" content="article" />
         <meta property="article:author" content={author} />
-        <meta property="article:published_time" content={post.publishedAt || new Date().toISOString()} />
+        <meta
+          property="article:published_time"
+          content={post.publishedAt || new Date().toISOString()}
+        />
         <meta property="article:section" content={category} />
         <link rel="canonical" href={post.slug?.current || "#"} />
       </Head>
@@ -110,8 +113,12 @@ const Post: React.FC<PostProps> = ({ post }) => {
         {/* Meta Data Section */}
         <div className="flex justify-center space-x-6 text-sm text-gray-700 mb-12">
           <p className="font-medium">By {author}</p>
-          <p className="font-light">Category: {category}</p>  {/* Using `categories` here */}
-          <p className="font-light">Published: {convertDate(post.publishedAt || new Date().toISOString())}</p>
+          <p className="font-light">Category: {category}</p>{" "}
+          {/* Using `categories` here */}
+          <p className="font-light">
+            Published:{" "}
+            {convertDate(post.publishedAt || new Date().toISOString())}
+          </p>
         </div>
 
         {/* Body Content Section */}

@@ -2,14 +2,14 @@ import Image from "next/image";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { TbChecklist } from "react-icons/tb";
 import { FaRegHandshake } from "react-icons/fa";
-import solarCoolLogo1 from "../../public/images/solarcool-logo.png";
+import solarCoolLogo1 from "../../public/images/solarcool-logo.svg";
 import banner from "../../public/images/banner1.png";
 
 // Reusable Components
 const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({
   title,
   subtitle
-}) => (
+}) =>
   <div>
     <div className="text-sm md:text-base font-normal font-['Montserrat'] text-black">
       {title}
@@ -17,14 +17,13 @@ const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({
     <div className="text-2xl md:text-4xl font-semibold font-['Montserrat'] mt-2 text-black">
       {subtitle}
     </div>
-  </div>
-);
+  </div>;
 
 const VisionMissionCard: React.FC<{
   title: string;
   content: string;
   bgColor: string;
-}> = ({ title, content, bgColor }) => (
+}> = ({ title, content, bgColor }) =>
   <div className={`w-full md:w-[45%] ${bgColor} rounded-lg p-6`}>
     <h3 className="text-white text-2xl font-semibold font-['Montserrat']">
       {title}
@@ -32,24 +31,24 @@ const VisionMissionCard: React.FC<{
     <p className="text-white text-base font-normal font-['Montserrat'] leading-normal mt-4">
       {content}
     </p>
-  </div>
-);
+  </div>;
 
 const DifferenceCard: React.FC<{
   icon: React.ReactNode;
   title: string;
   content: string;
-}> = ({ icon, title, content }) => (
+}> = ({ icon, title, content }) =>
   <div className="flex flex-col items-center bg-[#e6f1eb] rounded-lg p-6 max-w-xs">
-    <div className="text-6xl text-[#048c46]">{icon}</div>
+    <div className="text-6xl text-[#048c46]">
+      {icon}
+    </div>
     <h4 className="text-black text-xl font-semibold font-['Montserrat'] mt-4">
       {title}
     </h4>
     <p className="text-black text-sm font-normal font-['Montserrat'] text-center mt-4">
       {content}
     </p>
-  </div>
-);
+  </div>;
 
 export default function AboutPage() {
   return (
@@ -88,12 +87,12 @@ export default function AboutPage() {
               Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.{" "}
             </p>
           </div>
-          <div className="flex justify-center items-center">
-            <div className="w-auto max-w-md bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-center items-center">
+          <div className="flex  justify-center items-center">
+            <div className="w-full max-w-lg h-[300px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-center items-center">
               <Image
                 src={solarCoolLogo1}
                 alt="Solar Cool Logo"
-                className="object-contain p-9"
+                className="object-contain p-10"
                 priority
               />
             </div>

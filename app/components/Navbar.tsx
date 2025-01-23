@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
-import Logo from '../../public/images/solarcool-logo.png';
+import Logo from "../../public/images/solarcool-logo.svg";
 
 const navLinks = [
   { title: "Home", path: "/" },
@@ -13,7 +13,7 @@ const navLinks = [
   { title: "Products", path: "/products" },
   { title: "Services", path: "/services" },
   { title: "Blogs", path: "/blog" },
-  { title: "Contact Us", path: "/contact" },
+  { title: "Contact Us", path: "/contact" }
 ];
 
 const Navbar = () => {
@@ -23,7 +23,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 my-4 md:mx-24 mx-4 border border-white border-opacity-30 bg-[#f2f2f2] rounded-[3rem] px-4 py-2 sm:py-1">
       <div className="flex container items-center justify-between mx-auto px-4 py-2 sm:py-0.5">
         {/* Left Side: Logo */}
-        <Link href="/" className="text-2xl md:text-3xl text-black font-semibold">
+        <Link
+          href="/"
+          className="text-2xl md:text-3xl text-black font-semibold"
+        >
           <Image src={Logo} alt="Solar Cool" className="h-12 md:h-16 w-auto" />
         </Link>
 
