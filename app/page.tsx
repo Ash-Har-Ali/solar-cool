@@ -1,19 +1,65 @@
+'use client'
 
-
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { FaHandshake, FaBullhorn, FaLaptop } from 'react-icons/fa';
-import banner from "../public/images/banner1.png";
+import banner1 from "../public/images/banner1.png";
+import banner2 from "../public/images/banner2.png";
+import banner3 from "../public/images/banner3.png";
+import banner4 from "../public/images/banner4.png";
+
 
 const HomePage = () => {
+  const images = [banner1, banner2, banner3, banner4];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Memoize the nextSlide function using useCallback
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, [images.length]); // Dependency is images.length
+
+  // Memoize the prevSlide function using useCallback
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  }, [images.length]); // Dependency is images.length
+
+  // Use useEffect to automatically change the slide every 3 seconds
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
+  }, [nextSlide]); // Only rerun the effect if nextSlide changes
+
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section with Carousel */}
       <div className="relative mb-12">
-        <Image
-          src={banner}
-          alt="Banner"
-          className="w-full h- object-cover"
-        />
+        <div className="relative w-full h-[800px]">
+          {/* Carousel Images */}
+          <div className="absolute inset-0 transition-transform duration-500 ease-in-out">
+            <Image
+              src={images[currentIndex]}
+              alt={`Banner ${currentIndex + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Carousel Navigation Buttons */}
+          {/* <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 rounded-full p-2"
+          >
+            &lt;
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 rounded-full p-2"
+          >
+            &gt;
+          </button> */}
+        </div>
+
+        {/* Text Overlay */}
         <div className="absolute left-8 top-[30%] text-white text-4xl md:text-6xl font-bold font-['Montserrat']">
           Welcome to Solar Cool
         </div>
@@ -35,21 +81,21 @@ const HomePage = () => {
         <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
         <div className="flex flex-col md:flex-row justify-around items-center gap-8 px-4">
           <div className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg w-full md:w-1/3">
-            <FaLaptop className="text-4xl text-[#048c46]" />
+            <h3 className="text-4xl text-[#048c46]">💡</h3>
             <h3 className="mt-4 text-xl font-semibold">Solar Products</h3>
             <p className="mt-2 text-center text-gray-600">
               We provide efficient and eco-friendly solar products for your home or business.
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg w-full md:w-1/3">
-            <FaBullhorn className="text-4xl text-[#048c46]" />
+            <h3 className="text-4xl text-[#048c46]">🧑‍💼</h3>
             <h3 className="mt-4 text-xl font-semibold">Consulting Services</h3>
             <p className="mt-2 text-center text-gray-600">
               Our experts offer personalized consulting to guide you in adopting solar energy solutions.
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-white shadow-md rounded-lg w-full md:w-1/3">
-            <FaHandshake className="text-4xl text-[#048c46]" />
+            <h3 className="text-4xl text-[#048c46]">🤝</h3>
             <h3 className="mt-4 text-xl font-semibold">Customer Support</h3>
             <p className="mt-2 text-center text-gray-600">
               We provide reliable after-sales service to ensure your satisfaction with every purchase.
@@ -69,4 +115,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
