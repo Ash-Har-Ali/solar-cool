@@ -122,7 +122,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="mt-8 text-center text-sm text-white bg-green-800 py-2 px-3">
+      <div className="mt-8 text-center text-sm text-white bg-solarcoolgreen py-2 px-3">
         Copyright © 2025 SolarCool Inc.
       </div>
     </footer>

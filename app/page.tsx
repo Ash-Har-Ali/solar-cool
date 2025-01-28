@@ -6,10 +6,11 @@ import banner1 from "../public/images/banner1.png";
 import banner2 from "../public/images/banner2.png";
 import banner3 from "../public/images/banner3.png";
 import banner4 from "../public/images/banner4.png";
+import banner5 from "../public/images/banner-ac.svg"
 
 
 const HomePage = () => {
-  const images = [banner1, banner2, banner3, banner4];
+  const images = [banner1, banner2, banner3, banner4, banner5];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Memoize the nextSlide function using useCallback

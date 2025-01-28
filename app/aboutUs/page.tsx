@@ -4,6 +4,7 @@ import { TbChecklist } from "react-icons/tb";
 import { FaRegHandshake } from "react-icons/fa";
 import solarCoolLogo1 from "../../public/images/solarcool-logo.svg";
 import banner from "../../public/images/banner1.png";
+import wiborLogo from "../../public/images/wybor-logo.svg";
 
 // Reusable Components
 const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({
@@ -54,20 +55,17 @@ export default function AboutPage() {
   return (
     <div>
       {/* Banner Section */}
-      <div className="relative mb-12">
+     <div className="relative mb-12">
         <Image
           src={banner}
           alt="Banner"
           className="w-full h-auto object-cover"
           priority
         />
-        <div className="absolute left-8 md:left-16 top-[30%] md:top-[40%] text-white text-4xl md:text-6xl font-bold font-['Montserrat']">
+        <div className="container mx-auto px-4 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-4xl md:text-6xl font-bold font-['Montserrat']">
           About Us
         </div>
-        <div className="absolute left-8 md:left-16 top-[44%] md:top-[50%] text-white text-base md:text-xl text-justify font-normal font-['Montserrat'] max-w-[80%] md:max-w-[40%]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </div>
+        
       </div>
 
       <div className="container mx-auto px-4 sm:px-12 py-8">
@@ -104,17 +102,17 @@ export default function AboutPage() {
           <VisionMissionCard
             title="Vision"
             content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            bgColor="bg-[#048c46]"
+            bgColor="bg-solarcoolgreen"
           />
           <VisionMissionCard
             title="Mission"
             content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            bgColor="bg-[#006a33]"
+            bgColor="bg-[#048b47]"
           />
         </div>
 
         {/* What Makes Us Different Section */}
-        <div className="container mx-auto px-4 sm:px-12 py-8">
+        <div className="container mx-auto px-4 sm:px-12 mb-12 py-8">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
             What Makes Us Different?
           </h3>
@@ -134,6 +132,41 @@ export default function AboutPage() {
               title="Experience"
               content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
+          </div>
+        </div>
+
+        {/* Dedicated Wholesalers of Wybor */}
+        <div className="relative mb-12 p-5 container mx-auto px-4 sm:px-12 bg-[#eeeeee] rounded-[25px] py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            {/* Left Content */}
+            <div className="md:w-1/2 space-y-6">
+              <div className="text-black text-2xl md:text-3xl font-semibold font-['Montserrat']">
+                Dedicated Wholesalers of Wybor
+              </div>
+              <div className="text-black text-base font-normal font-['Montserrat']">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor.
+              </div>
+              <div className="h-11 px-[30px] py-2.5 bg-[#006a33] rounded-[40px] inline-flex justify-center items-center gap-2.5 cursor-pointer">
+                <span className="text-white text-xl font-semibold font-['Montserrat']">
+                  Learn More
+                </span>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
+              <Image
+                src={wiborLogo}
+                alt="Wybor Logo"
+                className="object-contain p-10"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
