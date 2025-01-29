@@ -1,6 +1,6 @@
 "use client";
 
-import Carousel from "./components/Carousel";
+import Carousel from "./components/BannerCarousel";
 import Image from "next/image";
 import exploreImage from "../public/images/explore.svg";
 
