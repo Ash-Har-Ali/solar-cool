@@ -67,27 +67,40 @@ export const productsQuery = groq`
 `;
 
 // Fetch a single product by its slug
-export const productQuery = groq`
-  *[_type == "products" && slug.current == $slug][0] {
-    _id,
-    productName,
-    "slug": slug.current,
-    imagesGallery[] {
-      asset-> {
-        _id,
-        url
-      },
-      alt
-    },
-    Price,
-    bldc,
-    category
-  }
-`;
+// export const productQuery = groq`
+//   *[_type == "products" && slug.current == $slug][0] {
+//     _id,
+//     productName,
+//     "slug": slug.current,
+//     imagesGallery[] {
+//       asset-> {
+//         _id,
+//         url
+//       },
+//       alt
+//     },
+//     Price,
+//     bldc,
+//     category
+//   }
+// `;
 
 // Fetch all product slugs
-export const productPathsQuery = groq`
-  *[_type == "products" && defined(slug.current)][] {
-    "params": { "slug": slug.current }
+// export const productPathsQuery = groq`
+//   *[_type == "products" && defined(slug.current)][] {
+//     "params": { "slug": slug.current }
+//   }
+// `;
+
+
+
+
+
+// Fetch all service locations
+export const serviceLocationsQuery = groq`
+  *[_type == "serviceLocations"] {
+    _id,
+    location,
+    contact
   }
 `;
