@@ -63,7 +63,7 @@ const HomePage = () => {
       </div>
 
       {/* Service Form Section */}
-      <div className="relative mb-12 p-5">
+      <div className="relative mb-3 p-5">
         <ServiceForm />
       </div>
 
@@ -126,12 +126,12 @@ const HomePage = () => {
           <p className="text-gray-500">No service locations available.</p>
         )}
       </div>
-
-      <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#eeeeee] rounded-[25px] py-3">
+{/* Buy Parts & Accessories Session */}
+      <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#eeeeee] rounded-[25px] py-">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left Content */}
           <div className="md:w-1/2 space-y-6">
-            <div className="text-black text-2xl md:text-3xl font-semibold font-['Montserrat']">
+            <div className="text-black text-2xl p-6  md:text-3xl font-semibold font-['Montserrat']">
               Buy Parts & Accessories{" "}
             </div>
             <div className="text-black text-base font-normal font-['Montserrat']">

@@ -35,7 +35,7 @@ const ServiceForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full container mx-auto px-4  py-4 mt-24 mb-12 p-4 border rounded-lg shadow-lg">
+    <div className="w-full container mx-auto px-14 py-4 mt-10   border border-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-left mb-6">Service Request Form</h2>
 
       {isSubmitted ? (
@@ -44,8 +44,9 @@ const ServiceForm: React.FC = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="w-full space-y-4">
+          {/* Name */}
           <div>
-            <label htmlFor="name" className="block text-base font-medium text-gray-700">Name</label>
+            <label htmlFor="name" className="block text-base  font-medium text-gray-700">Name</label>
             <input
               type="text"
               id="name"
@@ -57,6 +58,7 @@ const ServiceForm: React.FC = () => {
             />
           </div>
 
+          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-base font-medium text-gray-700">Email</label>
             <input
@@ -65,11 +67,12 @@ const ServiceForm: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
+              className="mt-1 block w-full px-4 py-2 shadow-lg border border-white rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
               required
             />
           </div>
 
+          {/* Phone */}
           <div>
             <label htmlFor="phone" className="block text-base font-medium text-gray-700">Phone Number</label>
             <input
@@ -78,11 +81,12 @@ const ServiceForm: React.FC = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
+              className="mt-1 block w-full px-4 py-2 shadow-lg border border-white rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
               required
             />
           </div>
 
+          {/* Location */}
           <div>
             <label htmlFor="location" className="block text-base font-medium text-gray-700">Location</label>
             <input
@@ -91,11 +95,12 @@ const ServiceForm: React.FC = () => {
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
+              className="mt-1 block w-full px-4 py-2 shadow-lg border border-white rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
               required
             />
           </div>
 
+          {/* Description */}
           <div>
             <label htmlFor="description" className="block text-base font-medium text-gray-700">Description</label>
             <textarea
@@ -103,12 +108,13 @@ const ServiceForm: React.FC = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
+              className="mt-1 block w-full px-4 py-2 shadow-lg border border-white rounded-md focus:ring-solarcoolgreen focus:border-solarcoolgreen"
               required
             />
           </div>
 
-          <button type="submit" className="px-5 py-3 bg-solarcoolgreen text-white rounded-full hover:bg-solarcoolgreen/80 transition">
+          {/* Submit Button */}
+          <button type="submit" className="px-6 py-3 bg-solarcoolgreen text-white rounded-full hover:bg-solarcoolgreen/80 transition">
             Submit Request
           </button>
         </form>
