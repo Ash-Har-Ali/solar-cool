@@ -27,7 +27,7 @@ const Navbar = () => {
           href="/"
           className="text-2xl md:text-3xl text-black font-semibold"
         >
-          <Image src={Logo} alt="Solar Cool" className="h-12 md:h-12 w-auto" />
+<Image src={Logo} alt="Solar Cool" className="h-14 md:h-18 w-auto" />
         </Link>
 
         {/* Center: Navigation Links (hidden on mobile) */}
@@ -43,7 +43,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <Link
               href="/contact"
-              className="px-4 inline-block py-4 w-full sm:w-fit rounded-full mr-4 border border-white border-opacity-40 bg-solarcoolgreen text-white hover:bg-gray-800 hover:scale-105 transition text-sm sm:text-base"
+              className="px-4 inline-block py-3 w-full sm:w-fit rounded-full mr-4 border border-white border-opacity-40 bg-solarcoolgreen text-white hover:bg-gray-800 hover:scale-105 transition text-sm sm:text-base"
             >
               Save Energy Now!
               <svg

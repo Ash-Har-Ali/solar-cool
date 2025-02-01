@@ -94,7 +94,7 @@ const HomePage = () => {
       </div>
       <div className="relative w-full h-[526px] sm:h-[600px] lg:h-[650px]">
         <div className="absolute inset-0 bg-[#e7e7e7]" />
-        <div className="absolute left-1/2 top-[50px] transform -translate-x-1/2 text-center text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[40px] md:text-[48px] lg:text-[54px]">
+        <div className="absolute left-1/2 top-[50px] transform -translate-x-1/2 text-center text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[34px] md:text-[34px] lg:text-[34px]">
           Popular Products
         </div>
         <div className="absolute left-1/2 top-[180px] transform -translate-x-1/2 flex flex-col items-center space-y-6">
@@ -112,7 +112,7 @@ const HomePage = () => {
           <br />
           Choose Solarcool?
         </div>
-        <div className="absolute left-[186px] top-[139px] w-[90%] sm:w-[80%] md:w-[615px] text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg">
+        <div className="absolute left-[186px] top-[139px] w-[90%] sm:w-[80%] md:w-[615px] text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg py-4">
           “Solar cool” is established to bring solar products to everyone’s daily life...
         </div>
         <Image
@@ -131,6 +131,10 @@ const HomePage = () => {
             width="auto"
           />
         </div>
+      </div>
+
+      <div className="relative text-center text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[40px] md:text-[48px] lg:text-[34px]">
+        Product Categories
       </div>
     </div>
   );
