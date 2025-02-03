@@ -26,7 +26,7 @@ const VisionMissionCard: React.FC<{
   content: string;
   bgColor: string;
 }> = ({ title, content, bgColor }) => (
-  <div className={`w-full md:w-[45%] ${bgColor} rounded-lg p-6`}>
+  <div className={`w-full md:w-[50%] ${bgColor} rounded-lg p-6`}>
     <h3 className="text-white text-2xl font-semibold font-['Montserrat']">
       {title}
     </h3>
@@ -71,7 +71,7 @@ export default function AboutPage() {
       <div className="container mx-auto px-4 sm:px-12 py-8">
         {/* Who We Are Section */}
         <div className="flex flex-col md:flex-row justify-around items-center gap-8 mb-12">
-          <div className="text-center md:text-left max-w-lg">
+          <div className="text-center md:text-left max-w-lg md:w-1/2">
             <SectionTitle title="About Us" subtitle="Who we are?" />
             <p className="text-black text-base font-normal font-['Montserrat'] leading-normal mt-4 text-justify">
               “Solar cool“ is established to bring solar products to everyone’s
@@ -85,12 +85,12 @@ export default function AboutPage() {
               Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.{" "}
             </p>
           </div>
-          <div className="flex  justify-center items-center">
-            <div className="w-full max-w-lg h-[300px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-center items-center">
+          <div className="flex justify-center items-center md:w-1/2">
+            <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-evenly items-center">
               <Image
                 src={solarCoolLogo1}
                 alt="Solar Cool Logo"
-                className="object-contain p-10"
+                className="object-contain  p-10"
                 priority
               />
             </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         </div>
 
         {/* Vision and Mission Section */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
           <VisionMissionCard
             title="Vision"
             content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -116,7 +116,7 @@ export default function AboutPage() {
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
             What Makes Us Different?
           </h3>
-          <div className="flex flex-col md:flex-row justify-around items-center gap-8 flex-wrap">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10 flex-wrap">
             <DifferenceCard
               icon={<RiVerifiedBadgeLine />}
               title="Assured Quality"
