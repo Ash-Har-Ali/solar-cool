@@ -24,7 +24,7 @@ interface Product {
   category: string;
 }
 
-const ProductsGrid: React.FC = () => {
+const ProductsGrid: React.FC<React.PropsWithChildren> = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
@@ -38,7 +38,7 @@ const ProductsGrid: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -61,7 +61,8 @@ const ProductsGrid: React.FC = () => {
                 <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-auto transition-all duration-300">
                   <Image
                     src={
-                      hoveredProduct === product._id && product.imagesGallery.length > 1
+                      hoveredProduct === product._id &&
+                      product.imagesGallery.length > 1
                         ? product.imagesGallery[1].asset.url
                         : product.imagesGallery[0].asset.url
                     }
@@ -82,11 +83,11 @@ const ProductsGrid: React.FC = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <div>
       <div className="w-full">
@@ -106,23 +107,20 @@ const HomePage = () => {
           <ProductsGrid />
         </div>
       </div>
-      <div className="relative w-full max-w-[1438px] h-[546px] sm:h-[600px] md:h-[650px] mt-24">
-        <div className="absolute left-[186px] top-[42px] text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
+      <div className="relative w-full max-w-[1438px] h-auto mt-24 flex flex-col sm:flex-col lg:h-[650px] lg:flex-row">
+        {/* Text Section */}
+        <div className="order-1 lg:absolute left-[186px] top-[42px] text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
           Why
           <br />
           Choose Solarcool?
         </div>
-        <div className="absolute left-[186px] top-[139px] w-[90%] sm:w-[80%] md:w-[615px] text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg py-4">
-          “Solar cool” is established to bring solar products to everyone’s daily life...
+        <div className="order-2 lg:absolute left-[186px] top-[139px] w-[90%] sm:w-[80%] md:w-[615px] text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg py-4">
+          Solar cool is established to bring solar products to everyone’s daily
+          life...
         </div>
-        <Image
-          className="absolute inset-0 w-full h-full object-cover"
-          src={showCaseImage}
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="absolute left-1/2 top-[430px] transform -translate-x-1/2 sm:top-[500px] md:top-[530px]">
+
+        {/* CTA Button */}
+        <div className="order-3 flex justify-center mt-6 sm:mt-6 md:mt-8 lg:absolute left-1/2 lg:top-[530px] transform lg:-translate-x-1/2">
           <CTAButton
             label="Know More"
             navigateTo="/products"
@@ -131,10 +129,95 @@ const HomePage = () => {
             width="auto"
           />
         </div>
+
+        {/* Stats Cards */}
+        <div className="order-4 flex justify-center mt-6 lg:absolute left-[75%] transform lg:-translate-x-1/2 lg:top-[33px] w-[80%] sm:w-[95%] md:w-[344px]">
+          <div className="flex justify-between gap-8 w-full">
+            <div className="bg-[#f4f4f4] rounded-2xl flex flex-col justify-center items-center p-5">
+              <div className="text-center text-black text-[34.35px] font-bold">
+                5+
+              </div>
+              <div className="text-center text-black text-[15.03px] font-normal">
+                Years of <br /> Experience
+              </div>
+            </div>
+
+            <div className="bg-[#f4f4f4] rounded-2xl flex flex-col justify-center items-center p-5">
+              <div className="text-center text-black text-[34.35px] font-bold">
+                100+
+              </div>
+              <div className="text-center text-black text-[15.03px] font-normal">
+                Satisfied <br /> Clients
+              </div>
+            </div>
+
+            <div className="bg-[#f4f4f4] rounded-2xl flex flex-col justify-center items-center p-5">
+              <div className="text-center text-black text-[34.35px] font-bold">
+                20+
+              </div>
+              <div className="text-center text-black text-[15.03px] font-normal">
+                Products
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Showcase Image */}
+        <div className="order-5 relative w-full h-[546px] sm:h-[600px] md:h-[650px] lg:absolute inset-0">
+          <Image
+            className="w-full h-full object-cover"
+            src={showCaseImage}
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
       </div>
 
-      <div className="relative text-center text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[40px] md:text-[48px] lg:text-[34px]">
-        Product Categories
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-semibold text-center mb-8 font-['Montserrat']">
+          Product Categories
+        </h1>
+
+        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-4">
+          {/* Solar AC - Full width on small screens, 50% on large screens */}
+          <div className="w-full lg:w-1/2 bg-solarcoolgreen rounded-[30px] p-6 relative h-[50vh] lg:h-[calc(100vh-200px)]">
+            <h2 className="absolute bottom-6 left-6 text-3xl font-semibold text-white font-['Montserrat']">
+              Solar Air Conditioner
+            </h2>
+          </div>
+
+          {/* Right side container for 2x2 grid, full width on small screens */}
+          <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+            {/* Cooler */}
+            <div className="bg-solarcoolgreen rounded-[30px] p-6 relative h-[25vh] lg:h-[calc((100vh-200px)/2)]">
+              <h3 className="absolute bottom-6 left-6 text-lg font-bold text-white font-['Montserrat']">
+                Cooler
+              </h3>
+            </div>
+
+            {/* Speaker */}
+            <div className="bg-solarcoolgreen rounded-[30px] p-6 relative h-[25vh] lg:h-[calc((100vh-200px)/2)]">
+              <h3 className="absolute bottom-6 left-6 text-lg font-bold text-white font-['Montserrat']">
+                Speaker
+              </h3>
+            </div>
+
+            {/* Smart Watch */}
+            <div className="bg-solarcoolgreen rounded-[30px] p-6 relative h-[25vh] lg:h-[calc((100vh-200px)/2)]">
+              <h3 className="absolute bottom-6 left-6 text-lg font-bold text-white font-['Montserrat']">
+                Smart Watch
+              </h3>
+            </div>
+
+            {/* Washing Machine */}
+            <div className="bg-solarcoolgreen rounded-[30px] p-6 relative h-[25vh] lg:h-[calc((100vh-200px)/2)]">
+              <h3 className="absolute bottom-6 left-6 text-lg font-bold text-white font-['Montserrat']">
+                Washing Machine
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

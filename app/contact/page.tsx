@@ -29,8 +29,6 @@ const ContactInfo = () => (
       </div>
     ))}
 </div>
-
-
 );
 
 export default function ContactUsPage() {
