@@ -1,4 +1,3 @@
-// components/Carousel.tsx
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,32 +8,26 @@ const images = [
   "/images/banner2.png",
   "/images/banner3.png",
   "/images/banner4.png",
-  
 ];
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
-  // Move to next slide
+  // Move to next slide with looping effect
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  // Move to previous slide
+  // Move to previous slide with looping effect
   const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  // Auto-slide every 4 seconds (pauses when hovered)
+  // Auto-slide every 4 seconds
   useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(nextSlide, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [isHovered]);
+    const interval = setInterval(nextSlide, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -47,20 +40,16 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div
-      className="relative w-full h-[400px] sm:h-[600px] lg:h-[800px] overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="relative w-full h-[400px] sm:h-[600px] lg:h-[800px] overflow-hidden">
       {/* Carousel Container */}
-      <div className="relative w-full h-full">
-        <AnimatePresence mode="wait">
+      <div className="relative w-full h-full flex">
+        <AnimatePresence mode="sync">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: 100, scale: 0.98 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -100, scale: 0.98 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ opacity:100, x: "100%" }}
+            animate={{ opacity: 100, x: "0%" }}
+            exit={{ opacity: 100, x: "-100%" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
             <Image
@@ -90,13 +79,13 @@ const Carousel = () => {
       >
         <ChevronRightIcon className="h-6 w-6 text-white md:h-8 md:w-8" />
       </button>
+
       {/* Text Overlay */}
       <div className="absolute left-8 top-[30%] text-white text-2xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
         Welcome to Solar Cool
       </div>
       <div className="absolute left-8 top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
-        Harness the power of the sun with innovative solar products that reduce
-        your energy bills and support a sustainable future.
+        Harness the power of the sun with innovative solar products that reduce your energy bills and support a sustainable future.
       </div>
     </div>
   );

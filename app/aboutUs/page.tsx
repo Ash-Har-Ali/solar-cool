@@ -70,8 +70,8 @@ export default function AboutPage() {
 
       <div className="container mx-auto px-4 sm:px-12 py-8">
         {/* Who We Are Section */}
-        <div className="flex flex-col md:flex-row justify-around items-center gap-8 mb-12">
-          <div className="text-center md:text-left max-w-lg md:w-1/2">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+          <div className="text-center md:text-left max-w- md:w-1/2">
             <SectionTitle title="About Us" subtitle="Who we are?" />
             <p className="text-black text-base font-normal font-['Montserrat'] leading-normal mt-4 text-justify">
               “Solar cool“ is established to bring solar products to everyone’s
@@ -85,12 +85,12 @@ export default function AboutPage() {
               Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.{" "}
             </p>
           </div>
-          <div className="flex justify-center items-center md:w-1/2">
-            <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-center items-center">
+          <div className="flex justify-center items-center w-full md:w-1/2">
+            <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-full rounded-bl-full flex justify-center items-center">
               <Image
                 src={solarCoolLogo1}
                 alt="Solar Cool Logo"
-                className="object-cover  p-4"
+                className="object-cover"
                 priority
               />
             </div>

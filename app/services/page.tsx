@@ -43,8 +43,7 @@ const HomePage = () => {
 
   const handleSearch = () => {
     // This function will be triggered when the search button is clicked
-    // For now, it works by filtering locations as the user types in the input
-    // You can add additional functionality if needed
+    // For now, filtering is handled as the user types
   };
 
   return (
@@ -68,7 +67,7 @@ const HomePage = () => {
       </div>
 
       {/* Service Locations Section */}
-      <div className="container mx-auto px-4  py-4 mt-24 mb-12">
+      <div className="container mx-auto px-4 py-4 mt-24 mb-12">
         <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
           Service Locations
         </h3>
@@ -92,27 +91,31 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Loading State */}
+        {/* Locations List & Map */}
         {loading ? (
           <p className="text-gray-500">Loading service locations...</p>
-        ) : filteredLocations.length > 0 ? (
+        ) : (
           <div className="flex flex-col md:flex-row md:space-x-8">
             {/* Service Locations List */}
             <ul className="space-y-4 flex-1 h-[480px] overflow-y-auto pr-2">
-              {filteredLocations.map((location) => (
-                <li
-                  key={location._id}
-                  className="bg-gray-100 p-4 rounded-lg shadow-md border border-white"
-                >
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                    {location.location}
-                  </h4>
-                  <p className="text-gray-600">📞 {location.contact}</p>
-                </li>
-              ))}
+              {filteredLocations.length > 0 ? (
+                filteredLocations.map((location) => (
+                  <li
+                    key={location._id}
+                    className="bg-gray-100 p-4 rounded-lg shadow-md border border-white"
+                  >
+                    <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                      {location.location}
+                    </h4>
+                    <p className="text-gray-600">📞 {location.contact}</p>
+                  </li>
+                ))
+              ) : (
+                <p className="text-gray-500">No service locations available.</p>
+              )}
             </ul>
 
-            {/* Google Maps Iframe */}
+            {/* Google Maps Iframe (always shown) */}
             <div className="flex-1">
               <iframe
                 src="https://www.google.com/maps/d/embed?mid=1Vp5TqZEeylTOW4O4J_fEDsdWVqaF9Zg&ehbc=2E312F"
@@ -122,16 +125,15 @@ const HomePage = () => {
               ></iframe>
             </div>
           </div>
-        ) : (
-          <p className="text-gray-500">No service locations available.</p>
         )}
       </div>
-{/* Buy Parts & Accessories Session */}
-      <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#eeeeee] rounded-[25px] py-">
+
+      {/* Buy Parts & Accessories Section */}
+      <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#eeeeee] rounded-[25px]">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left Content */}
           <div className="md:w-1/2 space-y-6">
-            <div className="text-black text-2xl p-6  md:text-3xl font-semibold font-['Montserrat']">
+            <div className="text-black text-2xl p-6 md:text-3xl font-semibold font-['Montserrat']">
               Buy Parts & Accessories{" "}
             </div>
             <div className="text-black text-base font-normal font-['Montserrat']">
