@@ -168,7 +168,7 @@ const HomePage: React.FC = () => {
             className="w-full h-full object-cover"
             src={showCaseImage}
             alt="Background"
-            layout="fill"
+            layout="responsive"
             objectFit="cover"
           />
         </div>
@@ -181,7 +181,7 @@ const HomePage: React.FC = () => {
 
         <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-4">
           {/* Solar AC - Full width on small screens, 50% on large screens */}
-          <div className="w-full lg:w-1/2 bg-solarcoolgreen rounded-[30px] p-6 relative h-[50vh] lg:h-[calc(100vh-200px)]">
+          <div className="w-full lg:w-1/2 bg-solarcoolgreen rounded-[30px] p-6 relative h-[50vh] lg:h-[calc(100vh-180px)]">
             <h2 className="absolute bottom-6 left-6 text-3xl font-semibold text-white font-['Montserrat']">
               Solar Air Conditioner
             </h2>

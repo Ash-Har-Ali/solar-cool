@@ -9,7 +9,7 @@ const images = [
   "/images/banner2.png",
   "/images/banner3.png",
   "/images/banner4.png",
-  "/images/banner-ac.svg"
+  
 ];
 
 const Carousel = () => {

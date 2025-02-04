@@ -2,7 +2,7 @@ import Image from "next/image";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { TbChecklist } from "react-icons/tb";
 import { FaRegHandshake } from "react-icons/fa";
-import solarCoolLogo1 from "../../public/images/solarcool-logo.svg";
+import solarCoolLogo1 from "../../public/images/solarcool-logo2.svg";
 import banner from "../../public/images/banner1.png";
 import wiborLogo from "../../public/images/wybor-logo.svg";
 
@@ -86,11 +86,11 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="flex justify-center items-center md:w-1/2">
-            <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-evenly items-center">
+            <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-[142px] rounded-bl-[142px] flex justify-center items-center">
               <Image
                 src={solarCoolLogo1}
                 alt="Solar Cool Logo"
-                className="object-contain  p-10"
+                className="object-cover  p-4"
                 priority
               />
             </div>
@@ -112,7 +112,7 @@ export default function AboutPage() {
         </div>
 
         {/* What Makes Us Different Section */}
-        <div className="container mx-auto px-4 sm:px-12 mb-12 py-8">
+        <div className="container mx-auto px-4 sm:px-4 mb-12 py-8">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
             What Makes Us Different?
           </h3>
