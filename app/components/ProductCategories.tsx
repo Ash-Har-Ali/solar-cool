@@ -8,11 +8,11 @@ import washingMachineImage from "../../public/images/washingmachine.png";
 const ProductCategories = () => {
   return (
     <div className="container mx-auto p-4">
-      <div className="text-3xl font-semibold text-center mb-12 font-['Montserrat']">
+      <div className="text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px] text-center mb-8">
         Product Categories
       </div>
 
-      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-4">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-4 mb-12">
         {/* Solar AC - Full width on small screens, 50% on large screens */}
         <div className="w-full lg:w-1/2 rounded-[35px] relative overflow-hidden">
           <Image

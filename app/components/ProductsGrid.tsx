@@ -85,7 +85,7 @@ const PopularProducts: React.FC = () => {
   return (
     <div className="relative w-full h-[526px] sm:h-[600px] lg:h-[650px]">
       <div className="absolute inset-0 bg-[#e7e7e7]" />
-      <div className="absolute left-1/2 top-[50px] transform -translate-x-1/2 text-center text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[34px] md:text-[34px] lg:text-[34px]">
+      <div className="absolute left-1/2 top-[50px] transform -translate-x-1/2 text-center text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px] mb-8">
         Popular Products
       </div>
       <div className="absolute left-1/2 top-[180px] transform -translate-x-1/2 flex flex-col items-center space-y-6">

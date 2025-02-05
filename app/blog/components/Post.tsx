@@ -87,10 +87,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <link rel="canonical" href={post.slug?.current || "#"} />
       </Head>
 
-      <main className="container mx-auto prose prose-xl px-6 py-16 bg-white rounded-xl shadow-lg">
+      <main className="container mx-auto prose prose-xl px-6 py-16 bg-white rounded-xl shadow-lg mb-12">
         {/* Main Image Section */}
         {post?.mainImage ? (
-          <div className="mb-12">
+          <div className="mb-12 justify-items-center">
             <Image
               src={builder.image(post.mainImage).width(900).height(600).url()}
               alt={post?.mainImage?.alt || "Main image"}

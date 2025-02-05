@@ -91,7 +91,7 @@ const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {otherPosts.map((post) => (
             <Link
-              key={post._id}
+              key={post.slug}
               href={`/blog/${post.slug.current}`}
               className="group p-4 bg-white rounded-lg shadow-lg hover:shadow-2xl hover:opacity-90 transition-all duration-300 ease-in-out flex flex-col justify-between overflow-hidden"
             >

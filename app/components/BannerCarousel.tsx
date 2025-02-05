@@ -81,10 +81,11 @@ const Carousel = () => {
       </button>
 
       {/* Text Overlay */}
-      <div className="absolute left-8 top-[30%] text-white text-2xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
+
+      <div className="container mx-auto px-4 sm:px-12 py-8 absolute left-8 top-[10%] sm:top-[30%] text-white text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
         Welcome to Solar Cool
       </div>
-      <div className="absolute left-8 top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
+      <div className="container mx-auto px-4 sm:px-12  absolute left-8 top-[35%] sm:top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
         Harness the power of the sun with innovative solar products that reduce your energy bills and support a sustainable future.
       </div>
     </div>
