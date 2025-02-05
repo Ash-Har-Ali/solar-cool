@@ -4,11 +4,11 @@ import showCaseImage from "../../public/images/showcase.svg";
 
 const Showcase: React.FC = () => {
   return (
-    <div className="relative w-full max-w-full h-auto mt-16 flex flex-col lg:flex-row lg:justify-between items-center px-12 py-10 mb-10">
+    <div className="relative w-full max-w-full h-auto mt-16 flex flex-col lg:flex-row items-center px-10 py-10 mb-10">
       {/* Left Content */}
-      <div className="relative z-10 w-full lg:w-1/2 mb-12">
-        <h2 className="text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
-          Why <br/> Choose Solarcool?
+      <div className="relative z-10 w-full lg:w-1/2 mb-12 flex flex-col justify-between">
+        <h2 className="text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
+          Why <br /> Choose Solarcool?
         </h2>
         <p className="text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg py-4">
           “Solar cool“ is established to bring the solar products to everyone’s
@@ -31,10 +31,10 @@ const Showcase: React.FC = () => {
           />
         </div>
       </div>
-      
+
       {/* Right Content */}
-      <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-center md:items-end m:justify-start">
-        <div className="flex justify-center gap-8 w-full mb-6 lg:mb-0">
+      <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-center justify-between py-50">
+        <div className="flex justify-center gap-4 mb-6 lg:mb-40 ">
           {[
             { count: "5+", text: "Years of Experience" },
             { count: "100+", text: "Satisfied Clients" },
@@ -42,7 +42,7 @@ const Showcase: React.FC = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="bg-[#f4f4f4] rounded-2xl flex flex-col justify-center items-center p-5"
+              className="bg-[#f4f4f4] rounded-2xl flex w-auto flex-col justify-center items-center p-3"
             >
               <div className="text-center text-black text-[34.35px] font-bold">
                 {stat.count}

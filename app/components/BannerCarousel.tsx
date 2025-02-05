@@ -7,7 +7,7 @@ const images = [
   "/images/banner1.png",
   "/images/banner2.png",
   "/images/banner3.png",
-  "/images/banner4.png",
+  "/images/banner4.png"
 ];
 
 const Carousel = () => {
@@ -20,7 +20,9 @@ const Carousel = () => {
 
   // Move to previous slide with looping effect
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   // Auto-slide every 4 seconds
@@ -46,7 +48,7 @@ const Carousel = () => {
         <AnimatePresence mode="sync">
           <motion.div
             key={currentIndex}
-            initial={{ opacity:100, x: "100%" }}
+            initial={{ opacity: 100, x: "100%" }}
             animate={{ opacity: 100, x: "0%" }}
             exit={{ opacity: 100, x: "-100%" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -86,7 +88,8 @@ const Carousel = () => {
         Welcome to Solar Cool
       </div>
       <div className="container mx-auto px-4 sm:px-12  absolute left-8 top-[35%] sm:top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
-        Harness the power of the sun with innovative solar products that reduce your energy bills and support a sustainable future.
+        Harness the power of the sun with innovative solar products that reduce
+        your energy bills and support a sustainable future.
       </div>
     </div>
   );
