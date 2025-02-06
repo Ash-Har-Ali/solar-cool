@@ -19,11 +19,11 @@ const CTAButton: React.FC<CTAButtonProps> = ({ label, navigateTo, bgColor = '#ff
 
   return (
     <button
-      className={`inline-flex items-center gap-2 py-2 px-4 border-2 rounded-full transition-colors duration-300
+      className={`inline-flex items-center gap-2 py-2 px-4 border-2 rounded-full transition-all duration-300 ease-in-out
         ${bgColor ? `bg-[${bgColor}]` : 'bg-white'} 
         ${textColor ? `text-[${textColor}]` : 'text-black'} 
         ${width === 'auto' ? 'w-auto' : width}
-        hover:bg-opacity-50 hover:border-gray-500 hover:text-black`} // Added hover styles
+        hover:bg-opacity-90 hover:border-gray-600 hover:scale-105 hover:shadow-lg hover:text-black`} // Enhanced hover effect
       onClick={handleClick}
     >
       <div className="ContactUs">{label}</div>

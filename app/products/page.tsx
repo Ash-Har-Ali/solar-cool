@@ -19,28 +19,26 @@ interface ProductCardProps {
 
 // ProductCard component with typed props
 const ProductCard = ({ imageSrc, altText, productName, link }: ProductCardProps) => (
-  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4">
+  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 group">
     <Link href={link} passHref>
-      <div className="relative rounded-[5px] overflow-hidden cursor-pointer group">
+      <div className="relative rounded-[5px] overflow-hidden cursor-pointer group-hover:scale-105 transform transition-all duration-300">
         <Image
           src={imageSrc}
           alt={altText}
           className="object-cover w-full h-full"
-          layout="responsive"
           width={255}
           height={255}
         />
         {/* Overlay for dark background effect */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
         {/* Product name centered over the image */}
-        <div className="absolute inset-0 flex items-end justify-start text-white text-base font-bold font-['Montserrat'] p-3">
+        <div className="absolute inset-0 flex items-end justify-start text-white text-base font-bold font-['Montserrat'] p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {productName}
         </div>
       </div>
     </Link>
   </div>
 );
-
 
 const HomePage = () => {
   return (
@@ -72,7 +70,7 @@ const HomePage = () => {
         </Link>
 
         {/* Product Cards */}
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-8">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6">
           {/* Individual Product Cards */}
           <ProductCard imageSrc={smartWatchImg} altText="Smart Watch" productName="Smart Watch" link="/products/smartWatch" />
           <ProductCard imageSrc={washingMachineImg} altText="Washing Machine" productName="Washing Machine" link="/products/washingMachine" />
