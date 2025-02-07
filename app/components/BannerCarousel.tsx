@@ -4,10 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 const images = [
-  "/images/banner1.png",
-  "/images/banner2.png",
-  "/images/banner3.png",
-  "/images/banner4.png"
+  "/images/BannerHome1.png",
+  "/images/BannerHome2.png",
+
 ];
 
 const Carousel = () => {
@@ -42,7 +41,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[600px] lg:h-[800px] overflow-hidden">
+    <div className="relative w-full h-[400px] sm:h-[600px] lg:h-[750px] overflow-hidden">
       {/* Carousel Container */}
       <div className="relative w-full h-full flex">
         <AnimatePresence mode="sync">
@@ -57,7 +56,7 @@ const Carousel = () => {
             <Image
               src={images[currentIndex]}
               alt={`Banner ${currentIndex + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
               priority
               width={1920}
               height={800}
@@ -84,13 +83,13 @@ const Carousel = () => {
 
       {/* Text Overlay */}
 
-      <div className="container mx-auto px-4 sm:px-12 py-8 absolute left-8 top-[10%] sm:top-[30%] text-white text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
+      {/* <div className="container mx-auto px-4 sm:px-12 py-8 absolute left-8 top-[10%] sm:top-[30%] text-white text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
         Welcome to Solar Cool
       </div>
       <div className="container mx-auto px-4 sm:px-12  absolute left-8 top-[35%] sm:top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
         Harness the power of the sun with innovative solar products that reduce
         your energy bills and support a sustainable future.
-      </div>
+      </div> */}
     </div>
   );
 };

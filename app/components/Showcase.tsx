@@ -64,8 +64,7 @@ const Showcase: React.FC = () => {
           className="w-full h-full object-cover"
           src={showCaseImage}
           alt="Background"
-          layout="fill"
-          objectFit="cover"
+          fill
         />
       </div>
     </div>

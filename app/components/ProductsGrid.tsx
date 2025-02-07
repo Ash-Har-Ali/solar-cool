@@ -54,7 +54,7 @@ const ProductsGrid: React.FC = () => {
             onMouseLeave={() => setHoveredProduct(null)}
           >
             {product.imagesGallery && product.imagesGallery.length > 0 && (
-              <div className=" bottom-3/4 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px]  transition-all duration-300">
+              <div className=" bottom-3/4 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] mb-4 transition-all duration-300">
                 <Image
                   src={
                     hoveredProduct === product._id && product.imagesGallery.length > 1
