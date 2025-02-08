@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io"
-      }
-    ]
-  }
+    domains: ["cdn.sanity.io"], // Allows remote images
+    unoptimized: true, // Allows local images from /public/
+  },
 };
 
 export default nextConfig;

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { productsQuery } from "../../../sanity/lib/queries";
 import ProductCard from "../components/ProductCard";
 import { client } from "../../../sanity/lib/client";
+import { StaticImageData } from "next/image";
 
 interface Category {
   _id: string;
@@ -24,7 +25,7 @@ interface Product {
 
 interface ProductPageProps {
   category: string;
-  bannerImage: string;
+  bannerImage: string | StaticImageData; // Allow both string and StaticImageData
 }
 
 const SkeletonCard: React.FC = () => (

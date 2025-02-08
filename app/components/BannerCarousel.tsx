@@ -4,9 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 const images = [
-  "/images/BannerHome1.png",
-  "/images/BannerHome2.png",
-
+  "/images/HomeBanner1.webp",
+  "/images/HomeBanner2.webp",
 ];
 
 const Carousel = () => {
