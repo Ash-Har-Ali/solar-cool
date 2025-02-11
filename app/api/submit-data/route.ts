@@ -3,10 +3,10 @@ import { client } from '@/sanity/lib/client';
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, mobileNumber } = await req.json(); // Parse the request body to get data
+    const { name, email, mobileNumber, reasonForEnquire, requirement } = await req.json();
 
     // Check for missing required fields
-    if (!name || !email || !mobileNumber) {
+    if (!name || !email || !mobileNumber || !reasonForEnquire || !requirement) {
       return NextResponse.json(
         { message: 'All fields are required.' },
         { status: 400 }
@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
       name,
       email,
       mobileNumber,
-      createdAt: new Date().toISOString(), // Automatically set the current date and time
+      reasonForEnquire,
+      requirement,
+      createdAt: new Date().toISOString(),
     });
 
     return NextResponse.json(

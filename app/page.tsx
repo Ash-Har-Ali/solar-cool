@@ -5,8 +5,10 @@ import BannerCarousel from "./components/BannerCarousel";
 import PopularProducts from "./components/PopularProducts";
 import Showcase from "./components/Showcase";
 import ProductCategories from "./components/ProductCategories";
+import Testimonials from "./components/Testimonials";
 import BlogsSection from "./components/BlogsShowcase";
 import FAQSession from "./components/FAQ";
+
 
 const HomePage: React.FC = () => {
   return (
@@ -15,8 +17,7 @@ const HomePage: React.FC = () => {
       <PopularProducts />
       <Showcase />
       <ProductCategories />
-      <div className="w-full h-96 bg-gradient-to-r from-solarcoolgreen to-[#0C8749] flex justify-center items-center mb-12">
-      </div>
+      <Testimonials />
       <BlogsSection />
       <FAQSession />
     </div>

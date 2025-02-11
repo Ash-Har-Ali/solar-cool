@@ -26,7 +26,7 @@ const VisionMissionCard: React.FC<{
   content: string;
   bgColor: string;
 }> = ({ title, content, bgColor }) => (
-  <div className={`w-full md:w-[50%] ${bgColor} rounded-lg p-6`}>
+  <div className={`w-full md:w-[50%] ${bgColor} rounded-2xl p-6`}>
     <h3 className="text-white text-2xl font-semibold font-['Montserrat']">
       {title}
     </h3>
@@ -41,7 +41,7 @@ const DifferenceCard: React.FC<{
   title: string;
   content: string;
 }> = ({ icon, title, content }) => (
-  <div className="flex flex-col items-center bg-[#e6f1eb] rounded-lg p-6 max-w-xs">
+  <div className="flex flex-col items-center bg-[#e6f1eb] rounded-3xl p-6 max-w-xs">
     <div className="text-6xl text-[#048c46]">{icon}</div>
     <h4 className="text-black text-xl font-semibold font-['Montserrat'] mt-4">
       {title}

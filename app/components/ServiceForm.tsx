@@ -73,7 +73,7 @@ const ServiceForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full container mx-auto px-14 py-4 mt-10 border border-white rounded-lg shadow-lg">
+    <div className="w-full container mx-auto px-6 py-6 mt-10 border border-white rounded-2xl shadow-lg bg-[#ffffff]">
       <h2 className="text-2xl font-bold text-left mb-6">Service Request</h2>
 
       {isSubmitted ? (
@@ -95,7 +95,7 @@ const ServiceForm: React.FC = () => {
                 name={id}
                 value={formData[id as keyof typeof formData]}
                 onChange={handleChange}
-                className={`peer w-full px-4 py-3 border font-['Montserrat'] rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
+                className={`peer w-full px-4 py-3 border font-['Montserrat'] rounded-2xl shadow- focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
                   errors[id] ? "border-red-500" : "border-[#878787]"
                 }`}
                 required
@@ -118,7 +118,7 @@ const ServiceForm: React.FC = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className={`peer w-full px-4 py-10 border rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
+              className={`peer w-full px-4 py-10 border rounded-2xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
                 errors.description ? "border-red-500" : "border-[#878787]"
               }`}
               required

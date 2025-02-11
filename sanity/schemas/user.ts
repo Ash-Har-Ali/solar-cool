@@ -9,14 +9,13 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule) => Rule.required(), // Ensures this field is mandatory
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
-      validation: (Rule) =>
-        Rule.required().email(), // Validates proper email format
+      validation: (Rule) => Rule.required().email(),
     }),
     defineField({
       name: 'mobileNumber',
@@ -25,8 +24,8 @@ export default defineType({
       validation: (Rule) =>
         Rule.required()
           .regex(/^\d{10}$/, {
-            name: 'mobileNumber', // Name for this validation rule
-            invert: false, // Disallow anything not matching
+            name: 'mobileNumber',
+            invert: false,
           })
           .error('Mobile number must be 10 digits'),
     }),
@@ -34,8 +33,20 @@ export default defineType({
       name: 'createdAt',
       title: 'Created At',
       type: 'datetime',
-      initialValue: () => new Date().toISOString(), // Auto-set current date/time
-      readOnly: true, // Make this field read-only
+      initialValue: () => new Date().toISOString(),
+      readOnly: true,
+    }),
+    defineField({
+      name: 'reasonForEnquire',
+      title: 'Reason for Enquire',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'requirement',
+      title: 'Requirement',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

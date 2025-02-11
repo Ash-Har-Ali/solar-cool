@@ -11,37 +11,35 @@ const ContactForm: React.FC<ContactFormProps> = ({
   onErrorMessage = 'Error creating user.',
   apiEndpoint = '/api/submit-data',
 }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', mobileNumber: '' });
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobileNumber: '',
+    reasonForEnquire: '',
+    requirement: '',
+  });
+  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({ name: '', email: '', mobileNumber: '' });
+  const [errors, setErrors] = useState<Partial<typeof formData>>({});
 
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = { name: '', email: '', mobileNumber: '' };
+  const validateForm = (): boolean => {
+    const newErrors: Partial<typeof formData> = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^\d{10}$/;
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required.';
-      valid = false;
-    }
-    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      newErrors.email = 'Enter a valid email.';
-      valid = false;
-    }
-    if (!formData.mobileNumber.match(/^\d{10}$/)) {
-      newErrors.mobileNumber = 'Enter a valid 10-digit mobile number.';
-      valid = false;
-    }
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!emailPattern.test(formData.email)) newErrors.email = 'Enter a valid email.';
+    if (!phonePattern.test(formData.mobileNumber)) newErrors.mobileNumber = 'Enter a valid 10-digit mobile number.';
+    if (!formData.reasonForEnquire.trim()) newErrors.reasonForEnquire = 'Reason for enquiry is required.';
+    if (!formData.requirement.trim()) newErrors.requirement = 'Requirement is required.';
 
     setErrors(newErrors);
-    return valid;
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: '' })); // Clear error on input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,107 +51,75 @@ const ContactForm: React.FC<ContactFormProps> = ({
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ _type: 'user', ...formData }),
       });
-
       const result = await response.json();
+
       if (response.ok) {
-        setMessage(onSuccessMessage);
-        setMessageType('success');
-        setFormData({ name: '', email: '', mobileNumber: '' });
+        setMessage({ text: onSuccessMessage, type: 'success' });
+        setFormData({ name: '', email: '', mobileNumber: '', reasonForEnquire: '', requirement: '' });
       } else {
-        setMessage(result.message || onErrorMessage);
-        setMessageType('error');
+        setMessage({ text: result.message || onErrorMessage, type: 'error' });
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setMessage('An unexpected error occurred.');
-      setMessageType('error');
+    } catch {
+      setMessage({ text: 'An unexpected error occurred.', type: 'error' });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md w-96 max-w-full">
-      <h2 className="text-2xl font-bold mb-5">Contact Us</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name:
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={formData.name}
+    <div className="w-96 max-w-full mx-auto px-6 py-6 mt-10 border border-white rounded-2xl shadow-lg bg-[#ffffff]">
+      <h2 className="text-2xl font-bold text-left mb-6">Contact Us</h2>
+      <form onSubmit={handleSubmit} className="w-full space-y-3">
+        {(['name', 'email', 'mobileNumber', 'reasonForEnquire'] as const).map((field) => (
+          <div key={field} className="relative">
+            <input
+              type={field === 'email' ? 'email' : 'text'}
+              name={field}
+              id={field}
+              value={formData[field]}
+              onChange={handleChange}
+              className={`peer w-full px-4 py-2 border font-['Montserrat'] rounded-2xl  outline-none ${errors[field] ? 'border-red-500' : 'border-[#878787]'}`}
+              required
+            />
+            <label
+              htmlFor={field}
+              className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-[#878787] text-base transition-all ${formData[field] ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'}`}
+            >
+              {field.replace(/([A-Z])/g, ' $1')}
+            </label>
+            {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}
+          </div>
+        ))}
+        <div className="relative">
+          <textarea
+            id="requirement"
+            name="requirement"
+            value={formData.requirement}
             onChange={handleChange}
+            className={`peer w-full px-4 py-10 border rounded-2xl shadow-lg  outline-none ${errors.requirement ? 'border-red-500' : 'border-[#878787]'}`}
             required
-            className={`w-full px-4 py-2 border rounded-lg ${
-              errors.name ? 'border-red-500' : 'border-gray-300'
-            } focus:outline-none focus:ring-2 focus:ring-green-500`}
           />
-          {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email:
+          <label
+            htmlFor="requirement"
+            className={`absolute left-4 top-4 text-[#878787] text-base transition-all ${formData.requirement ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'}`}
+          >
+            Requirement
           </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className={`w-full px-4 py-2 border rounded-lg ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            } focus:outline-none focus:ring-2 focus:ring-green-500`}
-          />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+          {errors.requirement && <p className="text-red-500 text-xs mt-1">{errors.requirement}</p>}
         </div>
-
-        <div className="mb-4">
-          <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-700">
-            Mobile Number:
-          </label>
-          <input
-            type="text"
-            name="mobileNumber"
-            id="mobileNumber"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-            required
-            pattern="\d{10}"
-            className={`w-full px-4 py-2 border rounded-lg ${
-              errors.mobileNumber ? 'border-red-500' : 'border-gray-300'
-            } focus:outline-none focus:ring-2 focus:ring-green-500`}
-          />
-          {errors.mobileNumber && <p className="text-red-500 text-xs mt-1">{errors.mobileNumber}</p>}
-        </div>
-
+        {message && (
+          <p className={`mt-5 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green text-green-700' : 'bg-red-100 text-red-700'}`}>{message.text}</p>
+        )}
         <button
           type="submit"
           disabled={loading}
-          className={`w-1/3 bg-[#15722a] text-white py-2 px-6 font-semibold rounded-lg mt-5 ${
-            loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-700'
-          }`}
+          className={`px-6 py-3 bg-solarcoolgreen text-white rounded-full transition ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-600'}`}
         >
           {loading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
-
-      {message && (
-        <p
-          aria-live="polite"
-          className={`mt-5 p-3 rounded-lg text-sm ${
-            messageType === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-          }`}
-        >
-          {message}
-        </p>
-      )}
     </div>
   );
 };

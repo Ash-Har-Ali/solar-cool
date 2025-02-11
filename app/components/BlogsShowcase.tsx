@@ -48,20 +48,20 @@ const BlogsShowcase = () => {
         Informational Articles on Solar air conditioners
       </p>
 
-      <div className="container mx-auto px-8 sm:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-center ">
+      <div className="container mx-auto px-8 sm:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-start justify-start ">
         {blogs.map((blog) => (
           <div
             key={blog.slug.current}
-            className=" border-white rounded-2xl shadow-lg bg-[#f4f4f4] relative flex flex-col w-80  items-center justify-center"
+            className=" border-white rounded-2xl shadow-lg bg-[#f4f4f4] relative flex flex-col w-80  items-start justify-center"
           >
             <h3 className="text-lg font-semibold  p-4">{blog.title}</h3>
             <p className="text-gray-600 mb-4 px-4 ">
               {blog.description.slice(0, 100)}...
             </p>
-            <div className="px-3">
+            <div className="px-3 ">
             <a
               href={`/blog/${blog.slug.current}`}
-              className="bg-solarcoolgreen px-3 py-1  rounded-full text-white text-sm mb-3 w-max"
+              className=" px-3 py-1 bg-[#ededed] rounded-full text-black font-normal border-2  text-sm mb-3 w-max"
             >
               Read More
             </a></div>
