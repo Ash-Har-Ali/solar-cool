@@ -25,9 +25,10 @@ const Showcase: React.FC = () => {
           <CTAButton
             label="Know More"
             navigateTo="/products"
-            bgColor="#fff"
+            bgColor=""
             textColor="#000"
             width="auto"
+            className="border-2"
           />
         </div>
       </div>

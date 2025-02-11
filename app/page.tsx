@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import BannerCarousel from "./components/BannerCarousel";
-import PopularProducts from "./components/ProductsGrid";
+import PopularProducts from "./components/PopularProducts";
 import Showcase from "./components/Showcase";
 import ProductCategories from "./components/ProductCategories";
 import BlogsSection from "./components/BlogsShowcase";

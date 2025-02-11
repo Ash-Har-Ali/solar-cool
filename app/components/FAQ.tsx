@@ -24,17 +24,17 @@ const FAQ = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 ">
       <h2 className="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 bg-[#eeeded] p-2 rounded-2xl">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-gray-100 rounded-lg shadow-md p-4 cursor-pointer"
+            className="bg-white rounded-2xl shadow-md p-4 cursor-pointer"
             onClick={() => toggleFAQ(index)}
           >
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold">{faq.question}</h3>
+            <div className="flex justify-between items-center px-6">
+              <h3 className="text-lg font-semibold ">{faq.question}</h3>
               <FaChevronDown
                 className={`transition-transform duration-300 ${
                   openIndex === index ? "rotate-180" : ""
@@ -42,7 +42,7 @@ const FAQ = () => {
               />
             </div>
             <p
-              className={`text-gray-700 overflow-hidden transition-all duration-300 ${
+              className={`text-gray-700 overflow-hidden transition-all px-6 duration-300 ${
                 openIndex === index ? "max-h-40 mt-2 opacity-100" : "max-h-0 opacity-0"
               }`}
             >

@@ -25,8 +25,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {/* <div className="container mx-auto px-4 sm:px-12 py-4 mt-24"> */}
             {children}
           {/* </div> */}
-          <div className="mt-12">
-          <Footer /></div>
+          
+          <Footer />
         </main>
       </body>
     </html>

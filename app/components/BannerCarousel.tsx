@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import CTAButton from "./CTAButton";
 
 const images = [
   "/images/HomeBanner1.webp",
@@ -40,7 +41,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[600px] lg:h-[750px] overflow-hidden">
+    <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[750px] overflow-hidden">
       {/* Carousel Container */}
       <div className="relative w-full h-full flex">
         <AnimatePresence mode="sync">
@@ -49,7 +50,7 @@ const Carousel = () => {
             initial={{ opacity: 100, x: "100%" }}
             animate={{ opacity: 100, x: "0%" }}
             exit={{ opacity: 100, x: "-100%" }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 1, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
             <Image
@@ -58,7 +59,7 @@ const Carousel = () => {
               className="w-full h-full object-fill"
               priority
               width={1920}
-              height={800}
+              height={850}
             />
           </motion.div>
         </AnimatePresence>
@@ -82,13 +83,17 @@ const Carousel = () => {
 
       {/* Text Overlay */}
 
-      {/* <div className="container mx-auto px-4 sm:px-12 py-8 absolute left-8 top-[10%] sm:top-[30%] text-white text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg w-[80%] sm:w-[60%]">
-        Welcome to Solar Cool
+      <div className=" w-auto mx-auto left-5 absolute top-[70%] lg:left-20 lg:py-5 md:py-2 sm:top-[65%] ">
+        <CTAButton 
+            label="Contact Us" 
+            navigateTo="/contact"
+            bgColor="#87C443"
+            textColor="white" 
+          width="auto" 
+          className=" rounded-full bg-solarcoolgreen font-bold text-xs md:text-lg  "
+          />
       </div>
-      <div className="container mx-auto px-4 sm:px-12  absolute left-8 top-[35%] sm:top-[44%] text-white text-sm sm:text-lg md:text-xl font-normal max-w-[80%] sm:max-w-[60%] drop-shadow-lg">
-        Harness the power of the sun with innovative solar products that reduce
-        your energy bills and support a sustainable future.
-      </div> */}
+      
     </div>
   );
 };

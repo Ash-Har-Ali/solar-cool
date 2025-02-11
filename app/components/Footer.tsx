@@ -8,7 +8,7 @@ import CTAButton from '../components/CTAButton';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 border-t-2 border-green-600 pt-8">
+    <footer className="bg-[#eeeded]   pt-8">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         {/* Logo Row */}
         <div className="flex flex-col md:flex-row justify-start items-start md:justify-between md:items-center mb-6">
@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
             bgColor="#fff" 
             textColor="#000" 
             width="auto" 
+            className="border-2"
           />
         </div>
 

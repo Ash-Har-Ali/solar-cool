@@ -11,34 +11,64 @@ const ServiceForm: React.FC = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  // Validation function
+  const validateForm = () => {
+    let valid = true;
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required.";
+      valid = false;
+    }
+    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      newErrors.email = "Enter a valid email address.";
+      valid = false;
+    }
+    if (!formData.phone.match(/^\d{10}$/)) {
+      newErrors.phone = "Enter a valid 10-digit phone number.";
+      valid = false;
+    }
+    if (!formData.location.trim()) {
+      newErrors.location = "Location is required.";
+      valid = false;
+    }
+    if (!formData.description.trim()) {
+      newErrors.description = "Description is required.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
   };
 
+  // Handle input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Clear error when user starts typing
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
+    setLoading(true);
     emailjs
-      .sendForm(
-        "service_jkgdf3g",
-        "template_nfkwjbs",
-        e.target as HTMLFormElement,
-        "F713CPEpKwNIJ5iRc"
-      )
-      .then((result) => {
-        console.log("Email sent successfully:", result.text);
+      .sendForm("service_jkgdf3g", "template_nfkwjbs", e.target as HTMLFormElement, "F713CPEpKwNIJ5iRc")
+      .then(() => {
         setIsSubmitted(true);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error sending email:", error);
-        alert(`There was an error sending your request: ${error.text}`);
+        setErrors({ form: "There was an error sending your request. Please try again later." });
+        setLoading(false);
       });
   };
 
@@ -48,13 +78,10 @@ const ServiceForm: React.FC = () => {
 
       {isSubmitted ? (
         <div className="text-center">
-          <p className="text-lg text-green-600">
-            Your request has been submitted!
-          </p>
+          <p className="text-lg text-green-600">Your request has been submitted!</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="w-full space-y-6">
-          {/* Floating Label Input Fields */}
           {[
             { id: "name", type: "text", label: "Name" },
             { id: "email", type: "email", label: "Email" },
@@ -68,10 +95,11 @@ const ServiceForm: React.FC = () => {
                 name={id}
                 value={formData[id as keyof typeof formData]}
                 onChange={handleChange}
-                className="peer w-full px-4 py-3 border border-[#878787] font-['Montserrat'] rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none"
+                className={`peer w-full px-4 py-3 border font-['Montserrat'] rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
+                  errors[id] ? "border-red-500" : "border-[#878787]"
+                }`}
                 required
               />
-              {/* Label that disappears when input is filled */}
               <label
                 htmlFor={id}
                 className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-[#878787] text-base transition-all 
@@ -79,6 +107,7 @@ const ServiceForm: React.FC = () => {
               >
                 {label}
               </label>
+              {errors[id] && <p className="text-red-500 text-xs mt-1">{errors[id]}</p>}
             </div>
           ))}
 
@@ -89,10 +118,11 @@ const ServiceForm: React.FC = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className="peer w-full px-4 py-10 border border-[#878787] rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none"
+              className={`peer w-full px-4 py-10 border rounded-xl shadow-lg focus:ring-solarcoolgreen focus:border-solarcoolgreen outline-none ${
+                errors.description ? "border-red-500" : "border-[#878787]"
+              }`}
               required
             />
-            {/* Label that disappears when textarea is filled */}
             <label
               htmlFor="description"
               className={`absolute left-4 top-4 text-[#878787] text-base transition-all 
@@ -100,14 +130,21 @@ const ServiceForm: React.FC = () => {
             >
               Description
             </label>
+            {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description}</p>}
           </div>
+
+          {/* Error Message */}
+          {errors.form && <p className="text-red-500 text-sm text-center">{errors.form}</p>}
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="px-6 py-3 bg-solarcoolgreen text-white rounded-full hover:bg-solarcoolgreen/80 transition"
+            disabled={loading}
+            className={`px-6 py-3 bg-solarcoolgreen text-white rounded-full transition ${
+              loading ? "opacity-50 cursor-not-allowed" : "hover:bg-solarcoolgreen/80"
+            }`}
           >
-            Submit Request
+            {loading ? "Submitting..." : "Submit Request"}
           </button>
         </form>
       )}
