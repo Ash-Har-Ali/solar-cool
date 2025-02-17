@@ -48,7 +48,7 @@ const BlogsShowcase = () => {
         Informational Articles on Solar air conditioners
       </p>
 
-      <div className="container mx-auto px-8 sm:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-start justify-start ">
+      <div className="container mx-auto px-8 sm:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-around ">
         {blogs.map((blog) => (
           <div
             key={blog.slug.current}

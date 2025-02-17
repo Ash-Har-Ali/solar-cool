@@ -41,7 +41,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[750px] overflow-hidden">
+    <div className="relative w-full h-[400px]  lg:h-[750px] xl:h-[880] overflow-hidden">
       {/* Carousel Container */}
       <div className="relative w-full h-full flex">
         <AnimatePresence mode="sync">

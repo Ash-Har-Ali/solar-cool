@@ -5,52 +5,9 @@ import { FaRegHandshake } from "react-icons/fa";
 import solarCoolLogo1 from "../../public/images/solarcool-logo2.svg";
 import banner from "../../public/images/banner1.png";
 import wiborLogo from "../../public/images/wybor-logo.svg";
-
-// Reusable Components
-const SectionTitle: React.FC<{ title: string; subtitle: string }> = ({
-  title,
-  subtitle
-}) => (
-  <div>
-    <div className="text-sm md:text-base font-normal font-['Montserrat'] text-black">
-      {title}
-    </div>
-    <div className="text-2xl md:text-4xl font-semibold font-['Montserrat'] mt-2 text-black">
-      {subtitle}
-    </div>
-  </div>
-);
-
-const VisionMissionCard: React.FC<{
-  title: string;
-  content: string;
-  bgColor: string;
-}> = ({ title, content, bgColor }) => (
-  <div className={`w-full md:w-[50%] ${bgColor} rounded-2xl p-6`}>
-    <h3 className="text-white text-2xl font-semibold font-['Montserrat']">
-      {title}
-    </h3>
-    <p className="text-white text-base font-normal font-['Montserrat'] leading-normal mt-4">
-      {content}
-    </p>
-  </div>
-);
-
-const DifferenceCard: React.FC<{
-  icon: React.ReactNode;
-  title: string;
-  content: string;
-}> = ({ icon, title, content }) => (
-  <div className="flex flex-col items-center bg-[#e6f1eb] rounded-3xl p-6 max-w-xs">
-    <div className="text-6xl text-[#048c46]">{icon}</div>
-    <h4 className="text-black text-xl font-semibold font-['Montserrat'] mt-4">
-      {title}
-    </h4>
-    <p className="text-black text-sm font-normal font-['Montserrat'] text-center mt-4">
-      {content}
-    </p>
-  </div>
-);
+import SectionTitle from "./components/SectionTitle";
+import VisionMissionCard from "./components/VisionMissionCard";
+import DifferenceCard from "./components/DifferenceCard";
 
 export default function AboutPage() {
   return (
@@ -82,7 +39,7 @@ export default function AboutPage() {
               We take a closer look at how the latest Solar technology is
               transforming your home and office spaces and introducing a wide
               range of Solar Air Conditioners, Inverter Water Geysers, Solar
-              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.{" "}
+              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market. 
             </p>
           </div>
           <div className="flex justify-center items-center w-full md:w-1/2">
@@ -151,11 +108,17 @@ export default function AboutPage() {
                 ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor.
               </div>
-              <div className="h-11 px-[30px] py-2.5 bg-[#006a33] rounded-[40px] inline-flex justify-center items-center gap-2.5 cursor-pointer">
-                <span className="text-white text-xl font-semibold font-['Montserrat']">
-                  Learn More
-                </span>
-              </div>
+              <a
+                href="https://wybor.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="h-11 px-[30px] py-2.5 bg-[#006a33] rounded-[40px] inline-flex justify-center items-center gap-2.5 cursor-pointer mt-3">
+                  <span className="text-white text-xl font-semibold font-['Montserrat']">
+                    Learn More
+                  </span>
+                </div>
+              </a>
             </div>
 
             {/* Right Content */}

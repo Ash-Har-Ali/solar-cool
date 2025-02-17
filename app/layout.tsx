@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import dynamic from 'next/dynamic';
 
 const inter = Inter({ subsets: ["latin"] });
+
+// Dynamically import components
+const Navbar = dynamic(() => import("./components/Navbar"), {
+  loading: () => <div>Loading...</div>
+});
+
+const Footer = dynamic(() => import("./components/Footer"), {
+  loading: () => <div>Loading...</div>
+});
 
 export const metadata: Metadata = {
   title: "Solar Cool",
@@ -23,10 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="mb-8">
             <Navbar />
           </div>
-          {/* <div className="container mx-auto px-4 sm:px-12 py-4 mt-24"> */}
           {children}
-          {/* </div> */}
-
           <Footer />
         </main>
       </body>
