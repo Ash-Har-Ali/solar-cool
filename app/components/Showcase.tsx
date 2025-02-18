@@ -1,6 +1,5 @@
 import Image from "next/image";
 import CTAButton from "./CTAButton";
-import showCaseImage from "../../public/images/showcase.svg";
 
 const Showcase: React.FC = () => {
   return (
@@ -63,7 +62,7 @@ const Showcase: React.FC = () => {
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <Image
           className="w-full h-full object-cover"
-          src={showCaseImage}
+          src="/images/showcase.svg"
           alt="Background"
           fill
         />

@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
-import Logo from "../../public/images/solarcool-logo2.svg";
 
 const navLinks = [
   { title: "Home", path: "/" },
@@ -27,14 +26,20 @@ const Navbar = () => {
           href="/"
           className="text-2xl md:text-3xl text-black font-semibold"
         >
-          <Image src={Logo} alt="Solar Cool" className="h-10 md:h-10 w-auto " />
+          <Image
+            src="/images/solarcool-logo2.svg"
+            alt="Solar Cool"
+            className="h-10 md:h-10 w-auto "
+            width={150}
+            height={50}
+          />
         </Link>
 
         {/* Center: Navigation Links (hidden on mobile) */}
         <div className="hidden xl:flex space-x-10 justify-center flex-grow">
-          {navLinks.map((link, index) => (
+          {navLinks.map((link, index) =>
             <NavLink key={index} href={link.path} title={link.title} />
-          ))}
+          )}
         </div>
 
         {/* Right Side: CTA Button and Mobile Menu Button */}
@@ -68,11 +73,9 @@ const Navbar = () => {
             onClick={() => setNavbarOpen(!navbarOpen)}
             className="xl:hidden text-[#036d39] focus:outline-none"
           >
-            {navbarOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
+            {navbarOpen
+              ? <XMarkIcon className="h-6 w-6" />
+              : <Bars3Icon className="h-6 w-6" />}
           </button>
         </div>
       </div>

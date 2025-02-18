@@ -142,6 +142,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
           src={bannerImage}
           alt={`${category} Banner`}
           className="w-full h-auto object-cover"
+          width={1920}
+          height={600}
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center text-[#048c46] text-center text-4xl md:text-6xl font-bold font-['Montserrat']">

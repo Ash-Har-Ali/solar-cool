@@ -87,7 +87,7 @@ const Carousel = () => {
         <CTAButton 
             label="Contact Us" 
             navigateTo="/contact"
-            bgColor="#87C443"
+            bgColor="#048c46"
             textColor="white" 
           width="auto" 
           className=" rounded-full bg-solarcoolgreen font-bold text-xs md:text-lg  "

@@ -2,9 +2,6 @@ import Image from "next/image";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { TbChecklist } from "react-icons/tb";
 import { FaRegHandshake } from "react-icons/fa";
-import solarCoolLogo1 from "../../public/images/solarcool-logo2.svg";
-import banner from "../../public/images/banner1.png";
-import wiborLogo from "../../public/images/wybor-logo.svg";
 import SectionTitle from "./components/SectionTitle";
 import VisionMissionCard from "./components/VisionMissionCard";
 import DifferenceCard from "./components/DifferenceCard";
@@ -15,9 +12,11 @@ export default function AboutPage() {
       {/* Banner Section */}
       <div className="relative mb-12">
         <Image
-          src={banner}
+          src="/images/banner1.png"
           alt="Banner"
           className="w-full h-auto object-cover"
+          width={1920}
+          height={1080}
           priority
         />
         <div className="container mx-auto px-4 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-4xl md:text-6xl font-bold font-['Montserrat']">
@@ -39,15 +38,17 @@ export default function AboutPage() {
               We take a closer look at how the latest Solar technology is
               transforming your home and office spaces and introducing a wide
               range of Solar Air Conditioners, Inverter Water Geysers, Solar
-              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market. 
+              Refrigerators, Solar Deep Freezers, Ceiling Fans to the market.
             </p>
           </div>
           <div className="flex justify-center items-center w-full md:w-1/2">
             <div className="w-full max-w-4xl h-[270px] bg-[#006a33]/10 rounded-tl-full rounded-bl-full flex justify-center items-center">
               <Image
-                src={solarCoolLogo1}
+                src="/images/solarcool-logo2.svg"
                 alt="Solar Cool Logo"
                 className="object-cover"
+                width={200}
+                height={200}
                 priority
               />
             </div>
@@ -124,9 +125,11 @@ export default function AboutPage() {
             {/* Right Content */}
             <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
               <Image
-                src={wiborLogo}
+                src="/images/wybor-logo.svg"
                 alt="Wybor Logo"
                 className="object-contain p-10"
+                width={300}
+                height={300}
                 priority
               />
             </div>

@@ -3,7 +3,6 @@
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from 'next/image';
 import Link from 'next/link'; // Import Link from Next.js
-import solarCoolLogo1 from "../../public/images/solarcool-logo2.svg";
 import CTAButton from '../components/CTAButton';
 
 const Footer: React.FC = () => {
@@ -15,7 +14,9 @@ const Footer: React.FC = () => {
           <Image
             className="w-40 h-18"
             alt="Solar cool logo"
-            src={solarCoolLogo1}
+            src="/images/solarcool-logo2.svg"
+            width={160}
+            height={72}
             priority
           />
           <CTAButton 

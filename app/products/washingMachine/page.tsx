@@ -1,8 +1,7 @@
 import ProductPage from "../components/ProductPage";
-import banner from "../../../public/images/banner-products.webp";
 
-const TelevisionPage: React.FC = () => {
-  return <ProductPage category="washingmachine" bannerImage={banner} />;
+const WashingMachinePage: React.FC = () => {
+  return <ProductPage category="washingmachine" bannerImage="/images/banner-products.webp" />;
 };
 
-export default TelevisionPage;
+export default WashingMachinePage;

@@ -1,7 +1,6 @@
 import type { SanityDocument } from "@sanity/client";
 import Image from "next/image";
 import Link from "next/link";
-import banner from "../../../public/images/banner2.png";
 
 const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
   // Function to format dates
@@ -37,9 +36,11 @@ const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
       {/* Banner Section */}
       <div className="relative mb-12">
         <Image
-          src={banner}
+          src="/images/banner2.png"
           alt="Banner"
           className="w-full h-auto object-cover"
+          width={1920}
+          height={600}
           priority
         />
         <div className="container mx-auto px-4 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-4xl md:text-6xl font-bold font-['Montserrat']">

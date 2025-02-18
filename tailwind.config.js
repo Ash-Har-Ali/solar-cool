@@ -10,7 +10,7 @@ module.exports = {
     extend: {},
     colors: {
       white: '#ffffff',
-      solarcoolgreen: '#87C443',
+      solarcoolgreen: '#048c46',
     },
   },
   plugins: [
