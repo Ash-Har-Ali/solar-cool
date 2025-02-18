@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
+  output: "standalone", // Enable incremental caching
 
   images: {
     domains: ["cdn.sanity.io"],
     unoptimized: true
   },
+
   webpack: (config, { isServer }) => {
     // Increase chunk load timeout
     config.watchOptions = {
@@ -16,10 +17,11 @@ const nextConfig = {
     // Optimize chunks
     config.optimization = {
       ...config.optimization,
+      runtimeChunk: "single", // Reduce chunk duplication
       splitChunks: {
         chunks: "all",
         minSize: 20000,
-        maxSize: 70000,
+        maxSize: 100000, // Allow larger chunks
         cacheGroups: {
           default: false,
           vendors: false,
@@ -45,12 +47,14 @@ const nextConfig = {
 
     return config;
   },
+
   // Add more generous timeouts
   experimental: {
     serverActions: {
       bodySizeLimit: "2mb"
     }
   },
+
   poweredByHeader: false,
   reactStrictMode: true
 };
