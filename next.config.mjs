@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone", // Enable incremental caching
+  
 
   images: {
     domains: ["cdn.sanity.io"],
