@@ -70,7 +70,7 @@ const ProductCategories = () => {
           <div className="rounded-[30px] relative overflow-hidden group hover:scale-105 transform transition-all duration-300">
             <Link href="/products/smartWatch">
               <Image
-                src="/images/smartwatch.png"
+                src="/images/SmartWatch.png"
                 alt="Smart Watch"
                 className="w-full h-auto object-cover"
                 priority
@@ -88,7 +88,7 @@ const ProductCategories = () => {
           <div className="rounded-[30px] relative overflow-hidden group hover:scale-105 transform transition-all duration-300">
             <Link href="/products/washingMachine">
               <Image
-                src="/images/washingmachine.png"
+                src="/images/WashingMachine.png"
                 alt="Washing Machine"
                 className="w-full h-auto object-cover"
                 priority
