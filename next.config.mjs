@@ -1,63 +1,18 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone", // Enable incremental caching
-  
-
+  output: "standalone",
   images: {
     domains: ["cdn.sanity.io"],
-    unoptimized: true
+    unoptimized: true,
   },
-
-  webpack: (config, { isServer }) => {
-    // Increase chunk load timeout
+  webpack: (config) => {
     config.watchOptions = {
       aggregateTimeout: 300,
-      poll: 1000
+      poll: 1000,
     };
-
-    // Optimize chunks
-    config.optimization = {
-      ...config.optimization,
-      runtimeChunk: "single", // Reduce chunk duplication
-      splitChunks: {
-        chunks: "all",
-        minSize: 20000,
-        maxSize: 100000, // Allow larger chunks
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          // Vendor chunk
-          vendor: {
-            name: "vendor",
-            chunks: "all",
-            test: /node_modules/,
-            priority: 20
-          },
-          // Common chunk
-          common: {
-            name: "common",
-            minChunks: 2,
-            chunks: "all",
-            priority: 10,
-            reuseExistingChunk: true,
-            enforce: true
-          }
-        }
-      }
-    };
-
     return config;
   },
-
-  // Add more generous timeouts
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "2mb"
-    }
-  },
-
   poweredByHeader: false,
-  reactStrictMode: true
+  reactStrictMode: true,
 };
 
 export default nextConfig;
