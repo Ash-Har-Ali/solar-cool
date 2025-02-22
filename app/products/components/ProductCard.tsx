@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <div className="px-5 py-4 flex flex-col">
         {/* Name */}
         <a href="#" className="block">
-          <h5 className="text-xl font-semibold text-gray-900">{name}</h5>
+          <h5 className="text-xl font-semibold line-clamp-2 text-gray-900">{name}</h5>
         </a>
 
         {/* Image with hover effect */}

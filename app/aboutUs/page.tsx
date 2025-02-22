@@ -68,7 +68,7 @@ export default function AboutPage() {
             bgColor="bg-[#048b47]"
           />
         </div>
-
+    
         {/* What Makes Us Different Section */}
         <div className="container mx-auto px-4 sm:px-4 mb-12 py-8">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
