@@ -35,6 +35,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <h5 className="text-xl font-semibold line-clamp-2 text-gray-900">{name}</h5>
         </a>
 
+        {/* BLDC Tag */}
+        {isBLDC && (
+          <div className="mt-3">
+            <span className="text-xs text-[#048c46] bg-[#e0f5e0] py-0.5 px-2 rounded">
+              BLDC
+            </span>
+          </div>
+        )}
+
         {/* Image with hover effect */}
         <div className="relative w-full h-auto mt-4">
           <Image
@@ -47,14 +56,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
         </div>
 
-        {/* BLDC Tag */}
-        {isBLDC && (
-          <div className="mt-3">
-            <span className="text-xs text-[#048c46] bg-[#e0f5e0] py-0.5 px-2 rounded">
-              BLDC
-            </span>
-          </div>
-        )}
 
         {/* Price */}
         <div className="flex items-center justify-between mt-3">
@@ -64,24 +65,25 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Know More Button */}
-        <div className="flex items-center justify-between mt-4">
-          <a
-            href={`https://wa.me/7012169029?text=I%20want%20to%20know%20more%20about%20this%20product%20${name}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200"
-          >
-            Know More
-          </a>
-          <a
-            href={`https://wa.me/7012169029?text=I%20want%20to%20buy%20this%20product%20${name}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200"
-          >
-            Buy Now!
-          </a>
-        </div>
+       <div className="flex flex-col sm:flex-row gap-5 mt-4">
+  <a
+    href={`https://wa.me/7012169029?text=I%20want%20to%20know%20more%20about%20this%20product%20${name}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200 w-full"
+  >
+    Know More
+  </a>
+  <a
+    href={`https://wa.me/7012169029?text=I%20want%20to%20buy%20this%20product%20${name}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200 w-full"
+  >
+    Buy Now!
+  </a>
+</div>
+
       </div>
     </div>
   );

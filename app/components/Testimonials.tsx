@@ -5,27 +5,29 @@ const testimonials = [
   {
     name: "John Doe",
     role: "Founder - Green Energy",
-    text: "Solar Cool has completely transformed the way we use energy! Highly recommended.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    text:
+      "Solar Cool has completely transformed the way we use energy! Highly recommended.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     name: "Jane Smith",
     role: "CEO - Solar Innovations",
     text: "Amazing product! Great customer service and highly efficient.",
-    image: "https://randomuser.me/api/portraits/women/45.jpg",
+    image: "https://randomuser.me/api/portraits/women/45.jpg"
   },
   {
     name: "Robert Williams",
     role: "Managing Director - Eco Future",
     text: "A game-changer for sustainable energy. Best decision we've made.",
-    image: "https://randomuser.me/api/portraits/men/55.jpg",
+    image: "https://randomuser.me/api/portraits/men/55.jpg"
   },
   {
     name: "Emily Johnson",
     role: "Sustainability Expert",
-    text: "Highly efficient and reliable! Our energy bills have significantly dropped.",
-    image: "https://randomuser.me/api/portraits/women/60.jpg",
-  },
+    text:
+      "Highly efficient and reliable! Our energy bills have significantly dropped.",
+    image: "https://randomuser.me/api/portraits/women/60.jpg"
+  }
 ];
 
 const Testimonials: React.FC = () => {
@@ -42,7 +44,7 @@ const Testimonials: React.FC = () => {
       />
 
       {/* Overlay to darken background for better text readability */}
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Content */}
       <div className="max-w-7xl text-center text-white w-full z-20">
@@ -57,18 +59,23 @@ const Testimonials: React.FC = () => {
         {/* <h2 className="text-3xl font-bold mb-6">What Our Customers Say</h2> */}
 
         {/* Horizontal Scrollable Testimonials */}
-        <div className="flex gap-6 overflow-x-auto scroll-smooth px-4 py-2 overflow-clip whitespace-pre-wrap scrollbar-hide"
-             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {testimonials.map((testimonial, index) => (
+        <div
+          className="flex gap-6 overflow-x-auto scroll-smooth px-4 py-2 overflow-clip whitespace-pre-wrap scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {testimonials.map((testimonial, index) =>
             <div
               key={index}
-              className=" p-6 rounded-lg  w-[320px] flex-shrink-0"
+              className="p-6 rounded-lg w-[360px] flex-shrink-0 bg-black/30 flex flex-col justify-between h-70"
             >
+              {/* Testimonial Text */}
               <p className="text-white text-lg opacity-90">
                 &quot;{testimonial.text}&quot;
               </p>
-              <div className="flex items-center mt-4 space-x-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden ">
+
+              {/* User Info at the bottom */}
+              <div className="flex items-center mt-6 space-x-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -77,12 +84,16 @@ const Testimonials: React.FC = () => {
                   />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold">{testimonial.name}</h4>
-                  <p className="text-sm opacity-80">{testimonial.role}</p>
+                  <h4 className="font-semibold">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm opacity-80">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
