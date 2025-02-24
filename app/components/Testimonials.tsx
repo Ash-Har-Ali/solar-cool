@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 
 const testimonials = [
@@ -27,10 +27,40 @@ const testimonials = [
     text:
       "Highly efficient and reliable! Our energy bills have significantly dropped.",
     image: "https://randomuser.me/api/portraits/women/60.jpg"
+  },
+  {
+    name: "John Doe",
+    role: "Founder - Green Energy",
+    text:
+      "Solar Cool has completely transformed the way we use energy! Highly recommended.",
+    image: "https://randomuser.me/api/portraits/men/3.jpg"
   }
 ];
 
 const Testimonials: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let animationFrameId: number;
+    const scrollSpeed = 0.5; // adjust this for smoother speed
+
+    const smoothScroll = () => {
+      // When we've scrolled past the first copy of testimonials, reset scrollLeft
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += scrollSpeed;
+      }
+      animationFrameId = requestAnimationFrame(smoothScroll);
+    };
+
+    animationFrameId = requestAnimationFrame(smoothScroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
   return (
     <div className="relative w-full h-96 py-16 px-6 flex justify-center items-center">
       {/* Background Image */}
@@ -47,7 +77,7 @@ const Testimonials: React.FC = () => {
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Content */}
-      <div className="max-w-7xl text-center text-white w-full z-20">
+      <div className="max-w-8xl text-center text-white w-full z-20">
         {/* Star Rating */}
         <div className="flex justify-center items-center space-x-2 text-lg mb-4">
           <span className="text-[#f5f230] text-xl">★★★★★</span>
@@ -55,21 +85,19 @@ const Testimonials: React.FC = () => {
           <span className="opacity-80">by happy customers</span>
         </div>
 
-        {/* Title */}
-        {/* <h2 className="text-3xl font-bold mb-6">What Our Customers Say</h2> */}
-
-        {/* Horizontal Scrollable Testimonials */}
+        {/* Horizontal Auto-Scrollable Testimonials (duplicated for seamless looping) */}
         <div
-          className="flex gap-6 overflow-x-auto scroll-smooth px-4 py-2 overflow-clip whitespace-pre-wrap scrollbar-hide"
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth px-4 py-2 whitespace-nowrap scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {testimonials.map((testimonial, index) =>
+          {[...testimonials, ...testimonials].map((testimonial, index) =>
             <div
               key={index}
               className="p-6 rounded-lg w-[360px] flex-shrink-0 bg-black/30 flex flex-col justify-between h-70"
             >
               {/* Testimonial Text */}
-              <p className="text-white text-lg opacity-90">
+              <p className="text-white text-lg opacity-90 overflow-clip text-ellipsis whitespace-pre-wrap w-full">
                 &quot;{testimonial.text}&quot;
               </p>
 

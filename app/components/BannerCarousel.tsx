@@ -4,23 +4,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import CTAButton from "./CTAButton";
 
-const images = [
-  "/images/HomeBanner1.webp",
-  "/images/HomeBanner2.webp",
-];
+const images = ["/images/HomeBanner1.webp", "/images/HomeBanner2.webp"];
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Move to next slide with looping effect
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
   };
 
   // Move to previous slide with looping effect
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      prevIndex => (prevIndex - 1 + images.length) % images.length
     );
   };
 
@@ -41,13 +38,13 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px]  lg:h-[750px] xl:h-[880] overflow-hidden">
+    <div className="relative w-full h-[400px]  lg:h-[750px]  overflow-hidden">
       {/* Carousel Container */}
       <div className="relative w-full h-full flex">
         <AnimatePresence mode="sync">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 100, x: "100%" }}
+            initial={{ opacity: 100 }}
             animate={{ opacity: 100, x: "0%" }}
             exit={{ opacity: 100, x: "-100%" }}
             transition={{ duration: 1, ease: "easeInOut" }}
@@ -84,16 +81,15 @@ const Carousel = () => {
       {/* Text Overlay */}
 
       <div className=" w-auto mx-auto left-5 absolute top-[70%] lg:left-20 lg:py-5 md:py-2 sm:top-[65%] ">
-        <CTAButton 
-            label="Contact Us" 
-            navigateTo="/contact"
-            bgColor="#048c46"
-            textColor="white" 
-          width="auto" 
+        <CTAButton
+          label="Contact Us"
+          navigateTo="/contact"
+          bgColor="#048c46"
+          textColor="white"
+          width="auto"
           className=" rounded-full bg-solarcoolgreen font-bold text-xs md:text-lg  "
-          />
+        />
       </div>
-      
     </div>
   );
 };
