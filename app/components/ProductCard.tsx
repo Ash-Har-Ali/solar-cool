@@ -26,7 +26,12 @@ interface ProductCardProps {
   onMouseLeave: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered, onMouseEnter, onMouseLeave }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  isHovered,
+  onMouseEnter,
+  onMouseLeave
+}) => {
   return (
     <div
       key={product._id}
@@ -34,7 +39,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered, onMouseEn
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {product.imagesGallery && product.imagesGallery.length > 0 && (
+      {product.imagesGallery &&
+        product.imagesGallery.length > 0 &&
         <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] mb-4 transition-all duration-300">
           <Image
             src={
@@ -47,13 +53,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, isHovered, onMouseEn
             objectFit="contain"
             className="absolute top-0 left-0 z-10"
           />
-        </div>
-      )}
+        </div>}
       <div className="w-[200px] sm:w-[250px] md:w-[300px] h-[100px] sm:h-[250px] md:h-[150px] border-white rounded-lg shadow-lg bg-white p-3 flex justify-center items-end z-0 relative">
-       <h3 className="text-sm sm:text-base md:text-lg font-semibold text-center mb-3 overflow-clip text-ellipsis whitespace-pre-wrap w-full">
-  {product.productName}
-</h3>
-
+        <h3 className="text-sm sm:text-base md:text-lg font-semibold text-center mb-3 overflow-clip text-ellipsis whitespace-pre-wrap w-full line-clamp-2">
+          {product.productName}
+        </h3>
       </div>
     </div>
   );
