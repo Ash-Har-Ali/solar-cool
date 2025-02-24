@@ -40,15 +40,15 @@ const BlogsShowcase = () => {
   }, []);
 
   return (
-    <div>
-      <div className="text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px] text-center">
+    <div className="w-full">
+      <div className="text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px] text-center mt-12">
         Blogs
       </div>
       <p className="text-center mb-8">
         Informational Articles on Solar air conditioners
       </p>
 
-      <div className="container mx-auto px-8 sm:px-16 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-around ">
+      <div className="container mx-auto px-14 sm:px-20 py-8 grid grid-cols-1 md:grid-cols-3 gap-9 items-center justify-around ">
         {blogs.map((blog) => (
           <div
             key={blog.slug.current}

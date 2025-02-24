@@ -152,11 +152,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
       </div>
 
       {/* Title Section */}
-      <div className="flex items-center justify-center mb-6">
+      {/* <div className="flex items-center justify-center mb-6">
         <h2 className="text-2xl font-semibold text-gray-900 text-center">
           Our {category.charAt(0).toUpperCase() + category.slice(1)} Products
         </h2>
-      </div>
+      </div> */}
 
       {/* Sorting and Filter Buttons */}
       <div className="container mx-auto px-4 sm:px-12 py-8">

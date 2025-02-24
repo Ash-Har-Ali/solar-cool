@@ -26,7 +26,7 @@ const ProductCard = ({ imageSrc, altText, productName, link }: ProductCardProps)
           src={imageSrc}
           alt={altText}
           className="object-cover w-full h-full"
-          width={100}
+          width={150}
           height={100}
         />
         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300"></div>
@@ -72,7 +72,7 @@ const HomePage = () => {
           </div>
         </Link>
 
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-2">
           <ProductCard imageSrc={smartWatchImg} altText="Smart Watch" productName="Smart Watch" link="/products/smartWatch" />
           <ProductCard imageSrc={washingMachineImg} altText="Washing Machine" productName="Washing Machine" link="/products/washingMachine" />
           <ProductCard imageSrc={speakerImg} altText="Speaker" productName="Speaker" link="/products/speaker" />
