@@ -79,9 +79,9 @@ const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
       {/* 🌟 Banner Section */}
       <div className="relative mb-12">
         <Image
-          src="/images/banner2.png"
+          src="/images/blogbanner.webp"
           alt="Banner"
-          className="w-full h-auto object-cover"
+          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px] "
           width={1920}
           height={600}
           priority

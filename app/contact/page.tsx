@@ -3,7 +3,6 @@
 import { FaMapPin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import ContactForm from "../components/ContactForm";
 import Image from "next/image";
-import bannerImage from "../../public/images/contact-banner.webp";
 
 const contactDetails = [
   {
@@ -50,9 +49,9 @@ export default function ContactUsPage() {
   return (
     <div className="w-full bg-gray-100">
       {/* Banner Section */}
-      <div className="relative w-full h-[816px]">
+      <div className="relative w-full h-[816px]  lg:h-[750px] 2xl:h-[900px]">
         <Image
-          src="/images/contact-banner.webp"
+          src="/images/contactus.webp"
           alt="Banner"
           className="w-full h-full object-cover"
           width={1920}

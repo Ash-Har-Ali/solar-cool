@@ -45,13 +45,13 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-[#e7e7e7]">
+    <div className="bg-[#e7e7e7] ">
       {/* Hero Section */}
-      <div className="relative mb-12">
+      <div className="relative mb-12 object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px] bg-[#1C7940]">
         <Image
-          src="/images/banner4.png"
+          src="/images/service-man.webp"
           alt="Banner"
-          className="w-full h-auto object-cover"
+          className=" object-fit w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
           width={1920}
           height={1080}
           priority

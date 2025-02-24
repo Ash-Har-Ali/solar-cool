@@ -14,7 +14,7 @@ export default function AboutPage() {
         <Image
           src="/images/banner1.png"
           alt="Banner"
-          className="w-full h-auto object-cover"
+          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
           width={1920}
           height={1080}
           priority
@@ -68,7 +68,7 @@ export default function AboutPage() {
             bgColor="bg-[#048b47]"
           />
         </div>
-    
+
         {/* What Makes Us Different Section */}
         <div className="container mx-auto px-4 sm:px-4 mb-12 py-8">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">

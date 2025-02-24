@@ -49,7 +49,7 @@ const HomePage = () => {
         <Image
           src="/images/banner4.png"
           alt="Banner"
-          className="w-full h-auto object-cover"
+          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
           width={1920}
           height={1080}
           priority
@@ -59,7 +59,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="relative px-4 justify-center items-center sm:px-20 py-8">
+      <div className="relative px-4 justify-center items-center sm:px-20 py-8 mb-12">
         <Link href="/products/ac" passHref>
           <div className="relative cursor-pointer">
             <Image
