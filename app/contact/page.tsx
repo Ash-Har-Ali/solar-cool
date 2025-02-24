@@ -78,7 +78,7 @@ export default function ContactUsPage() {
       <div className="w-full bg-[#e7e7e7]">
         <div className="container mx-auto px-6 sm:px-12 py-10">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-6 p-6 md:gap-0">
-            <div className="w-full lg:w-2/3 h-[500px] bg-white rounded-xl shadow-lg overflow-hidden md:rounded-r-none">
+            <div className="w-full lg:w-2/3 h-[500px] 2xl:h-[600px] bg-white rounded-xl shadow-lg overflow-hidden md:rounded-r-none">
               <iframe
                 className="w-full h-full border-0"
                 allowFullScreen
@@ -87,7 +87,7 @@ export default function ContactUsPage() {
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Solarcool%2014/370A,%20Poyya,%20Kodungallur%20Rd%20Thrissur,%20Kerala%20Pin:%20680733+(Solar%20Cool)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               />
             </div>
-            <div className="w-full lg:w-1/3 h-auto md:h-[500px] bg-white rounded-xl shadow-lg p-8 flex justify-center items-center md:rounded-l-none">
+            <div className="w-full lg:w-1/3 h-auto md:h-[500px] 2xl:h-[600px] bg-white rounded-xl shadow-lg p-8 flex justify-center items-center md:rounded-l-none">
               <ContactInfo />
             </div>
           </div>

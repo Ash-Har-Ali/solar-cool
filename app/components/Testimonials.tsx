@@ -44,21 +44,38 @@ const Testimonials: React.FC = () => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let animationFrameId: number;
-    const scrollSpeed = 0.5; // adjust this for smoother speed
+    let isPaused = false;
+    const scrollSpeed = 1; // Adjust speed here
 
-    const smoothScroll = () => {
-      // When we've scrolled past the first copy of testimonials, reset scrollLeft
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-        scrollContainer.scrollLeft = 0;
-      } else {
-        scrollContainer.scrollLeft += scrollSpeed;
+    const scrollInterval = setInterval(() => {
+      if (!isPaused) {
+        if (
+          scrollContainer.scrollLeft + scrollContainer.clientWidth >=
+          scrollContainer.scrollWidth
+        ) {
+          scrollContainer.scrollLeft = 0; // Reset scroll for seamless looping
+        } else {
+          scrollContainer.scrollLeft += scrollSpeed;
+        }
       }
-      animationFrameId = requestAnimationFrame(smoothScroll);
-    };
+    }, 16); // Roughly 60fps
 
-    animationFrameId = requestAnimationFrame(smoothScroll);
-    return () => cancelAnimationFrame(animationFrameId);
+    // Pause on hover
+    scrollContainer.addEventListener("mouseenter", () => (isPaused = true));
+    scrollContainer.addEventListener("mouseleave", () => (isPaused = false));
+
+    // Cleanup on component unmount
+    return () => {
+      clearInterval(scrollInterval);
+      scrollContainer.removeEventListener(
+        "mouseenter",
+        () => (isPaused = true)
+      );
+      scrollContainer.removeEventListener(
+        "mouseleave",
+        () => (isPaused = false)
+      );
+    };
   }, []);
 
   return (
@@ -85,7 +102,7 @@ const Testimonials: React.FC = () => {
           <span className="opacity-80">by happy customers</span>
         </div>
 
-        {/* Horizontal Auto-Scrollable Testimonials (duplicated for seamless looping) */}
+        {/* Horizontal Auto-Scrollable Testimonials */}
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto scroll-smooth px-4 py-2 whitespace-nowrap scrollbar-hide"
