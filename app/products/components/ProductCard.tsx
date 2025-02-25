@@ -25,65 +25,64 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
+      className="w-full max-w-xs bg-white   rounded-2xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="px-5 py-4 flex flex-col">
-        {/* Name */}
+      <div className="h-full flex flex-col px-5 py-4 mt-2">
+        {/* Name with fixed two-line height */}
         <a href="#" className="block">
-          <h5 className="text-xl font-semibold line-clamp-2 text-gray-900">{name}</h5>
+          <h5 className="text-xl font-semibold text-gray-900 text-start min-h-[56px] line-clamp-2 overflow-clip text-ellipsis whitespace-pre-wrap">
+            {name}
+          </h5>
         </a>
 
-        {/* BLDC Tag */}
-        {isBLDC && (
-          <div className="mt-3">
-            <span className="text-xs text-[#048c46] bg-[#e0f5e0] py-0.5 px-2 rounded">
-              BLDC
-            </span>
-          </div>
-        )}
+        {/* BLDC Tag or Empty Space */}
+        <div className="mt-2 flex justify-start ">
+          {isBLDC
+            ? <span className="text-sm font-semibold text-[#ffffff] bg-[#1c7940] py-0.5 px-3 rounded">
+                BLDC
+              </span>
+            : <div className="h-7" /> // Placeholder for spacing
+          }
+        </div>
 
         {/* Image with hover effect */}
-        <div className="relative w-full h-auto mt-4">
+        <div className="relative w-full h-[230px] mt-4 p-2 rounded-xl">
           <Image
-            className="w-full h-full object-cover rounded-lg transition-all duration-300"
-            src={isHovered && images.length > 1 ? images[1].url : images[0].url} // Ensure images[1] exists
+            className="object-contain rounded-xl transition-all duration-300"
+            src={isHovered && images.length > 1 ? images[1].url : images[0].url}
             alt={isHovered && images.length > 1 ? images[1].alt : images[0].alt}
-            width={500}
-            height={300} // Height adjusted dynamically
-            layout="intrinsic"
+            fill
           />
         </div>
 
-
         {/* Price */}
-        <div className="flex items-center justify-between mt-3">
+        <div className="relative flex items-center justify-start mt-4 ">
           <span className="text-2xl font-bold text-gray-900">
             {price ? `₹${price}` : "Price not set"}
           </span>
         </div>
 
-        {/* Know More Button */}
-       <div className="flex flex-col sm:flex-row gap-5 mt-4">
-  <a
-    href={`https://wa.me/7012169029?text=I%20want%20to%20know%20more%20about%20this%20product%20${name}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200 w-full"
-  >
-    Know More
-  </a>
-  <a
-    href={`https://wa.me/7012169029?text=I%20want%20to%20buy%20this%20product%20${name}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-lg hover:bg-[#006a33] transition-all duration-200 w-full"
-  >
-    Buy Now!
-  </a>
-</div>
-
+        {/* Know More and Buy Now Buttons */}
+        <div className="flex flex-col sm:flex-row gap-5 mt-4 mb-2 w-full">
+          <a
+            href={`https://wa.me/7012169029?text=I%20want%20to%20know%20more%20about%20this%20product%20${name}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-full hover:bg-[#006a33] transition-all duration-200 w-full"
+          >
+            Know More
+          </a>
+          <a
+            href={`https://wa.me/7012169029?text=I%20want%20to%20buy%20this%20product%20${name}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-full hover:bg-[#006a33] transition-all duration-200 w-full"
+          >
+            Buy Now!
+          </a>
+        </div>
       </div>
     </div>
   );

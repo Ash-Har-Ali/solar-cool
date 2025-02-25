@@ -6,6 +6,7 @@ import { productsQuery } from "../../../sanity/lib/queries";
 import ProductCard from "../components/ProductCard";
 import { client } from "../../../sanity/lib/client";
 import { StaticImageData } from "next/image";
+import { div } from "framer-motion/client";
 
 interface Category {
   _id: string;
@@ -118,7 +119,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
   // Loading State
   if (loading) {
     return (
-      <div className="container mx-auto px-4 sm:px-12 py-8">
+      
+      <div className="container mx-auto px-4 sm:px-12 py-8 ">
         <div className="flex items-center justify-center mb-6">
           <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-gray-900" />
         </div>
@@ -135,9 +137,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
+    <div className=" bg-[#e7e7e7]">
       {/* Hero Section */}
-      <div className="relative mb-12">
+      <div className="relative mb-12 ">
         <Image
           src={bannerImage}
           alt={`${category} Banner`}
@@ -160,35 +162,35 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
 
       {/* Sorting and Filter Buttons */}
       <div className="container mx-auto px-4 sm:px-12 py-8">
-        <div className="flex flex-wrap justify-center space-x-4 mb-6 gap-4">
+        <div className="flex flex-wrap justify-center space-x-4 mb-12 gap-4">
           <button
             onClick={() => handleBLDCFilter(null)}
-            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+            className="px-4 py-2 bg-white text-[#036d39] font-medium rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
           >
             All Products
           </button>
           <button
             onClick={() => handleSortChange("price-asc")}
-            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+            className="px-4 py-2 bg-white text-[#036d39] font-medium rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
           >
             Lowest Price
           </button>
           <button
             onClick={() => handleSortChange("price-desc")}
-            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+            className="px-4 py-2 bg-white text-[#036d39] font-medium rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
           >
             Highest Price
           </button>
           <button
             onClick={() => handleBLDCFilter(true)}
-            className="px-4 py-2 bg-white text-[#036d39] border border-[#036d39] rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
+            className="px-4 py-2 bg-white text-[#036d39] font-medium rounded-md hover:bg-[#036d39] hover:text-white transition duration-300"
           >
             BLDC Only
           </button>
         </div>
 
         {/* Product Cards */}
-        <div className="flex flex-wrap justify-center items-center gap-6 ">
+        <div className="flex flex-wrap justify-center items-center gap-6  ">
           {filteredAndSortedProducts.length > 0 ? (
             filteredAndSortedProducts.map((product) => (
               <ProductCard
@@ -219,6 +221,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ category, bannerImage }) => {
         </div>
       </div>
     </div>
+    
   );
 };
 
