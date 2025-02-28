@@ -47,7 +47,7 @@ const HomePage = () => {
   return (
     <div className="bg-[#e7e7e7] ">
       {/* Hero Section */}
-      <div className="relative mb-12 object-cover w-full h-[500px]  lg:h-[750px] 2xl:h-[900px] bg-[#1C7940] mt-7">
+      <div className="relative mb-8 object-cover w-full h-[500px]  lg:h-[750px] 2xl:h-[900px] bg-[#1C7940] mt-7">
         <div className="absolute inset-0 flex flex-col md:flex-row">
           <div className="flex-1 flex justify-center items-center pb-6 md:pb-0 md:w-1/2">
             <h1 className="text-white text-5xl sm:text-4xl md:text-6xl font-bold pt-20 md:pt-0">
@@ -75,7 +75,7 @@ const HomePage = () => {
           <ServiceForm />
         </div>
         {/* Service Locations Section */}
-        <div className="container mx-auto px-4 py-4 mt-24 mb-12">
+        <div className="container mx-auto px-4 py-4 mt-24 mb-20">
           <h3 className="text-black text-2xl md:text-4xl font-semibold font-['Montserrat'] mb-8">
             Service Locations
           </h3>
@@ -104,19 +104,16 @@ const HomePage = () => {
             ? <p className="text-gray-500">Loading service locations...</p>
             : <div className="flex flex-col md:flex-row md:space-x-8">
                 {/* Service Locations List */}
-                <ul className="space-y-4 flex-1 h-[480px] overflow-y-auto pr-2 ">
+                <ul className="space-y-4 flex-1 h-[480px] overflow-y-auto md:pr-2 ">
                   {filteredLocations.length > 0
                     ? filteredLocations.map(location =>
                         <li
                           key={location._id}
                           className="bg-gray-100 p-4 rounded-lg shadow-md border-[#d9d9d9] bg-[#d9d9d9]"
                         >
-                          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                          <h4 className="text-lg font-semibold text-gray-800 py-1">
                             {location.location}
                           </h4>
-                          <p className="text-gray-600">
-                            📞 {location.contact}
-                          </p>
                         </li>
                       )
                     : <p className="text-gray-500">
@@ -125,7 +122,7 @@ const HomePage = () => {
                 </ul>
 
                 {/* Google Maps Iframe (always shown) */}
-                <div className="flex-1">
+                <div className="flex-1 mt-10 md:mt-0">
                   <iframe
                     src="https://www.google.com/maps/d/embed?mid=1Vp5TqZEeylTOW4O4J_fEDsdWVqaF9Zg&ehbc=2E312F"
                     width="100%"
@@ -136,7 +133,7 @@ const HomePage = () => {
               </div>}
         </div>
         {/* Buy Parts & Accessories Section */}
-        <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#d9d9d9] rounded-[25px]">
+        <div className="relative mb-12 p-3 container mx-auto px-4 sm:px-12 bg-[#d9d9d9] rounded-[25px] ">
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Left Content */}
             <div className="md:w-1/2 space-y-6">
