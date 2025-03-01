@@ -1,5 +1,5 @@
-<svg width="873" height="833" viewBox="0 0 873 833" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="48" width="833" height="833" fill="url(#pattern0_604_212)"/>
+<svg width="844" height="759" viewBox="0 0 844 759" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="85" width="759" height="759" fill="url(#pattern0_604_212)"/>
 <circle cx="434" cy="334" r="4" fill="#006A34"/>
 <circle cx="434" cy="334" r="7" stroke="#87C443" stroke-opacity="0.3" stroke-width="6"/>
 <circle cx="453" cy="318" r="4" fill="#006A34"/>
@@ -45,7 +45,7 @@
 <rect y="273" width="612" height="486" fill="url(#pattern1_604_212)"/>
 <defs>
 <pattern id="pattern0_604_212" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_604_212" transform="scale(0.002)"/>
+<use xlink:href="#image0_604_212" transform="translate(-0.0487484) scale(0.00219499)"/>
 </pattern>
 <pattern id="pattern1_604_212" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image1_604_212" transform="matrix(0.00194637 0 0 0.00245098 -0.0955882 0)"/>

@@ -47,19 +47,19 @@ const HomePage = () => {
   return (
     <div className="bg-[#e7e7e7] ">
       {/* Hero Section */}
-      <div className="relative mb-8 object-cover w-full h-[500px]  lg:h-[750px] 2xl:h-[900px] bg-[#1C7940] mt-7">
+      <div className="relative mb-8 object-cover w-full h-[600px]  lg:h-[750px] 2xl:h-[900px] bg-[#1C7940] mt-">
         <div className="absolute inset-0 flex flex-col md:flex-row">
           <div className="flex-1 flex justify-center items-center pb-6 md:pb-0 md:w-1/2">
-            <h1 className="text-white text-5xl sm:text-4xl md:text-6xl font-bold pt-20 md:pt-0">
-              Contact Us
+            <h1 className="text-white text-5xl sm:text-4xl md:text-6xl font-bold md:pt-0">
+              Services
             </h1>
           </div>
-          <div className="flex-1 flex justify-center md:bottom-0 items-center px-4 ">
-            <div className=" sm:w-auto">
+          <div className="relative flex-1 flex justify-center items-end px-4">
+            <div className="sm:w-auto absolute bottom-0">
               <Image
                 src="/images/service-man.svg"
                 alt="Banner"
-                className=" object-fit w-full "
+                className="object-cover w-full"
                 width={1920}
                 height={1080}
                 priority
