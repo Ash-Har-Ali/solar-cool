@@ -8,7 +8,7 @@ const ProductCategories = () => {
         Product Categories
       </div>
 
-      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-4 mb-12">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-8 mb-12">
         {/* Solar AC - Full width on small screens, 50% on large screens */}
         <div className="w-full lg:w-1/2 rounded-[35px] relative overflow-hidden group hover:scale-105 transform transition-all duration-300">
           <Link href="/products/ac">
@@ -29,7 +29,7 @@ const ProductCategories = () => {
         </div>
 
         {/* Right side container for 2x2 grid, full width on small screens */}
-        <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+        <div className="w-full lg:w-1/2 grid grid-cols-2 gap-8">
           {/* Cooler */}
           <div className="rounded-[30px] relative overflow-hidden group hover:scale-105 transform transition-all duration-300">
             <Link href="/products/cooler">

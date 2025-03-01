@@ -14,7 +14,7 @@ const components = {
   types: {
     image: ({ value }: { value: any }) => {
       return (
-        <div className="my-8">
+        <div className="my-8 justify-items-center">
           {value?.asset ? (
             <Image
               src={builder.image(value).width(900).height(600).url() || ""}
@@ -80,7 +80,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     <>
       {/* SEO Metadata */}
       <Head>
-        <title>{pageTitle} | WizzyMinds Blog</title>
+        <title>{pageTitle} | Solar Cool Blog</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content={`${categories}, blog, ${author}`} />
         <meta property="og:title" content={pageTitle} />
@@ -95,11 +95,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <meta property="article:section" content={categories} />
         <link
           rel="canonical"
-          href={`https://wizzyminds.com/blog/${post.slug?.current || ""}`}
+          href={`https://solarcool.com/blog/${post.slug?.current || ""}`}
         />
       </Head>
 
-      <main className="container mx-auto prose prose-xl px-6 py-16 bg-white rounded-2xl shadow-2xl mb-12 transition-all duration-300">
+      <main className="container mx-auto prose prose-xl px-6 py-16 bg-white rounded-2xl shadow-2xl mb-12 mt-12 transition-all duration-300">
         {/* Main Image Section */}
         {post?.mainImage && (
           <div className="mb-12 justify-items-center">
@@ -135,7 +135,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
         {/* Body Content Section */}
         {Array.isArray(post.body) && post.body.length > 0 ? (
-          <div className="text-lg text-gray-700 leading-relaxed space-y-8 animate-fadeIn">
+          <div className="text-lg text-gray-700 leading-relaxed space-y-8 animate-fadeIn text-justify px-12">
             <PortableText value={post.body} components={components} />
           </div>
         ) : (
@@ -146,7 +146,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
         {/* Footer Section */}
         <footer className="mt-16 text-center text-gray-500 text-sm border-t pt-6 animate-fadeIn">
-          <p>Thank you for reading this post. Stay tuned for more updates from WizzyMinds!</p>
+          <p>Thank you for reading this post. Stay tuned for more updates from Solar Cool!</p>
         </footer>
       </main>
     </>
