@@ -24,14 +24,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   const validateForm = (): boolean => {
     const newErrors: Partial<typeof formData> = {};
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phonePattern = /^\d{10}$/;
 
     if (!formData.name.trim()) newErrors.name = 'Name is required.';
-    if (!emailPattern.test(formData.email)) newErrors.email = 'Enter a valid email.';
     if (!phonePattern.test(formData.mobileNumber)) newErrors.mobileNumber = 'Enter a valid 10-digit mobile number.';
-    if (!formData.reasonForEnquire.trim()) newErrors.reasonForEnquire = 'Reason for enquiry is required.';
-    if (!formData.requirement.trim()) newErrors.requirement = 'Requirement is required.';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -80,12 +76,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
               id={field}
               value={formData[field]}
               onChange={handleChange}
-              className={`peer w-full px-4 py-2 border font-['Montserrat'] rounded-2xl  outline-none ${errors[field] ? 'border-red-500' : 'border-[#878787]'}`}
-              required
+              className={`peer w-full px-4 py-2 border font-['Montserrat'] rounded-2xl outline-none ${
+                errors[field] ? 'border-red-500' : 'border-[#878787]'
+              }`}
             />
             <label
               htmlFor={field}
-              className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-[#878787] text-base transition-all ${formData[field] ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'}`}
+              className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-[#878787] text-base transition-all ${
+                formData[field] ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'
+              }`}
             >
               {field.replace(/([A-Z])/g, ' $1')}
             </label>
@@ -98,24 +97,34 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="requirement"
             value={formData.requirement}
             onChange={handleChange}
-            className={`peer w-full px-4 py-10 border rounded-2xl shadow-lg  outline-none ${errors.requirement ? 'border-red-500' : 'border-[#878787]'}`}
-            required
+            className={`peer w-full px-4 py-10 border rounded-2xl shadow-lg outline-none ${
+              errors.requirement ? 'border-red-500' : 'border-[#878787]'
+            }`}
           />
           <label
             htmlFor="requirement"
-            className={`absolute left-4 top-4 text-[#878787] text-base transition-all ${formData.requirement ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'}`}
+            className={`absolute left-4 top-4 text-[#878787] text-base transition-all ${
+              formData.requirement ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'
+            }`}
           >
             Requirement
           </label>
-          {errors.requirement && <p className="text-red-500 text-xs mt-1">{errors.requirement}</p>}
         </div>
         {message && (
-          <p className={`mt-5 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green text-green-700' : 'bg-red-100 text-red-700'}`}>{message.text}</p>
+          <p
+            className={`mt-5 p-3 rounded-lg text-sm ${
+              message.type === 'success' ? 'bg-green text-green-700' : 'bg-red-100 text-red-700'
+            }`}
+          >
+            {message.text}
+          </p>
         )}
         <button
           type="submit"
           disabled={loading}
-          className={`px-6 py-3 bg-solarcoolgreen text-white rounded-full transition ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-600'}`}
+          className={`px-6 py-3 bg-solarcoolgreen text-white rounded-full transition ${
+            loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-600'
+          }`}
         >
           {loading ? 'Submitting...' : 'Submit'}
         </button>

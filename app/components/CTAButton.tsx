@@ -1,6 +1,6 @@
-'use client';
-import React from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 interface CTAButtonProps {
   label: string;
@@ -11,13 +11,13 @@ interface CTAButtonProps {
   className?: string;
 }
 
-const CTAButton: React.FC<CTAButtonProps> = ({ 
-  label, 
-  navigateTo, 
-  bgColor = '#fff', 
-  textColor = '#000', 
-  width = 'auto',
-  className = ''
+const CTAButton: React.FC<CTAButtonProps> = ({
+  label,
+  navigateTo,
+  bgColor = "#fff",
+  textColor = "#000",
+  width = "auto",
+  className = ""
 }) => {
   const router = useRouter();
 
@@ -31,9 +31,11 @@ const CTAButton: React.FC<CTAButtonProps> = ({
         hover:bg-opacity-90 hover:border-gray-600 hover:scale-105 hover:shadow-lg 
         text-xs sm:text-base md:text-base lg:text-lg px-2 sm:px-4 md:px-4 lg:px-5 py-1 sm:py-2 md:py-1 lg:py-2 ${className}`}
       onClick={handleClick}
-      style={{ backgroundColor: bgColor, color: textColor, width }} // Use inline styles for dynamic colors
+      style={{ backgroundColor: bgColor, color: textColor, width }}
     >
-      <div className="ContactUs">{label}</div>
+      <div className="ContactUs">
+        {label}
+      </div>
 
       {/* SVG Icon */}
       <div className="flex justify-center items-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8">

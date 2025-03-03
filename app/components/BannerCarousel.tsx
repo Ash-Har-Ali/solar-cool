@@ -75,7 +75,7 @@ const Carousel = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <button
+      {/* <button
         className="absolute left-2 sm:left-4 md:left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 sm:p-3 md:p-4 rounded-full hover:bg-opacity-80 transition"
         onClick={prevSlide}
         aria-label="Previous Slide"
@@ -88,7 +88,7 @@ const Carousel = () => {
         aria-label="Next Slide"
       >
         <ChevronRightIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
-      </button>
+      </button> */}
 
       {/* Text Overlay */}
       <div className=" w-auto mx-auto left-5 absolute top-[70%] lg:left-20 lg:py-5 md:py-2 sm:top-[65%] ">

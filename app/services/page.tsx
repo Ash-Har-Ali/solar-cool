@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { client } from "../../sanity/lib/client"; // Adjust path to your Sanity client
-import { serviceLocationsQuery } from "../../sanity/lib/queries"; // Adjust path to your queries
+import { client } from "../../sanity/lib/client";
+import { serviceLocationsQuery } from "../../sanity/lib/queries";
 import Image from "next/image";
 import ServiceForm from "../components/ServiceForm";
 

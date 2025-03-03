@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
     const { name, email, mobileNumber, reasonForEnquire, requirement } = await req.json();
 
     // Check for missing required fields
-    if (!name || !email || !mobileNumber || !reasonForEnquire || !requirement) {
+    if (!name || !mobileNumber) {
       return NextResponse.json(
-        { message: 'All fields are required.' },
+        { message: 'Name and Mobile Number are required.' },
         { status: 400 }
       );
     }
@@ -24,14 +24,14 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { message: 'User created successfully!', result },
+      { message: 'Your Message has been sent!', result },
       { status: 200 }
     );
   } catch (error: unknown) {
     console.error('API Error:', error);
     if (error instanceof Error) {
       return NextResponse.json(
-        { message: 'Error creating user.', error: error.message },
+        { message: 'Error sending message.', error: error.message },
         { status: 500 }
       );
     } else {

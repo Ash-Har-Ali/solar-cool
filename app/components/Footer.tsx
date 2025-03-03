@@ -2,7 +2,7 @@
 
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
-import Link from "next/link"; // Import Link from Next.js
+import Link from "next/link";
 import CTAButton from "../components/CTAButton";
 
 const Footer: React.FC = () => {

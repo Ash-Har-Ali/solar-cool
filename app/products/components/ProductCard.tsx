@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image"; // Import Image from next/image
+import Image from "next/image";
 
 interface ProductCardProps {
   images: { url: string; alt: string }[]; // Array of images

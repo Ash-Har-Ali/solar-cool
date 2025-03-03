@@ -15,7 +15,7 @@ export default defineType({
       name: 'email',
       title: 'Email',
       type: 'string',
-      validation: (Rule) => Rule.required().email(),
+      validation: (Rule) => Rule.email(),
     }),
     defineField({
       name: 'mobileNumber',
@@ -40,13 +40,11 @@ export default defineType({
       name: 'reasonForEnquire',
       title: 'Reason for Enquire',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'requirement',
       title: 'Requirement',
       type: 'text',
-      validation: (Rule) => Rule.required(),
     }),
   ],
 

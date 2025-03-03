@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { client } from "../../sanity/lib/client"; // Import your Sanity client
-import { postsQuery } from "../../sanity/lib/queries"; // Import your query
+import { client } from "../../sanity/lib/client";
+import { postsQuery } from "../../sanity/lib/queries";
 
 // Define a type for blog posts
 interface BlogPost {
