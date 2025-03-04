@@ -4,7 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import CTAButton from "./CTAButton";
 
-const images = ["/images/HomeBanner1.webp", "/images/HomeBanner2.webp"];
+const images = [
+  "/images/HomeBanner1.webp",
+  "/images/HomeBanner2.webp",
+  "/images/bannerhome3.webp"
+];
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

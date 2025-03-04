@@ -4,9 +4,9 @@ import Link from "next/link";
 // Use string paths for SVGs stored in /public/images
 const smartWatchImg = "/images/smart watch.svg";
 const washingMachineImg = "/images/washing machine.svg";
-const speakerImg = "/images/Speaker.svg";
+const geyserImg = "/images/Geyser.webp";
 const tvImg = "/images/television.svg";
-const digitalSignageImg = "/images/signage.svg";
+const fanImg = "/images/Fan.webp";
 const coolerImg = "/images/cooler.svg";
 
 // Define the props interface for ProductCard
@@ -90,10 +90,10 @@ const HomePage = () => {
             link="/products/washingMachine"
           />
           <ProductCard
-            imageSrc={speakerImg}
-            altText="Speaker"
-            productName="Speaker"
-            link="/products/speaker"
+            imageSrc={geyserImg}
+            altText="Water Geyser"
+            productName="Water Geyser"
+            link="/products/geyser"
           />
           <ProductCard
             imageSrc={tvImg}
@@ -102,10 +102,10 @@ const HomePage = () => {
             link="/products/tv"
           />
           <ProductCard
-            imageSrc={digitalSignageImg}
-            altText="Digital Signage"
-            productName="Digital Signage"
-            link="/products/digitalSignage"
+            imageSrc={fanImg}
+            altText="BLDC Fan"
+            productName="BLDC Fan"
+            link="/products/bldcFan"
           />
           <ProductCard
             imageSrc={coolerImg}

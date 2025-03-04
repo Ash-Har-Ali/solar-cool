@@ -3,8 +3,10 @@ import ProductPage from "../components/ProductPage";
 const WashingMachinePage: React.FC = () => {
   return (
     <ProductPage
-      category="washing Machine"
-      bannerImage="/images/banner-products.webp"
+      category="washingMachine"
+      title="Washing Machine"
+      bannerImageDesktop="/images/WashingMachineBanner.webp"
+      bannerImageMobile="/images/WashingMachineBannerPhone.webp"
     />
   );
 };

@@ -20,11 +20,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full top-0 left-0 right-0 z-50   border border-white border-opacity-30 bg-[#f2f2f2]  px-4 py-2 sm:py-1">
-      <div className="flex container items-center justify-between mx-auto px-3 py-1.3 sm:py-1">
+      <div className="flex container items-center justify-between mx-auto px-3 py-1 sm:py-1">
         {/* Left Side: Logo */}
         <Link
           href="/"
-          className="text-2xl md:text-3xl text-black font-semibold"
+          className="text-2xl md:text-3xl text-black font-semibold mt-1"
         >
           <Image
             src="/images/solarcool-logo2.svg"

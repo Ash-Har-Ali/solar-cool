@@ -11,13 +11,13 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Air Conditioner', value: 'airconditioner' },
+          { title: 'Air Conditioner', value: 'airConditioner' },
           { title: 'Cooler', value: 'cooler' },
           { title: 'Television', value: 'television' },
           { title: 'Smart Watch', value: 'smartwatch' },
           { title: 'Washing Machine', value: 'washingmachine' },
-          { title: 'Digital Signage', value: 'digitalsignage' },
-          { title: 'Speaker', value: 'speaker' },
+          { title: 'BLDC Fan', value: 'BLDCFan' },
+          { title: 'Water geyser', value: 'waterGeyser' },
         ],
       },
     }),

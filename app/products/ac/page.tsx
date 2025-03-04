@@ -3,8 +3,10 @@ import ProductPage from "../components/ProductPage";
 const AcPage: React.FC = () => {
   return (
     <ProductPage
-      category="air Conditioner"
-      bannerImage="/images/banner-products.webp"
+      category="airConditioner"
+      title="Air Conditioner"
+      bannerImageDesktop="/images/AcBanner.webp"
+      bannerImageMobile="/images/AcBannerPhone.webp"
     />
   );
 };
