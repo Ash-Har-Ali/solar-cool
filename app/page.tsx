@@ -8,8 +8,8 @@ import ProductCategories from "./components/ProductCategories";
 import Testimonials from "./components/Testimonials";
 import BlogsSection from "./components/BlogsShowcase";
 import FAQSession from "./components/FAQ";
-
-const HomePage: React.FC = () => (
+import PopUpCard from "./components/PopUpCard";
+const HomePage: React.FC = () =>
   <div>
     <BannerCarousel />
     <PopularProducts />
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => (
     <Testimonials />
     <BlogsSection />
     <FAQSession />
-  </div>
-);
+    <PopUpCard />
+  </div>;
 
 export default HomePage;

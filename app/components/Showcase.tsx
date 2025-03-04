@@ -34,14 +34,13 @@ const Showcase: React.FC = () => {
 
       {/* Right Content */}
       <div className="relative z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-center justify-between md:h-[450px] px-10">
-        {" "}
-        {/* Set a fixed height */}
+        {" "}{/* Set a fixed height */}
         <div className="flex justify-center gap-4 mb-6 lg:mb-40 ">
           {[
             { count: "5+", text: "Years of Experience" },
             { count: "100+", text: "Satisfied Clients" },
             { count: "20+", text: "Products" }
-          ].map((stat, index) => (
+          ].map((stat, index) =>
             <div
               key={index}
               className="bg-[#f4f4f4] rounded-2xl flex w-auto flex-col justify-center items-center p-3"
@@ -53,13 +52,13 @@ const Showcase: React.FC = () => {
                 {stat.text}
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
 
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="absolute inset-0 bg-black opacity-10" />
         <Image
           className="w-full h-full object-cover"
           src="/images/showcase.svg"

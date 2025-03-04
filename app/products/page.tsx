@@ -70,13 +70,13 @@ const HomePage = () => {
               height={1080}
               priority
             />
-            <span className="container w-full mx-auto px-3 sm:px-12 absolute bottom-2 left-7 lg:left-20 2xl:left-24  text-white text-sm sm:text-lg md:text-3xl 2xl:text-4xl font-bold font-['Montserrat'] bg-black/50 py-1 sm:py-4 rounded-lg">
+            <span className="container w-full  px-3 sm:px-12 absolute bottom-2 left-7 lg:left-20 2xl:left-24  text-white text-sm sm:text-lg md:text-3xl 2xl:text-4xl font-bold font-['Montserrat'] bg-black/50 py-1 sm:py-4 rounded-lg">
               Air Conditioner
             </span>
           </div>
         </Link>
 
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-2">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-">
           <ProductCard
             imageSrc={smartWatchImg}
             altText="Smart Watch"

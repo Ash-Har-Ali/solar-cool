@@ -86,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 formData[field] ? 'hidden' : 'peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500'
               }`}
             >
-              {field.replace(/([A-Z])/g, ' $1')}
+              {field.replace(/([A-Z])/g, ' $1').replace(/^\w/, (c) => c.toUpperCase())}
             </label>
             {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}
           </div>
