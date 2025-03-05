@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
                   Warranty Terms
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#" className="hover:underline">
                   Air Cooler
                 </Link>
@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
                 <Link href="#" className="hover:underline">
                   Smart Watch
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -176,8 +176,8 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="hover:underline">
-                  Gallery
+                <Link href="/services" className="hover:underline">
+                  Services
                 </Link>
               </li>
               <li>
