@@ -57,7 +57,7 @@ const BlogsShowcase = () => {
             <h3 className="text-lg font-semibold p-4">
               {blog.title}
             </h3>
-            <p className="text-gray-600 mb-4 px-4 text-sm sm:text-base line-clamp-2">
+            <p className="text-gray-600 mb-4 px-4 text-sm sm:text-base line-clamp-2 overflow-clip text-ellipsis whitespace-pre-wrap">
               {blog.description.slice(0, 100)}...
             </p>
             <div className="px-3 w-full flex justify-start">
