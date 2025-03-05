@@ -35,7 +35,7 @@ const ProductCard = ({
           height={100}
         />
         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300" />
-        <div className="absolute inset-0 flex items-end justify-start text-white text-lg 2xl:text-xl 2xl:left-3 font-bold font-['Montserrat'] p-3 opacity-100 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 flex items-end justify-start text-white text-base md:text-lg 2xl:text-xl 2xl:left-3 font-bold font-['Montserrat'] p-3 opacity-100 group-hover:opacity-100 transition-opacity duration-300">
           {productName}
         </div>
       </div>
@@ -46,15 +46,31 @@ const HomePage = () => {
   return (
     <div>
       <div className="relative mb-12">
-        <Image
-          src="/images/banner4.png"
-          alt="Banner"
-          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
-          width={1920}
-          height={1080}
-          priority
-        />
-        <div className="container mx-auto px-6 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-3xl md:text-6xl font-bold font-['Montserrat']">
+        {/* Desktop Banner */}
+        <div className="hidden sm:block">
+          <Image
+            src="/images/banner4.png"
+            alt="Banner"
+            className="object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
+            width={1920}
+            height={1080}
+            priority
+          />
+        </div>
+
+        {/* Mobile Banner */}
+        <div className="block sm:hidden">
+          <Image
+            src="/images/ProductBannerMob.webp"
+            alt="Mobile Banner"
+            className="object-cover w-full h-[600px]"
+            width={600}
+            height={400}
+            priority
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-12 md:py-8 bottom-[40%] md:bottom-0 absolute inset-0 flex items-center justify-center md:justify-start text-white text-center text-5xl md:text-6xl font-bold font-['Montserrat']">
           Products
         </div>
       </div>
@@ -65,12 +81,12 @@ const HomePage = () => {
             <Image
               src="/images/banner-ac.png"
               alt="AC Banner"
-              className=" mx-auto px-4 sm:px-12 w-full sm:w-auto 2xl:w-[1600px] h-auto justify-center items-center object-cover mb-8 sm:mb-12"
+              className="mx-auto px-4 sm:px-12 w-full sm:w-auto 2xl:w-[1600px] h-auto justify-center items-center object-cover mb-8 sm:mb-12"
               width={1920}
               height={1080}
               priority
             />
-            <span className="container w-full  px-3 sm:px-12 absolute bottom-2 left-7 lg:left-20 2xl:left-24  text-white text-sm sm:text-lg md:text-3xl 2xl:text-4xl font-bold font-['Montserrat'] bg-black/50 py-1 sm:py-4 rounded-lg">
+            <span className="container w-full px-3 sm:px-12 absolute bottom-2 left-7 lg:left-20 2xl:left-24 text-white text-sm sm:text-lg md:text-3xl 2xl:text-4xl font-bold font-['Montserrat'] bg-black/50 py-1 sm:py-4 rounded-lg">
               Air Conditioner
             </span>
           </div>
@@ -118,5 +134,6 @@ const HomePage = () => {
     </div>
   );
 };
+
 
 export default HomePage;

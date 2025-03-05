@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Banner Section */}
-      {/* Banner Section */}
+
       <div className="relative mb-12">
         {/* Mobile Banner */}
         <div className="sm:hidden">
