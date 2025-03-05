@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const products = [
   { name: "Cooler", image: "/images/cooler.png", link: "/products/cooler" },
-  { name: "BLDC Fan", image: "/images/fan.webp", link: "/products/bldcFan" },
+  { name: "BLDC Fan", image: "/images/Fan.webp", link: "/products/bldcFan" },
   { name: "Smart Watch", image: "/images/SmartWatch.png", link: "/products/smartWatch" },
   { name: "Washing Machine", image: "/images/WashingMachine.png", link: "/products/washingMachine" },
   { name: "TV", image: "/images/tv.png", link: "/products/tv" },
