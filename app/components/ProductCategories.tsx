@@ -1,26 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const products = [
   { name: "Cooler", image: "/images/cooler.png", link: "/products/cooler" },
-  { name: "Speaker", image: "/images/speaker.png", link: "/products/speaker" },
-  {
-    name: "Smart Watch",
-    image: "/images/SmartWatch.png",
-    link: "/products/smartWatch"
-  },
-  {
-    name: "Washing Machine",
-    image: "/images/WashingMachine.png",
-    link: "/products/washingMachine"
-  },
+  { name: "BLDC Fan", image: "/images/fan.webp", link: "/products/bldcFan" },
+  { name: "Smart Watch", image: "/images/SmartWatch.png", link: "/products/smartWatch" },
+  { name: "Washing Machine", image: "/images/WashingMachine.png", link: "/products/washingMachine" },
   { name: "TV", image: "/images/tv.png", link: "/products/tv" },
-  {
-    name: "Signage",
-    image: "/images/signage.png",
-    link: "/products/digitalSignage"
-  }
+  { name: "Water Geyser", image: "/images/Geyser.webp", link: "/products/geyser" },
 ];
 
 const ProductCategories = () => {
@@ -37,17 +26,14 @@ const ProductCategories = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(
-    () => {
-      if (!isMobile) {
-        const interval = setInterval(() => {
-          setIndex(prevIndex => (prevIndex + 2) % products.length);
-        }, 4000);
-        return () => clearInterval(interval);
-      }
-    },
-    [isMobile]
-  );
+  useEffect(() => {
+    if (!isMobile) {
+      const interval = setInterval(() => {
+        setIndex((prevIndex) => (prevIndex + 2) % products.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }
+  }, [isMobile]);
 
   return (
     <div className="container mx-auto p-4">
@@ -55,7 +41,10 @@ const ProductCategories = () => {
         Product Categories
       </div>
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row lg:gap-0 gap-8 mb-12 lg:mb-6 lg:h-[590px] px-4">
-        <div className="w-full lg:w-1/2 rounded-[35px] h-auto relative overflow-hidden group hover:scale-105 transform transition-all duration-300 lg:p-5">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="w-full lg:w-1/2 rounded-[35px] h-auto relative overflow-hidden group transition-all duration-300 lg:p-5"
+        >
           <Link href="/products/ac">
             <Image
               src="/images/acbanner.png"
@@ -66,58 +55,54 @@ const ProductCategories = () => {
               width={500}
               height={500}
             />
-            <h2 className="absolute bottom-6 left-6 lg:left-12 lg:bottom-10 md:text-3xl text-2xl font-semibold text-white font-['Montserrat'] transition-all duration-300 group-hover:text-yellow-400">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute bottom-6 left-6 lg:left-12 lg:bottom-10 md:text-3xl text-2xl font-semibold text-white font-['Montserrat']"
+            >
               Solar Air Conditioner
-            </h2>
+            </motion.h2>
           </Link>
-        </div>
+        </motion.div>
 
-        {/* Right Section */}
-        <div className="w-full lg:w-1/2 grid grid-cols-2 gap-6 lg:grid-cols-2 lg:overflow-hidden lg:p-6">
-          {isMobile
-            ? products.map((product, idx) =>
-                <div
-                  key={idx}
-                  className="rounded-[30px] relative overflow-hidden group hover:scale-105 transform transition-all duration-700 ease-in-out"
-                >
-                  <Link href={product.link}>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-auto object-cover"
-                      width={500}
-                      height={500}
-                      priority
-                    />
-                    <h3 className="absolute bottom-3 left-6 text-lg font-bold text-white font-['Montserrat'] transition-all duration-300 group-hover:text-yellow-400">
-                      {product.name}
-                    </h3>
-                  </Link>
-                </div>
-              )
-            : [...products, ...products] // Duplicate for smooth looping
-                .slice(index, index + 4) // Get current sliding items
-                .map((product, idx) =>
-                  <div
-                    key={idx}
-                    className="rounded-[30px] relative overflow-hidden group hover:scale-105 transform transition-all duration-700 ease-in-out"
-                    style={{ transition: "transform 1s ease-in-out" }} // Smooth effect
+        <div className="w-full lg:w-1/2 overflow-hidden relative lg:p-6">
+          
+          <motion.div
+            key={index}
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="grid grid-cols-2 gap-6 lg:grid-cols-2"
+          >
+            {([...products, ...products].slice(index, index + 4)).map((product, idx) => (
+              <motion.div
+                key={idx}
+                className="rounded-[30px] relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Link href={product.link}>
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-auto object-cover"
+                    width={500}
+                    height={500}
+                    priority
+                  />
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute bottom-3 left-6 text-lg font-bold text-white font-['Montserrat']"
                   >
-                    <Link href={product.link}>
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-auto object-cover"
-                        width={500}
-                        height={500}
-                        priority
-                      />
-                      <h3 className="absolute bottom-3 left-6 text-lg font-bold text-white font-['Montserrat'] transition-all duration-300 group-hover:text-yellow-400">
-                        {product.name}
-                      </h3>
-                    </Link>
-                  </div>
-                )}
+                    {product.name}
+                  </motion.h3>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>

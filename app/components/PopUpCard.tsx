@@ -11,11 +11,16 @@ export default function PopUpCard() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 8000); // Show after 10 seconds
+    const popupShown = sessionStorage.getItem("popupShown");
 
-    return () => clearTimeout(timer);
+    if (!popupShown) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+        sessionStorage.setItem("popupShown", "true"); // Store the flag in sessionStorage
+      }, 8000); // Show after 8 seconds
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,10 +39,10 @@ export default function PopUpCard() {
       });
 
       if (response.ok) {
-        setSuccess(true); // Show success message
+        setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
-          setIsOpen(false); // Close popup after 2 seconds
+          setIsOpen(false);
         }, 2000);
       }
     } catch (error) {
@@ -54,13 +59,11 @@ export default function PopUpCard() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm px-5">
       <div className="bg-white rounded-xl shadow-lg w-96">
         {success ? (
-          //  Success Message
           <div className="p-6 text-center">
-            <h2 className="text-2xl font-bold text-[#1C7940]"> Thank you!</h2>
+            <h2 className="text-2xl font-bold text-[#1C7940]">Thank you!</h2>
             <p className="text-gray-700 mt-2">We will get back to you soon</p>
           </div>
         ) : (
-          //  Main Form
           <>
             <div className="bg-[#1C7940] text-white p-4 rounded-t-lg text-center">
               <div className="text-2xl font-semibold">📩</div>
