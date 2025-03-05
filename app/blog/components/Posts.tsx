@@ -81,12 +81,13 @@ const Posts = ({ posts = [] }: { posts: SanityDocument[] }) => {
         <Image
           src="/images/blogbanner.webp"
           alt="Banner"
-          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px] "
+         className="w-full h-[600px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px] object-cover object-right"
+
           width={1920}
           height={600}
           priority
         />
-        <div className="container mx-auto px-4 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-4xl md:text-6xl font-bold font-['Montserrat']">
+        <div className="container mx-auto px-4 sm:px-12 md:py-8 bottom-[40%] md:bottom-0 absolute inset-0 flex items-center justify-center md:justify-start text-white text-center text-5xl md:text-6xl font-bold font-['Montserrat']">
           Blogs
         </div>
       </div>

@@ -6,7 +6,7 @@ const Showcase: React.FC = () => {
     <div className="relative w-full max-w-full h-auto mt-16 flex flex-col lg:flex-row items-center px-10 py-10 mb-10">
       {/* Left Content */}
       <div className="relative z-10 w-full lg:w-1/2 mb-12 flex flex-col md:px-20 justify-between">
-        <h2 className="text-[#303030] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
+        <h2 className="text-[#000000] text-[34px] font-semibold font-['Montserrat'] sm:text-[28px] md:text-[34px] lg:text-[38px]">
           Why <br /> Choose Solarcool?
         </h2>
         <p className="text-black text-base font-normal font-['Montserrat'] leading-normal sm:text-sm md:text-base lg:text-lg py-4">

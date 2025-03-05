@@ -10,16 +10,34 @@ export default function AboutPage() {
   return (
     <div>
       {/* Banner Section */}
+      {/* Banner Section */}
       <div className="relative mb-12">
-        <Image
-          src="/images/banner1.png"
-          alt="Banner"
-          className=" object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
-          width={1920}
-          height={1080}
-          priority
-        />
-        <div className="container mx-auto px-4 sm:px-12 py-8 absolute inset-0 flex items-center text-white text-center text-4xl md:text-6xl font-bold font-['Montserrat']">
+        {/* Mobile Banner */}
+        <div className="sm:hidden">
+          <Image
+            src="/images/AboutUsBannerMob.webp"
+            alt="Mobile Banner"
+            className="object-cover w-full h-[600px]"
+            width={500} // Adjust as needed
+            height={300} // Adjust as needed
+            priority
+          />
+        </div>
+
+        {/* Larger Screen Banner */}
+        <div className="hidden sm:block">
+          <Image
+            src="/images/banner1.png"
+            alt="Banner"
+            className="object-cover w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[750px] 2xl:h-[900px]"
+            width={1920}
+            height={1080}
+            priority
+          />
+        </div>
+
+        {/* Overlay Text */}
+        <div className="container mx-auto px-4 sm:px-12 md:py-8 bottom-[40%] md:bottom-0 absolute inset-0 flex items-center justify-center md:justify-start text-white text-center text-5xl md:text-6xl font-bold font-['Montserrat']">
           About Us
         </div>
       </div>
