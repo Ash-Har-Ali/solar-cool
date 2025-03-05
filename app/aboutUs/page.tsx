@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
           <div className="text-center md:text-left max-w- md:w-1/2">
             <SectionTitle title="About Us" subtitle="Who we are?" />
-            <p className="text-black text-base font-normal font-['Montserrat'] leading-normal mt-4 text-justify">
+            <p className="text-black text-base font-normal font-['Montserrat'] leading-normal mt-4 text-justify px-2 md:px-0">
               “Solar cool“ is established to bring solar products to everyone’s
               daily life, with modern technology at an affordable cost and high
               efficiency with lower electricity bills. Now your selection of

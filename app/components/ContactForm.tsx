@@ -7,7 +7,7 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({
-  onSuccessMessage = 'User created successfully!',
+  onSuccessMessage = 'Your Response has been sent!',
   onErrorMessage = 'Error creating user.',
   apiEndpoint = '/api/submit-data',
 }) => {

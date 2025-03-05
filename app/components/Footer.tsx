@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     <footer className="bg-[#eeeded]   pt-8">
       <div className="max-w-screen-xl mx-auto px-8 md:px-8">
         {/* Logo Row */}
-        <div className="flex flex-col md:flex-row justify-start items-start md:justify-between md:items-center mb-6">
+        <div className=" flex flex-col md:flex-row justify-start items-start md:justify-between md:items-center mb-6">
           <Image
             className="w-40 h-18"
             alt="Solar cool logo"
@@ -31,15 +31,16 @@ const Footer: React.FC = () => {
 
         {/* Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and Contact Info */}
+          {/* Contact Info */}
           <div>
-            <p className="mt-2 text-sm text-gray-600">
+            <br/>
+            <p className="mt- text-base text-gray-600">
               14/370A, Poyya, Kodungallur Rd
             </p>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-base text-gray-600">
               Thrissur, Kerala Pin: 680733
             </p>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-base text-gray-600">
               <Link
                 href="mailto:info@solarcool.co.in"
                 className="text-gray-600 hover:underline"
@@ -47,7 +48,7 @@ const Footer: React.FC = () => {
                 info@solarcool.co.in
               </Link>
             </p>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-base text-gray-600">
               <Link
                 href="tel:+918281898700"
                 className="text-gray-600 hover:underline"
@@ -63,7 +64,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaLinkedin size={20} />{" "}
+                <FaLinkedin size={30} />{" "}
               </Link>
               <Link
                 href="https://www.instagram.com"
@@ -72,7 +73,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram size={20} />{" "}
+                <FaInstagram size={30} />{" "}
               </Link>
               <Link
                 href="https://www.facebook.com"
@@ -81,15 +82,15 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebookF size={20} />{" "}
+                <FaFacebookF size={27} />{" "}
               </Link>
             </div>
           </div>
 
           {/* Policies Section */}
           <div>
-            <h3 className="text-sm font-bold text-gray-700">Our Policies</h3>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+            <h3 className="text-lg font-bold text-gray-700">Our Policies</h3>
+            <ul className="mt-4 space-y-2 text-base text-gray-600">
               <li>
                 <Link href="#" className="hover:underline">
                   Terms & Conditions
@@ -120,8 +121,8 @@ const Footer: React.FC = () => {
 
           {/* Products Section */}
           <div>
-            <h3 className="text-sm font-bold text-gray-700">Products</h3>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+            <h3 className="text-lg font-bold text-gray-700">Products</h3>
+            <ul className="mt-4 space-y-2 text-base text-gray-600">
               <li>
                 <Link href="/products/ac" className="hover:underline">
                   Solar AC
@@ -155,10 +156,10 @@ const Footer: React.FC = () => {
 
           {/* Additional Links Section */}
           <div>
-            <h3 className="text-sm font-bold text-gray-700">
+            <h3 className="text-lg font-bold text-gray-700">
               Additional Links
             </h3>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+            <ul className="mt-4 space-y-2 text-base  text-gray-600">
               <li>
                 <Link href="/aboutUs" className="hover:underline">
                   About Us
@@ -190,7 +191,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="mt-8 text-center text-sm text-white bg-solarcoolgreen py-2 px-3">
+      <div className="mt-8 text-center text-base text-white bg-solarcoolgreen py-1 px-3">
         Copyright © 2025 SolarCool Inc.
       </div>
     </footer>

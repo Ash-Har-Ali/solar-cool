@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const products = [
   { name: "Cooler", image: "/images/cooler.png", link: "/products/cooler" },
@@ -67,16 +67,10 @@ const ProductCategories = () => {
         </motion.div>
 
         <div className="w-full lg:w-1/2 overflow-hidden relative lg:p-6">
-          
-          <motion.div
-            key={index}
-            initial={{ x: "100%" }}
-            animate={{ x: "0%" }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="grid grid-cols-2 gap-6 lg:grid-cols-2"
+          <div
+            className={`grid ${isMobile ? "grid-cols-2 gap-6" : "grid-cols-2 gap-6 lg:grid-cols-2"}`}
           >
-            {([...products, ...products].slice(index, index + 4)).map((product, idx) => (
+            {(isMobile ? products : [...products, ...products].slice(index, index + 4)).map((product, idx) => (
               <motion.div
                 key={idx}
                 className="rounded-[30px] relative overflow-hidden group"
@@ -102,7 +96,7 @@ const ProductCategories = () => {
                 </Link>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
