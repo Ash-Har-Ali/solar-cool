@@ -75,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             Know More
           </a>
           <a
-            href={`https://wa.me/7012169029?text=I%20want%20to%20buy%20this%20product%20${name}`}
+            href={`https://wa.me/7012169029?text=I%20want%20to%20Buy%20this%20product%20%${name}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-4 py-2 bg-[#048c46] text-white font-semibold rounded-full hover:bg-[#006a33] transition-all duration-200 w-full"
